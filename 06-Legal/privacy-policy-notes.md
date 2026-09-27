@@ -1,29 +1,88 @@
-﻿# Privacy Policy Notes
+# Privacy Policy — Planning Notes
+> Business: [Your Business Name]  |  Updated: 2026-09-27
+> WARNING: This is a PLANNING document only.
+> The final Privacy Policy MUST be written or reviewed by a qualified legal professional before publishing.
 
-## Do we collect personal data from visitors?
-Yes / No
+---
 
-## What data do we collect?
-- [ ] Name
-- [ ] Email Address
-- [ ] Phone Number
-- [ ] Location
-- [ ] Payment Details
-- [ ] Cookies / Browsing data
+## Why a Privacy Policy Is Required
 
-## Where is data stored?
-(e.g. Our server / Google Forms / Third-party CRM)
+A Privacy Policy is legally required if your website:
+- Collects names, emails, phone numbers, or any personal information
+- Uses cookies or tracking tools (e.g. Google Analytics)
+- Has a contact form, newsletter sign-up, or user registration
+- Targets customers in India, EU, UK, or most other countries
 
-## Do we share data with anyone?
-Yes / No – If yes, who?
+Failing to have a proper Privacy Policy can result in legal penalties and damage to your business reputation.
 
-## How can users request data deletion?
-(Contact email or process)
+---
 
-## Privacy Policy Status
-[ ] Not written yet
-[ ] Draft ready
-[ ] Published on website
+## Data We Collect
 
-> Note: A formal Privacy Policy must be drafted by a legal professional
-> or using a trusted legal document generator.
+| Data Type | Do We Collect This? | Where / How | Why We Collect It |
+|-----------|--------------------|-----------|-----------------|
+| Full Name | Yes / No | Contact form | To respond to enquiries |
+| Email Address | Yes / No | | |
+| Phone Number | Yes / No | | |
+| Home or Business Address | Yes / No | | |
+| Date of Birth | Yes / No | | |
+| Payment Information | Yes / No | | |
+| Location Data | Yes / No | | |
+| Device and Browser Info | Yes / No | Via cookies | |
+| Browsing Behaviour on Site | Yes / No | Google Analytics | |
+| Photos or Videos | Yes / No | | |
+| Other: | | | |
+
+---
+
+## Data Storage
+
+| Question | Answer |
+|----------|-------|
+| Where is data stored? | e.g. Our server / Google Sheets / CRM tool |
+| Which country is the server in? | |
+| Is data encrypted? | Yes / No |
+| How long do we keep data? | e.g. 2 years / Until deletion is requested |
+| Who internally can access customer data? | |
+
+---
+
+## Data Sharing
+
+| Question | Answer |
+|----------|-------|
+| Do we share data with third parties? | Yes / No |
+| If yes, who do we share with? | e.g. Payment processor, email tool, courier |
+| Do we sell customer data? | No — this should always be No |
+| Do we use data for advertising? | Yes / No |
+
+---
+
+## Customer Rights
+> Under India's PDPB, GDPR (EU), and most privacy laws, customers have the right to:
+
+| Right | Can Customers Exercise This? | How Do They Do It? |
+|-------|------------------------------|--------------------|
+| See what data we hold about them | Yes / No | Email us at: |
+| Request their data be deleted | Yes / No | Email us at: |
+| Opt out of marketing emails | Yes / No | Unsubscribe link |
+| Download a copy of their data | Yes / No | Email us at: |
+| Correct inaccurate data | Yes / No | Email us at: |
+
+---
+
+## Privacy Policy Checklist
+
+- [ ] Privacy Policy document drafted by legal professional
+- [ ] Policy reviewed and approved
+- [ ] Published at: www.yourwebsite.com/privacy-policy
+- [ ] Linked in the website footer
+- [ ] Cookie consent banner links to this policy
+- [ ] Contact form mentions and links to this policy
+- [ ] Date of last review shown in the policy
+- [ ] Process in place for customers to request data deletion
+
+---
+
+## Notes
+[Any specific privacy concerns or data handling requirements for your business or industry]
