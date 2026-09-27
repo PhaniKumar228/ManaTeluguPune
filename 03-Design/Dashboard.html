@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mana Telugu Pune – Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --primary:#1e3a5f;--accent:#f97316;--accent2:#10b981;
+  --light:#f1f5f9;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;
+  --sidebar-w:230px;--nav-h:60px;
+}
+body{font-family:'Segoe UI',sans-serif;background:#f0f4f8;color:var(--text);display:flex;flex-direction:column;min-height:100vh;}
+
+/* ── TOP NAV ── */
+.topnav{
+  background:var(--primary);height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;position:fixed;top:0;left:0;right:0;z-index:200;
+  box-shadow:0 2px 10px rgba(0,0,0,.3);
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-icon{font-size:26px;}
+.logo-text h1{font-size:16px;color:#fff;font-weight:800;line-height:1.1;}
+.logo-text p{font-size:10px;color:#93c5fd;}
+.nav-center{flex:1;max-width:400px;margin:0 24px;position:relative;}
+.nav-center input{
+  width:100%;padding:8px 16px 8px 36px;border-radius:24px;
+  border:none;background:rgba(255,255,255,.15);color:#fff;font-size:13px;outline:none;
+}
+.nav-center input::placeholder{color:#cbd5e1;}
+.nav-center .si{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#93c5fd;font-size:13px;}
+.nav-right{display:flex;align-items:center;gap:14px;}
+.bell-wrap{position:relative;cursor:pointer;}
+.bell-wrap span{font-size:20px;color:#fff;}
+.badge{position:absolute;top:-4px;right:-5px;background:var(--accent);color:#fff;font-size:9px;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-weight:700;}
+.av{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.uinfo{color:#fff;}
+.uinfo .un{font-size:13px;font-weight:600;}
+.uinfo .ur{font-size:10px;color:#93c5fd;}
+
+/* ── LAYOUT ── */
+.shell{display:flex;margin-top:var(--nav-h);}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  width:var(--sidebar-w);background:#fff;border-right:1px solid var(--border);
+  position:fixed;top:var(--nav-h);bottom:0;overflow-y:auto;
+  display:flex;flex-direction:column;z-index:100;
+}
+.sidebar nav{flex:1;padding:10px 0;}
+.nav-item{
+  display:flex;align-items:center;gap:10px;padding:11px 18px;
+  font-size:13px;color:var(--muted);cursor:pointer;
+  border-left:3px solid transparent;transition:all .15s;
+}
+.nav-item:hover{background:#f1f5f9;color:var(--primary);}
+.nav-item.active{background:#eff6ff;color:var(--primary);border-left-color:var(--accent);font-weight:700;}
+.nav-item .ni{font-size:17px;width:22px;text-align:center;}
+.sidebar-footer{padding:14px;text-align:center;border-top:1px solid var(--border);}
+.sidebar-footer p{font-size:10px;color:var(--muted);line-height:1.6;}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar-w);flex:1;padding:20px;}
+
+/* ── HERO BANNER ── */
+.hero-banner{
+  border-radius:14px;overflow:hidden;position:relative;
+  height:165px;margin-bottom:20px;
+  background:linear-gradient(135deg,#0f2942 0%,#1e3a8a 40%,#0e7490 100%);
+  display:flex;align-items:center;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1597040663342-45b6af3d91a5?w=1200&q=80') center/cover no-repeat;
+  opacity:.35;
+}
+.hero-content{position:relative;z-index:1;padding:24px 32px;}
+.hero-content h3{font-size:15px;color:#93c5fd;font-weight:400;margin-bottom:4px;}
+.hero-content h2{font-size:30px;color:#fff;font-weight:900;line-height:1.1;}
+.hero-content p{color:#bfdbfe;font-size:13px;margin-top:6px;}
+.hero-content p span{margin-right:12px;}
+.hero-right-text{position:absolute;right:30px;top:50%;transform:translateY(-50%);text-align:right;z-index:1;}
+.hero-right-text p{font-size:18px;color:#fff;font-weight:700;font-style:italic;line-height:1.5;}
+
+/* ── STAT CARDS ── */
+.stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:20px;}
+.stat-card{
+  background:#fff;border-radius:12px;padding:16px;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;
+}
+.stat-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.stat-num{font-size:24px;font-weight:800;color:var(--text);line-height:1;}
+.stat-lbl{font-size:11px;color:var(--muted);margin-bottom:4px;}
+.stat-change{font-size:11px;color:#10b981;font-weight:600;}
+
+/* ── GRID ROW 2 ── */
+.row2{display:grid;grid-template-columns:1fr 1.6fr 0.9fr;gap:16px;margin-bottom:16px;}
+
+/* ── CARD BASE ── */
+.card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 6px rgba(0,0,0,.06);}
+.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.card-title{font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;}
+.card-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.view-all{font-size:12px;color:#3b82f6;cursor:pointer;text-decoration:none;font-weight:600;}
+
+/* ── DONUT CHART ── */
+.donut-wrap{display:flex;align-items:center;gap:16px;}
+.donut-svg{flex-shrink:0;}
+.donut-center{font-size:0;}
+.legend{display:flex;flex-direction:column;gap:5px;}
+.leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text);}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.leg-pct{margin-left:auto;color:var(--muted);font-weight:600;}
+
+/* ── LINE CHART ── */
+.chart-area{position:relative;height:160px;margin-top:8px;}
+.chart-area svg{width:100%;height:100%;}
+
+/* ── QUICK ACTIONS ── */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.qa-btn{
+  background:#f8fafc;border:1px solid var(--border);border-radius:10px;
+  padding:12px 8px;text-align:center;cursor:pointer;transition:all .15s;
+}
+.qa-btn:hover{background:#eff6ff;border-color:#3b82f6;transform:translateY(-1px);}
+.qa-btn .qi{font-size:22px;margin-bottom:4px;}
+.qa-btn p{font-size:11px;font-weight:600;color:var(--text);}
+
+/* ── ROW 3 ── */
+.row3{display:grid;grid-template-columns:1fr 1.6fr 0.9fr;gap:16px;margin-bottom:16px;}
+
+/* ── SUPPORT LIST ── */
+.support-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f1f5f9;}
+.support-item:last-child{border-bottom:none;}
+.support-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.sup-title{font-size:12px;font-weight:700;margin-bottom:2px;}
+.sup-desc{font-size:11px;color:var(--muted);}
+.sup-time{font-size:10px;color:var(--muted);margin-left:auto;white-space:nowrap;}
+
+/* ── PLACES CARDS ── */
+.places-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.place-card{border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+.place-img{height:80px;background:center/cover no-repeat;position:relative;}
+.place-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent);}
+.place-info{padding:8px;}
+.place-name{font-size:12px;font-weight:700;line-height:1.2;}
+.place-loc{font-size:10px;color:var(--muted);margin:2px 0;}
+.place-rating{font-size:10px;color:#f59e0b;}
+
+/* ── EVENTS LIST ── */
+.event-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid #f1f5f9;}
+.event-item:last-child{border-bottom:none;}
+.ev-date{background:#eff6ff;border-radius:8px;padding:4px 8px;text-align:center;flex-shrink:0;}
+.ev-day{font-size:16px;font-weight:800;color:var(--primary);line-height:1;}
+.ev-mon{font-size:10px;color:var(--muted);}
+.ev-title{font-size:12px;font-weight:700;}
+.ev-detail{font-size:11px;color:var(--muted);}
+.ev-time{font-size:10px;color:var(--accent2);font-weight:600;margin-top:2px;}
+
+/* ── FOOTER BANNER ── */
+.footer-banner{
+  border-radius:14px;overflow:hidden;position:relative;
+  background:linear-gradient(135deg,#1e3a5f,#1e40af);
+  padding:24px 30px;display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:20px;
+}
+.footer-banner .fb-img{
+  position:absolute;left:0;top:0;bottom:0;width:220px;
+  background:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80') center/cover no-repeat;
+  opacity:.4;
+}
+.fb-left{position:relative;z-index:1;padding-left:200px;}
+.fb-left h3{font-size:18px;color:#fff;font-weight:800;}
+.fb-left p{font-size:12px;color:#93c5fd;margin-top:4px;}
+.fb-btn{
+  margin-top:14px;background:var(--accent);color:#fff;border:none;
+  border-radius:24px;padding:10px 24px;font-size:13px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;gap:6px;
+}
+.fb-right{position:relative;z-index:1;display:flex;gap:20px;}
+.fb-feat{text-align:center;}
+.fb-feat .ffi{font-size:26px;margin-bottom:4px;}
+.fb-feat p{font-size:10px;color:#bfdbfe;font-weight:600;line-height:1.3;}
+.fb-logo{position:relative;z-index:1;text-align:right;}
+.fb-logo p{font-size:14px;color:#fff;font-weight:700;font-style:italic;line-height:1.5;}
+.fb-logo span{color:#f97316;}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<header class="topnav">
+  <a href="#" class="logo">
+    <span class="logo-icon">🏛️</span>
+    <div class="logo-text">
+      <h1>Mana Telugu Pune</h1>
+      <p>Connecting Telugu Hearts Across Pune</p>
+    </div>
+  </a>
+  <div class="nav-center">
+    <span class="si">🔍</span>
+    <input type="text" placeholder="Search people, places, events..."/>
+  </div>
+  <div class="nav-right">
+    <div class="bell-wrap"><span>🔔</span><div class="badge">4</div></div>
+    <div class="av">SS</div>
+    <div class="uinfo"><div class="un">Sravanthi</div><div class="ur">Member</div></div>
+  </div>
+</header>
+
+<div class="shell">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <nav>
+    <div class="nav-item active"><span class="ni">🏠</span> Dashboard</div>
+    <div class="nav-item"><span class="ni">👨‍👩‍👧</span> Family Directory</div>
+    <div class="nav-item"><span class="ni">📅</span> Events</div>
+    <div class="nav-item"><span class="ni">👥</span> Community Contacts</div>
+    <div class="nav-item"><span class="ni">🏢</span> Business Directory</div>
+    <div class="nav-item"><span class="ni">🏠</span> Stay Finder</div>
+    <div class="nav-item"><span class="ni">💼</span> Jobs & Opportunity</div>
+    <div class="nav-item"><span class="ni">📢</span> Announcements</div>
+    <div class="nav-item"><span class="ni">📍</span> Places to Visit</div>
+    <div class="nav-item"><span class="ni">👤</span> My Profile</div>
+    <div class="nav-item"><span class="ni">⚙️</span> Settings</div>
+  </nav>
+  <div class="sidebar-footer">
+    <p>Together · Stronger Community<br/>Brighter Tomorrow ❤️</p>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO BANNER -->
+  <div class="hero-banner">
+    <div class="hero-img"></div>
+    <div class="hero-content">
+      <h3>Welcome to</h3>
+      <h2>Community Connect</h2>
+      <p>
+        <span>👥 People</span>
+        <span>📍 Places</span>
+        <span>💼 Opportunities</span>
+        <span>🌅 A Stronger Tomorrow</span>
+      </p>
+    </div>
+    <div class="hero-right-text">
+      <p>Stronger People<br/>Brighter Tomorrows</p>
+    </div>
+  </div>
+
+  <!-- STAT CARDS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#dbeafe;">👥</div>
+      <div>
+        <div class="stat-lbl">Total Active Users</div>
+        <div class="stat-num">6,000</div>
+        <div class="stat-change">▲ +12% from last month</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#dcfce7;">📍</div>
+      <div>
+        <div class="stat-lbl">Total Places Listed</div>
+        <div class="stat-num">250</div>
+        <div class="stat-change">▲ +8% from last month</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#fef9c3;">📅</div>
+      <div>
+        <div class="stat-lbl">Upcoming Events</div>
+        <div class="stat-num">18</div>
+        <div class="stat-change">▲ +28% from last month</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#fee2e2;">🤝</div>
+      <div>
+        <div class="stat-lbl">Support Requests</div>
+        <div class="stat-num">42</div>
+        <div class="stat-change">▲ +35% from last month</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#ede9fe;">💼</div>
+      <div>
+        <div class="stat-lbl">Job Opportunities</div>
+        <div class="stat-num">120</div>
+        <div class="stat-change">▲ +20% from last month</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW 2 -->
+  <div class="row2">
+
+    <!-- Members by Location -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">📍 Members by Location</div>
+          <div class="card-sub">Top Areas in Our Community</div>
+        </div>
+      </div>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="130" height="130" viewBox="0 0 130 130">
+          <!-- Donut segments (stroke-dasharray tricks) -->
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#e2e8f0" stroke-width="22"/>
+          <!-- Others 53% -->
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#cbd5e1" stroke-width="22"
+            stroke-dasharray="160 142" stroke-dashoffset="0" transform="rotate(-90 65 65)"/>
+          <!-- Kharadi 10% -->
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#3b82f6" stroke-width="22"
+            stroke-dasharray="30 272" stroke-dashoffset="-160" transform="rotate(-90 65 65)"/>
+          <!-- Hinjewadi 8% -->
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#f97316" stroke-width="22"
+            stroke-dasharray="24 278" stroke-dashoffset="-190" transform="rotate(-90 65 65)"/>
+          <!-- Wakad 7% -->
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#10b981" stroke-width="22"
+            stroke-dasharray="21 281" stroke-dashoffset="-214" transform="rotate(-90 65 65)"/>
+          <!-- Baner 6% -->
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#8b5cf6" stroke-width="22"
+            stroke-dasharray="18 284" stroke-dashoffset="-235" transform="rotate(-90 65 65)"/>
+          <!-- Pimple 6% -->
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#ec4899" stroke-width="22"
+            stroke-dasharray="18 284" stroke-dashoffset="-253" transform="rotate(-90 65 65)"/>
+          <!-- Center text -->
+          <text x="65" y="60" text-anchor="middle" font-size="14" font-weight="900" fill="#1e293b">6,000</text>
+          <text x="65" y="74" text-anchor="middle" font-size="9" fill="#64748b">Active Users</text>
+        </svg>
+        <div class="legend">
+          <div class="leg-item"><div class="leg-dot" style="background:#3b82f6;"></div>Kharadi<span class="leg-pct">10%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:#f97316;"></div>Hinjewadi<span class="leg-pct">8%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:#10b981;"></div>Wakad<span class="leg-pct">7%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:#8b5cf6;"></div>Baner<span class="leg-pct">6%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:#ec4899;"></div>Pimple Saudagar<span class="leg-pct">6%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:#f59e0b;"></div>Hadapsar<span class="leg-pct">5%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:#06b6d4;"></div>Viman Nagar<span class="leg-pct">5%</span></div>
+          <div class="leg-item"><div class="leg-dot" style="background:#cbd5e1;"></div>Others<span class="leg-pct">53%</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Member Growth Chart -->
+    <div class="card">
+      <div class="card-header">
+        <div>
+          <div class="card-title">📈 Member Growth</div>
+          <div class="card-sub">Steady growth in our community</div>
+        </div>
+      </div>
+      <div class="chart-area">
+        <svg viewBox="0 0 400 160" preserveAspectRatio="none" style="overflow:visible;">
+          <!-- Y axis labels -->
+          <text x="0" y="14" font-size="9" fill="#94a3b8">8,000</text>
+          <text x="0" y="54" font-size="9" fill="#94a3b8">6,000</text>
+          <text x="0" y="94" font-size="9" fill="#94a3b8">4,000</text>
+          <text x="0" y="134" font-size="9" fill="#94a3b8">2,000</text>
+          <text x="0" y="154" font-size="9" fill="#94a3b8">0</text>
+          <!-- Grid lines -->
+          <line x1="30" y1="10" x2="400" y2="10" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="30" y1="50" x2="400" y2="50" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="30" y1="90" x2="400" y2="90" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="30" y1="130" x2="400" y2="130" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="30" y1="150" x2="400" y2="150" stroke="#e2e8f0" stroke-width="1"/>
+          <!-- Area fill -->
+          <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.2"/>
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.02"/>
+            </linearGradient>
+          </defs>
+          <polygon points="30,127 85,120 140,111 195,102 250,90 305,87 360,83 360,150 30,150" fill="url(#grad)"/>
+          <!-- Line -->
+          <polyline points="30,127 85,120 140,111 195,102 250,90 305,87 360,83"
+            fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- Dots -->
+          <circle cx="30"  cy="127" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+          <circle cx="85"  cy="120" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+          <circle cx="140" cy="111" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+          <circle cx="195" cy="102" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+          <circle cx="250" cy="90"  r="4" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+          <circle cx="305" cy="87"  r="4" fill="#fff" stroke="#3b82f6" stroke-width="2"/>
+          <circle cx="360" cy="83"  r="5" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
+          <!-- Labels on dots -->
+          <text x="22"  y="122" font-size="8" fill="#64748b" text-anchor="middle">3.5K</text>
+          <text x="80"  y="115" font-size="8" fill="#64748b" text-anchor="middle">3.8K</text>
+          <text x="135" y="106" font-size="8" fill="#64748b" text-anchor="middle">4.2K</text>
+          <text x="190" y="97"  font-size="8" fill="#64748b" text-anchor="middle">4.8K</text>
+          <text x="248" y="85"  font-size="8" fill="#64748b" text-anchor="middle">5.2K</text>
+          <text x="303" y="82"  font-size="8" fill="#64748b" text-anchor="middle">5.6K</text>
+          <text x="362" y="78"  font-size="8" fill="#3b82f6" font-weight="700" text-anchor="middle">6K</text>
+          <!-- X axis labels -->
+          <text x="30"  y="162" font-size="9" fill="#94a3b8" text-anchor="middle">Jan</text>
+          <text x="85"  y="162" font-size="9" fill="#94a3b8" text-anchor="middle">Feb</text>
+          <text x="140" y="162" font-size="9" fill="#94a3b8" text-anchor="middle">Mar</text>
+          <text x="195" y="162" font-size="9" fill="#94a3b8" text-anchor="middle">Apr</text>
+          <text x="250" y="162" font-size="9" fill="#94a3b8" text-anchor="middle">May</text>
+          <text x="305" y="162" font-size="9" fill="#94a3b8" text-anchor="middle">Jun</text>
+          <text x="360" y="162" font-size="9" fill="#94a3b8" text-anchor="middle">Jul</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">⚡ Quick Actions</div>
+      </div>
+      <div class="qa-grid">
+        <div class="qa-btn"><div class="qi">👤</div><p>Find People</p></div>
+        <div class="qa-btn"><div class="qi">📍</div><p>Find Places</p></div>
+        <div class="qa-btn"><div class="qi">❤️</div><p>Support Request</p></div>
+        <div class="qa-btn"><div class="qi">📅</div><p>View Events</p></div>
+        <div class="qa-btn"><div class="qi">💼</div><p>Post Job</p></div>
+        <div class="qa-btn"><div class="qi">🏢</div><p>Add Business</p></div>
+      </div>
+    </div>
+
+  </div><!-- end row2 -->
+
+  <!-- ROW 3 -->
+  <div class="row3">
+
+    <!-- Recent Community Support -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">🤝 Recent Community Support</div>
+        <a class="view-all">View All</a>
+      </div>
+      <div class="support-item">
+        <div class="support-icon" style="background:#fee2e2;">🩸</div>
+        <div>
+          <div class="sup-title" style="color:#ef4444;">Blood Required</div>
+          <div class="sup-desc">Urgent O+ blood required at Ruby Hall Clinic, Pune.</div>
+        </div>
+        <div class="sup-time">2 hrs ago</div>
+      </div>
+      <div class="support-item">
+        <div class="support-icon" style="background:#dbeafe;">🚗</div>
+        <div>
+          <div class="sup-title">Travel Partner</div>
+          <div class="sup-desc">Looking for travel partner to Hyderabad on 15-Jul.</div>
+        </div>
+        <div class="sup-time">5 hrs ago</div>
+      </div>
+      <div class="support-item">
+        <div class="support-icon" style="background:#fef9c3;">🏠</div>
+        <div>
+          <div class="sup-title">Looking for Maid</div>
+          <div class="sup-desc">Need part-time maid in Wakad.</div>
+        </div>
+        <div class="sup-time">1 day ago</div>
+      </div>
+    </div>
+
+    <!-- Popular Places to Visit -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📍 Popular Places to Visit</div>
+        <a class="view-all">View All</a>
+      </div>
+      <div class="places-grid">
+        <div class="place-card">
+          <div class="place-img" style="background-image:url('https://images.unsplash.com/photo-1621996659490-3275b4d0d951?w=400&q=80');">
+            <div class="place-img-overlay"></div>
+          </div>
+          <div class="place-info">
+            <div class="place-name">Shreemant Dagdusheth Halwai Ganpati</div>
+            <div class="place-loc">Pune, Maharashtra</div>
+            <div class="place-rating">★★★★★ <span style="color:#64748b;">4.8 (1.2K)</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="place-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80');">
+            <div class="place-img-overlay"></div>
+          </div>
+          <div class="place-info">
+            <div class="place-name">Shaniwar Wada</div>
+            <div class="place-loc">Pune, Maharashtra</div>
+            <div class="place-rating">★★★★½ <span style="color:#64748b;">4.6 (980)</span></div>
+          </div>
+        </div>
+        <div class="place-card">
+          <div class="place-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80');">
+            <div class="place-img-overlay"></div>
+          </div>
+          <div class="place-info">
+            <div class="place-name">Lonavala</div>
+            <div class="place-loc">Pune, Maharashtra</div>
+            <div class="place-rating">★★★★½ <span style="color:#64748b;">4.5 (860)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upcoming Events -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">📅 Upcoming Events</div>
+        <a class="view-all">View All</a>
+      </div>
+      <div class="event-item">
+        <div class="ev-date"><div class="ev-day">15</div><div class="ev-mon">Jul</div></div>
+        <div>
+          <div class="ev-title">Community Get Together</div>
+          <div class="ev-detail">📍 Pune</div>
+          <div class="ev-time">🕙 10:00 AM</div>
+        </div>
+      </div>
+      <div class="event-item">
+        <div class="ev-date"><div class="ev-day">22</div><div class="ev-mon">Jul</div></div>
+        <div>
+          <div class="ev-title">Career Guidance Webinar</div>
+          <div class="ev-detail">🌐 Online</div>
+          <div class="ev-time">🕓 04:00 PM</div>
+        </div>
+      </div>
+      <div class="event-item">
+        <div class="ev-date"><div class="ev-day">05</div><div class="ev-mon">Aug</div></div>
+        <div>
+          <div class="ev-title">Ganesh Festival Celebration</div>
+          <div class="ev-detail">📍 Pune</div>
+          <div class="ev-time">🕕 06:00 PM</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end row3 -->
+
+  <!-- FOOTER BANNER -->
+  <div class="footer-banner">
+    <div class="fb-img"></div>
+    <div class="fb-left">
+      <h3>Together We Can Make a Difference</h3>
+      <p>Join our growing community and be part of something meaningful.</p>
+      <button class="fb-btn">👥 Join Now</button>
+    </div>
+    <div class="fb-right">
+      <div class="fb-feat"><div class="ffi">👥</div><p>Connect<br/>with People</p></div>
+      <div class="fb-feat"><div class="ffi">📍</div><p>Explore<br/>New Places</p></div>
+      <div class="fb-feat"><div class="ffi">💼</div><p>Find<br/>Opportunities</p></div>
+      <div class="fb-feat"><div class="ffi">🤝</div><p>Support<br/>Each Other</p></div>
+      <div class="fb-feat"><div class="ffi">🏛️</div><p>Preserve<br/>Our Culture</p></div>
+    </div>
+    <div class="fb-logo">
+      <p>Community<br/>Today<br/><span>A Better<br/>Tomorrow</span></p>
+    </div>
+  </div>
+
+</main>
+</div>
+</body>
+</html>
