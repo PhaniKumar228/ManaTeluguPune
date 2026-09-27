@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mana Telugu Pune – Community Portal</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --primary:#1e3a5f;--accent:#f97316;--green:#10b981;--red:#ef4444;
+  --yellow:#f59e0b;--purple:#8b5cf6;--teal:#14b8a6;--pink:#ec4899;
+  --border:#e2e8f0;--light:#f1f5f9;--text:#1e293b;--muted:#64748b;
+  --sw:228px;--nh:60px;
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f0f4f8;color:var(--text);overflow-x:hidden;}
+
+/* ══════════ TOP NAV ══════════ */
+.topnav{
+  background:var(--primary);height:var(--nh);display:flex;align-items:center;
+  justify-content:space-between;padding:0 22px;position:fixed;top:0;left:0;right:0;
+  z-index:400;box-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+.logo-icon{font-size:27px;}
+.logo-text h1{font-size:15px;color:#fff;font-weight:800;line-height:1.15;}
+.logo-text p{font-size:10px;color:#93c5fd;}
+.nav-search{flex:1;max-width:400px;margin:0 22px;position:relative;}
+.nav-search input{
+  width:100%;padding:8px 14px 8px 36px;border-radius:24px;
+  border:none;background:rgba(255,255,255,.15);color:#fff;font-size:13px;outline:none;
+  transition:.2s;
+}
+.nav-search input:focus{background:rgba(255,255,255,.22);}
+.nav-search input::placeholder{color:#cbd5e1;}
+.nav-search .si{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#93c5fd;font-size:14px;}
+.nr{display:flex;align-items:center;gap:14px;}
+.bell-w{position:relative;cursor:pointer;color:#fff;font-size:20px;}
+.bdg{position:absolute;top:-5px;right:-6px;background:var(--accent);color:#fff;
+  font-size:9px;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-weight:800;}
+.av{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;
+  font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.uinfo .un{color:#fff;font-size:13px;font-weight:700;}
+.uinfo .ur{color:#93c5fd;font-size:10px;}
+
+/* ══════════ LAYOUT ══════════ */
+.shell{display:flex;margin-top:var(--nh);}
+
+/* ══════════ SIDEBAR ══════════ */
+.sidebar{
+  width:var(--sw);background:#fff;border-right:1px solid var(--border);
+  position:fixed;top:var(--nh);bottom:0;overflow-y:auto;
+  display:flex;flex-direction:column;z-index:300;
+}
+.sidebar::-webkit-scrollbar{width:4px;}
+.sidebar::-webkit-scrollbar-thumb{background:#e2e8f0;border-radius:4px;}
+.sidebar nav{flex:1;padding:8px 0;}
+.nv{display:flex;align-items:center;gap:10px;padding:11px 16px;
+  font-size:13px;color:var(--muted);cursor:pointer;border-left:3px solid transparent;
+  transition:all .15s;user-select:none;}
+.nv:hover{background:#f8fafc;color:var(--primary);}
+.nv.active{background:#eff6ff;color:var(--primary);border-left-color:var(--accent);font-weight:700;}
+.nv .ni{font-size:16px;width:22px;text-align:center;flex-shrink:0;}
+.sidebar-divider{height:1px;background:var(--border);margin:6px 12px;}
+.sidebar-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);padding:8px 16px 4px;}
+.sf{padding:14px;text-align:center;border-top:1px solid var(--border);flex-shrink:0;}
+.sf p{font-size:10px;color:var(--muted);line-height:1.7;}
+
+/* ══════════ MAIN ══════════ */
+.main{margin-left:var(--sw);flex:1;padding:20px;min-height:calc(100vh - var(--nh));}
+.page{display:none;animation:fadeIn .2s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════ SHARED COMPONENTS ══════════ */
+.ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+.ph-left h2{font-size:19px;font-weight:800;}
+.ph-left p{font-size:12px;color:var(--muted);margin-top:3px;}
+.btn{padding:8px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;
+  cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:.15s;}
+.btn-primary{background:var(--primary);color:#fff;}
+.btn-primary:hover{background:#1e40af;}
+.btn-accent{background:var(--accent);color:#fff;}
+.btn-accent:hover{background:#ea580c;}
+.btn-green{background:var(--green);color:#fff;}
+.btn-outline{background:#fff;color:var(--primary);border:1.5px solid var(--primary);}
+.btn-outline:hover{background:#eff6ff;}
+.btns{display:flex;gap:8px;flex-wrap:wrap;}
+
+/* Stat row */
+.srow{display:grid;gap:14px;margin-bottom:16px;}
+.s5{grid-template-columns:repeat(5,1fr);}
+.s4{grid-template-columns:repeat(4,1fr);}
+.s3{grid-template-columns:repeat(3,1fr);}
+.sc{background:#fff;border-radius:12px;padding:14px 16px;
+  box-shadow:0 1px 5px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;}
+.sci{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;}
+.scn{font-size:22px;font-weight:800;line-height:1.1;}
+.scl{font-size:10px;color:var(--muted);margin-bottom:3px;}
+.scc{font-size:11px;color:var(--green);font-weight:600;}
+
+/* Toolbar */
+.toolbar{background:#fff;border-radius:12px;padding:12px 14px;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:14px;}
+.toolbar input,.toolbar select{
+  border:1px solid var(--border);border-radius:7px;padding:7px 10px;
+  font-size:12px;color:var(--text);outline:none;background:#fff;}
+.toolbar input:focus,.toolbar select:focus{border-color:#3b82f6;}
+.ts{flex:1;min-width:160px;position:relative;}
+.ts input{width:100%;padding-left:30px;}
+.ts .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;}
+
+/* Table card */
+.tcard{background:#fff;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.07);overflow:hidden;}
+.tc-head{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.tc-head h3{font-size:14px;font-weight:700;}
+.showing{font-size:12px;color:var(--muted);}
+table{width:100%;border-collapse:collapse;}
+thead tr{background:#f8fafc;}
+th{padding:9px 13px;text-align:left;font-size:10px;text-transform:uppercase;
+  letter-spacing:.05em;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap;}
+td{padding:11px 13px;font-size:12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:#fafcff;}
+.pgn{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;border-top:1px solid var(--border);}
+.pg-info{font-size:12px;color:var(--muted);}
+.pg-btns{display:flex;gap:4px;}
+.pgb{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);
+  background:#fff;cursor:pointer;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;}
+.pgb.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+
+/* Badges */
+.bv{background:#dcfce7;color:#15803d;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bp{background:#fef9c3;color:#854d0e;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.ba{background:#dbeafe;color:#1d4ed8;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.br{background:#fee2e2;color:#b91c1c;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bg2{background:#d1fae5;color:#065f46;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bo{background:#ffedd5;color:#c2410c;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bpu{background:#ede9fe;color:#6d28d9;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bpk{background:#fce7f3;color:#be185d;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+
+/* Avatar cell */
+.ac{display:flex;align-items:center;gap:9px;}
+.avi{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;color:#fff;flex-shrink:0;}
+.ab{background:linear-gradient(135deg,#3b82f6,#1d4ed8);}
+.ag{background:linear-gradient(135deg,#10b981,#065f46);}
+.ao{background:linear-gradient(135deg,#f97316,#c2410c);}
+.ap{background:linear-gradient(135deg,#8b5cf6,#6d28d9);}
+.apk{background:linear-gradient(135deg,#ec4899,#be185d);}
+.at{background:linear-gradient(135deg,#14b8a6,#0f766e);}
+.ay{background:linear-gradient(135deg,#f59e0b,#d97706);}
+.fn{font-size:13px;font-weight:600;}
+.fs{font-size:11px;color:var(--muted);}
+
+/* Action buttons */
+.acts{display:flex;gap:5px;}
+.abt{width:28px;height:28px;border-radius:7px;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:13px;transition:.15s;}
+.abt:hover{transform:scale(1.1);}
+.ab-v{background:#dbeafe;color:#1d4ed8;}
+.ab-e{background:#d1fae5;color:#065f46;}
+.ab-d{background:#fee2e2;color:#b91c1c;}
+.stars{color:#f59e0b;font-size:12px;}
+
+/* Section title */
+.stitle{font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;
+  padding-bottom:8px;border-bottom:2px solid var(--light);margin-bottom:14px;}
+
+/* Card */
+.card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+
+/* Chips */
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+.chip{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:22px;
+  font-size:11px;font-weight:700;cursor:pointer;border:2px solid transparent;transition:.15s;}
+.chip:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.1);}
+.chip.on{border-color:currentColor;}
+.c1{background:#dbeafe;color:#1d4ed8;} .c2{background:#dcfce7;color:#15803d;}
+.c3{background:#fef9c3;color:#854d0e;} .c4{background:#fce7f3;color:#be185d;}
+.c5{background:#ede9fe;color:#6d28d9;} .c6{background:#ffedd5;color:#c2410c;}
+.c7{background:#d1fae5;color:#065f46;} .c8{background:#fee2e2;color:#b91c1c;}
+.c9{background:#e0f2fe;color:#0369a1;} .c0{background:#f3f4f6;color:#374151;}
+
+/* Grid layouts */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+
+/* Form */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;}
+.fg3{grid-template-columns:1fr 1fr 1fr;}
+.fgrp label{font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:4px;}
+.fgrp input,.fgrp select,.fgrp textarea{width:100%;border:1px solid var(--border);border-radius:7px;
+  padding:8px 10px;font-size:12px;color:var(--text);outline:none;background:#f8fafc;resize:vertical;}
+.fgrp input:focus,.fgrp select:focus{border-color:#3b82f6;background:#fff;}
+
+/* ══════════ DASHBOARD ══════════ */
+.hero-banner{border-radius:14px;overflow:hidden;position:relative;height:160px;
+  margin-bottom:18px;background:linear-gradient(120deg,#0f2942 0%,#1e3a8a 50%,#0e7490 100%);
+  display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1597040663342-45b6af3d91a5?w=1400&q=80') center/cover no-repeat;
+  opacity:.3;}
+.hero-content{position:relative;z-index:1;padding:20px 30px;}
+.hero-content h3{font-size:13px;color:#93c5fd;font-weight:400;margin-bottom:4px;}
+.hero-content h2{font-size:28px;color:#fff;font-weight:900;line-height:1.15;}
+.hero-content p{color:#bfdbfe;font-size:12px;margin-top:6px;}
+.hero-content p span{margin-right:14px;}
+.hero-rt{position:absolute;right:28px;top:50%;transform:translateY(-50%);z-index:1;text-align:right;}
+.hero-rt p{font-size:17px;color:#fff;font-weight:800;font-style:italic;line-height:1.5;}
+.hero-stats{position:absolute;bottom:14px;right:28px;z-index:1;display:flex;gap:18px;}
+.hs{text-align:center;}
+.hs .hn{font-size:18px;font-weight:900;color:#fff;line-height:1;}
+.hs .hl{font-size:9px;color:#93c5fd;margin-top:2px;}
+
+/* Dashboard row layouts */
+.db-r2{display:grid;grid-template-columns:1fr 1.65fr 0.9fr;gap:14px;margin-bottom:14px;}
+.db-r3{display:grid;grid-template-columns:1fr 1.65fr 0.9fr;gap:14px;margin-bottom:14px;}
+.card-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.card-hdr h3{font-size:13px;font-weight:700;}
+.card-hdr p{font-size:11px;color:var(--muted);margin-top:2px;}
+.va{font-size:12px;color:#3b82f6;cursor:pointer;font-weight:600;}
+
+/* Donut */
+.donut-wrap{display:flex;align-items:center;gap:14px;}
+.legend{display:flex;flex-direction:column;gap:4px;}
+.li{display:flex;align-items:center;gap:6px;font-size:11px;}
+.ld{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.lp{margin-left:auto;color:var(--muted);font-weight:700;font-size:10px;}
+
+/* Chart */
+.chart-wrap{position:relative;height:158px;margin-top:6px;overflow:visible;}
+.chart-wrap svg{width:100%;height:100%;}
+
+/* Quick Actions */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.qa-btn{background:#f8fafc;border:1px solid var(--border);border-radius:9px;padding:11px 6px;
+  text-align:center;cursor:pointer;transition:.15s;}
+.qa-btn:hover{background:#eff6ff;border-color:#3b82f6;transform:translateY(-1px);}
+.qa-btn .qi{font-size:20px;margin-bottom:3px;}
+.qa-btn p{font-size:11px;font-weight:700;color:var(--text);}
+
+/* Support list */
+.sup-item{display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-bottom:1px solid #f1f5f9;}
+.sup-item:last-child{border-bottom:none;}
+.sup-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.sup-title{font-size:12px;font-weight:700;}
+.sup-desc{font-size:11px;color:var(--muted);margin-top:1px;}
+.sup-time{font-size:10px;color:var(--muted);white-space:nowrap;margin-left:auto;}
+
+/* Place cards (dashboard) */
+.pl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pl-card{border-radius:9px;overflow:hidden;border:1px solid var(--border);}
+.pl-img{height:72px;background:center/cover no-repeat;position:relative;}
+.pl-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent);}
+.pl-info{padding:8px;}
+.pl-name{font-size:11px;font-weight:700;line-height:1.3;}
+.pl-loc{font-size:10px;color:var(--muted);margin:2px 0;}
+.pl-rat{font-size:10px;color:#f59e0b;}
+
+/* Event items (dashboard) */
+.ev-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid #f1f5f9;}
+.ev-item:last-child{border-bottom:none;}
+.ev-date-box{background:#eff6ff;border-radius:7px;padding:4px 7px;text-align:center;flex-shrink:0;}
+.ev-day{font-size:15px;font-weight:900;color:var(--primary);line-height:1;}
+.ev-mon{font-size:9px;color:var(--muted);}
+.ev-title2{font-size:12px;font-weight:700;}
+.ev-sub{font-size:10px;color:var(--muted);}
+.ev-time2{font-size:10px;color:var(--green);font-weight:700;}
+
+/* Footer banner */
+.foot-banner{border-radius:14px;overflow:hidden;position:relative;
+  background:linear-gradient(120deg,#1e3a5f,#1e40af);padding:22px 28px;
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.foot-bg{position:absolute;left:0;top:0;bottom:0;width:200px;
+  background:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80') center/cover no-repeat;opacity:.35;}
+.fb-l{position:relative;z-index:1;padding-left:188px;}
+.fb-l h3{font-size:17px;color:#fff;font-weight:900;}
+.fb-l p{font-size:12px;color:#93c5fd;margin-top:3px;}
+.fb-btn{margin-top:12px;background:var(--accent);color:#fff;border:none;border-radius:22px;
+  padding:9px 22px;font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
+.fb-r{position:relative;z-index:1;display:flex;gap:18px;}
+.fb-feat{text-align:center;}
+.fb-feat .ffi{font-size:24px;margin-bottom:3px;}
+.fb-feat p{font-size:10px;color:#bfdbfe;font-weight:700;line-height:1.4;}
+.fb-logo{position:relative;z-index:1;text-align:right;}
+.fb-logo p{font-size:13px;color:#fff;font-weight:800;font-style:italic;line-height:1.6;}
+.fb-logo span{color:var(--accent);}
+
+/* ══════════ EVENTS PAGE ══════════ */
+.ev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ev-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.07);}
+.ev-head{height:68px;display:flex;align-items:center;justify-content:center;font-size:30px;}
+.ev-body{padding:12px;}
+.ev-dbadge{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--accent);font-weight:700;margin-bottom:4px;}
+.ev-title3{font-size:13px;font-weight:800;margin-bottom:5px;}
+.ev-detail{font-size:11px;color:var(--muted);line-height:1.6;}
+.ev-foot{display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px;border-top:1px solid #f1f5f9;}
+
+/* ══════════ PLACES PAGE ══════════ */
+.pcard{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.07);transition:.15s;}
+.pcard:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(0,0,0,.12);}
+.pimg{height:98px;background:center/cover no-repeat;position:relative;}
+.pov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);}
+.pbadge{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:18px;font-size:10px;font-weight:800;}
+.pinfo{padding:10px;}
+.pname{font-size:13px;font-weight:800;line-height:1.3;}
+.ploc2{font-size:10px;color:var(--muted);margin:2px 0;}
+.prat2{font-size:11px;color:#f59e0b;}
+.pcat2{font-size:10px;color:var(--muted);margin-top:2px;}
+
+/* ══════════ STAY PAGE ══════════ */
+.stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.stay-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.07);}
+.stay-img{height:88px;background:center/cover no-repeat;position:relative;}
+.stay-type{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:18px;
+  font-size:10px;font-weight:800;background:rgba(30,58,95,.85);color:#fff;}
+.stay-rent{position:absolute;bottom:8px;right:8px;font-size:13px;font-weight:900;color:#fff;
+  background:rgba(16,185,129,.88);padding:2px 8px;border-radius:18px;}
+.stay-body{padding:10px;}
+.stay-name{font-size:13px;font-weight:700;}
+.stay-loc{font-size:10px;color:var(--muted);margin:2px 0 6px;}
+.stay-tags{display:flex;gap:4px;flex-wrap:wrap;}
+.stay-tag{font-size:10px;padding:2px 7px;border-radius:18px;background:#f1f5f9;color:var(--muted);font-weight:600;}
+.stay-foot{display:flex;align-items:center;justify-content:space-between;
+  padding:8px 10px;border-top:1px solid #f1f5f9;font-size:10px;color:var(--muted);}
+
+/* ══════════ JOBS PAGE ══════════ */
+.job-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.job-card{background:#fff;border-radius:12px;padding:15px;box-shadow:0 1px 5px rgba(0,0,0,.07);}
+.job-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:9px;}
+.job-co{display:flex;align-items:center;gap:9px;}
+.job-logo{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.job-title{font-size:13px;font-weight:800;}
+.job-company{font-size:11px;color:var(--muted);}
+.job-tags2{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;}
+.jtag{padding:3px 8px;border-radius:18px;font-size:10px;font-weight:700;}
+.job-meta{font-size:11px;color:var(--muted);margin-bottom:8px;}
+.job-foot{display:flex;align-items:center;justify-content:space-between;
+  padding-top:9px;border-top:1px solid #f1f5f9;}
+.salary{font-size:14px;font-weight:900;color:var(--green);}
+.apply-btn{padding:6px 14px;background:var(--primary);color:#fff;border-radius:7px;
+  border:none;font-size:11px;font-weight:700;cursor:pointer;transition:.15s;}
+.apply-btn:hover{background:#1e40af;}
+
+/* ══════════ BUSINESS PAGE ══════════ */
+.biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.biz-card{background:#fff;border-radius:12px;padding:15px;box-shadow:0 1px 5px rgba(0,0,0,.07);}
+.biz-hdr{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+.biz-ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;}
+.biz-name{font-size:13px;font-weight:800;}
+.biz-cat{font-size:11px;color:var(--muted);}
+.biz-info{display:flex;flex-direction:column;gap:3px;margin-bottom:9px;}
+.binfo{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px;}
+.biz-foot{display:flex;align-items:center;justify-content:space-between;
+  border-top:1px solid #f1f5f9;padding-top:8px;}
+
+/* ══════════ ANNOUNCEMENTS ══════════ */
+.ann-list{display:flex;flex-direction:column;gap:11px;}
+.ann-card{background:#fff;border-radius:12px;padding:15px;box-shadow:0 1px 5px rgba(0,0,0,.06);
+  display:flex;align-items:flex-start;gap:13px;border-left:4px solid var(--accent);}
+.ann-ico{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ann-body{flex:1;}
+.ann-type{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+.ann-title{font-size:13px;font-weight:800;}
+.ann-desc{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5;}
+.ann-meta{display:flex;gap:10px;margin-top:7px;font-size:10px;color:var(--muted);flex-wrap:wrap;}
+.ann-rt{text-align:right;flex-shrink:0;}
+.ann-time{font-size:10px;color:var(--muted);}
+
+/* ══════════ PROFILE PAGE ══════════ */
+.prof-wrap{display:grid;grid-template-columns:290px 1fr;gap:16px;}
+.prof-card2{background:#fff;border-radius:14px;padding:22px;box-shadow:0 1px 6px rgba(0,0,0,.07);text-align:center;}
+.prof-av2{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#c2410c);
+  color:#fff;font-size:28px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
+.prof-name{font-size:17px;font-weight:900;}
+.prof-role{font-size:11px;color:var(--muted);}
+.prof-badges{display:flex;gap:5px;justify-content:center;margin-top:9px;flex-wrap:wrap;}
+.prof-info{margin-top:14px;text-align:left;}
+.pi-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f1f5f9;font-size:12px;}
+.pi-row:last-child{border-bottom:none;}
+.pi-lbl{color:var(--muted);}
+.pi-val{font-weight:700;}
+.prof-detail{background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+
+/* ══════════ SETTINGS ══════════ */
+.sett-wrap{display:grid;grid-template-columns:220px 1fr;gap:16px;}
+.sett-menu{background:#fff;border-radius:14px;padding:10px;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.sm-item{padding:10px 12px;border-radius:8px;font-size:13px;cursor:pointer;
+  display:flex;align-items:center;gap:8px;color:var(--muted);transition:.15s;}
+.sm-item:hover{background:#f1f5f9;color:var(--primary);}
+.sm-item.on{background:#eff6ff;color:var(--primary);font-weight:700;}
+.sett-panel{background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.tog-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #f1f5f9;}
+.tog-row:last-child{border-bottom:none;}
+.tr-l h4{font-size:13px;font-weight:700;}
+.tr-l p{font-size:11px;color:var(--muted);}
+.tog{width:40px;height:22px;border-radius:11px;background:#e2e8f0;position:relative;cursor:pointer;transition:.2s;flex-shrink:0;}
+.tog.on{background:var(--green);}
+.tog::after{content:'';width:18px;height:18px;border-radius:50%;background:#fff;
+  position:absolute;top:2px;left:2px;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.tog.on::after{left:20px;}
+</style>
+</head>
+<body>
+
+<!-- ██ TOP NAV ██ -->
+<header class="topnav">
+  <div class="logo">
+    <span class="logo-icon">🏛️</span>
+    <div class="logo-text">
+      <h1>Mana Telugu Pune</h1>
+      <p>Connecting Telugu Hearts Across Pune</p>
+    </div>
+  </div>
+  <div class="nav-search">
+    <span class="si">🔍</span>
+    <input type="text" placeholder="Search people, places, events, jobs..."/>
+  </div>
+  <div class="nr">
+    <div class="bell-w">🔔<div class="bdg">4</div></div>
+    <div class="av">SS</div>
+    <div class="uinfo"><div class="un">Sravanthi</div><div class="ur">Member</div></div>
+  </div>
+</header>
+
+<div class="shell">
+
+<!-- ██ SIDEBAR ██ -->
+<aside class="sidebar">
+  <nav>
+    <div class="sidebar-label">Main Menu</div>
+    <div class="nv active" onclick="show('dashboard')" id="nav-dashboard"><span class="ni">🏠</span> Dashboard</div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-label">Community</div>
+    <div class="nv" onclick="show('family')" id="nav-family"><span class="ni">👨‍👩‍👧</span> Family Directory</div>
+    <div class="nv" onclick="show('events')" id="nav-events"><span class="ni">📅</span> Events</div>
+    <div class="nv" onclick="show('contacts')" id="nav-contacts"><span class="ni">👥</span> Community Contacts</div>
+    <div class="nv" onclick="show('business')" id="nav-business"><span class="ni">🏢</span> Business Directory</div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-label">Listings</div>
+    <div class="nv" onclick="show('stay')" id="nav-stay"><span class="ni">🛏️</span> Stay Finder</div>
+    <div class="nv" onclick="show('jobs')" id="nav-jobs"><span class="ni">💼</span> Jobs &amp; Opportunity</div>
+    <div class="nv" onclick="show('places')" id="nav-places"><span class="ni">📍</span> Places to Visit</div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-label">Notices</div>
+    <div class="nv" onclick="show('announce')" id="nav-announce"><span class="ni">📢</span> Announcements</div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-label">Account</div>
+    <div class="nv" onclick="show('profile')" id="nav-profile"><span class="ni">👤</span> My Profile</div>
+    <div class="nv" onclick="show('settings')" id="nav-settings"><span class="ni">⚙️</span> Settings</div>
+  </nav>
+  <div class="sf"><p>Together · Stronger Community<br/>Brighter Tomorrow ❤️</p></div>
+</aside>
+
+<!-- ██ MAIN ██ -->
+<main class="main">
+
+<!-- ════════════════════════════════════════
+     DASHBOARD
+════════════════════════════════════════ -->
+<div class="page active" id="page-dashboard">
+  <!-- Hero -->
+  <div class="hero-banner">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h3>Welcome to</h3>
+      <h2>Community Connect</h2>
+      <p><span>👥 People</span><span>📍 Places</span><span>💼 Opportunities</span><span>🌅 A Stronger Tomorrow</span></p>
+    </div>
+    <div class="hero-rt"><p>Stronger People<br/>Brighter Tomorrows</p></div>
+    <div class="hero-stats">
+      <div class="hs"><div class="hn">6,000</div><div class="hl">Active Users</div></div>
+      <div class="hs"><div class="hn">250</div><div class="hl">Places Listed</div></div>
+      <div class="hs"><div class="hn">94%</div><div class="hl">Verified Members</div></div>
+    </div>
+  </div>
+
+  <!-- Stat Cards -->
+  <div class="srow s5">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">👥</div><div><div class="scl">Total Active Users</div><div class="scn">6,000</div><div class="scc">▲ +12% this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">📍</div><div><div class="scl">Total Places Listed</div><div class="scn">250</div><div class="scc">▲ +8% this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">📅</div><div><div class="scl">Upcoming Events</div><div class="scn">18</div><div class="scc">▲ +28% this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🤝</div><div><div class="scl">Support Requests</div><div class="scn">42</div><div class="scc">▲ +35% this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#ede9fe;">💼</div><div><div class="scl">Job Opportunities</div><div class="scn">120</div><div class="scc">▲ +20% this month</div></div></div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="db-r2">
+    <!-- Donut -->
+    <div class="card">
+      <div class="card-hdr"><div><h3>📍 Members by Location</h3><p>Top areas in Pune</p></div></div>
+      <div class="donut-wrap">
+        <svg width="128" height="128" viewBox="0 0 128 128" style="flex-shrink:0;">
+          <circle cx="64" cy="64" r="46" fill="none" stroke="#e2e8f0" stroke-width="20"/>
+          <circle cx="64" cy="64" r="46" fill="none" stroke="#cbd5e1" stroke-width="20" stroke-dasharray="153 136" stroke-dashoffset="0" transform="rotate(-90 64 64)"/>
+          <circle cx="64" cy="64" r="46" fill="none" stroke="#3b82f6" stroke-width="20" stroke-dasharray="29 260" stroke-dashoffset="-153" transform="rotate(-90 64 64)"/>
+          <circle cx="64" cy="64" r="46" fill="none" stroke="#f97316" stroke-width="20" stroke-dasharray="23 266" stroke-dashoffset="-182" transform="rotate(-90 64 64)"/>
+          <circle cx="64" cy="64" r="46" fill="none" stroke="#10b981" stroke-width="20" stroke-dasharray="20 269" stroke-dashoffset="-205" transform="rotate(-90 64 64)"/>
+          <circle cx="64" cy="64" r="46" fill="none" stroke="#8b5cf6" stroke-width="20" stroke-dasharray="17 272" stroke-dashoffset="-225" transform="rotate(-90 64 64)"/>
+          <circle cx="64" cy="64" r="46" fill="none" stroke="#ec4899" stroke-width="20" stroke-dasharray="17 272" stroke-dashoffset="-242" transform="rotate(-90 64 64)"/>
+          <text x="64" y="59" text-anchor="middle" font-size="13" font-weight="900" fill="#1e293b">6,000</text>
+          <text x="64" y="72" text-anchor="middle" font-size="9" fill="#64748b">Active Users</text>
+        </svg>
+        <div class="legend">
+          <div class="li"><div class="ld" style="background:#3b82f6;"></div>Kharadi<span class="lp">10%</span></div>
+          <div class="li"><div class="ld" style="background:#f97316;"></div>Hinjewadi<span class="lp">8%</span></div>
+          <div class="li"><div class="ld" style="background:#10b981;"></div>Wakad<span class="lp">7%</span></div>
+          <div class="li"><div class="ld" style="background:#8b5cf6;"></div>Baner<span class="lp">6%</span></div>
+          <div class="li"><div class="ld" style="background:#ec4899;"></div>Pimple Sdgr<span class="lp">6%</span></div>
+          <div class="li"><div class="ld" style="background:#f59e0b;"></div>Hadapsar<span class="lp">5%</span></div>
+          <div class="li"><div class="ld" style="background:#06b6d4;"></div>Viman Ngr<span class="lp">5%</span></div>
+          <div class="li"><div class="ld" style="background:#cbd5e1;"></div>Others<span class="lp">53%</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Line Chart -->
+    <div class="card">
+      <div class="card-hdr"><div><h3>📈 Member Growth</h3><p>Steady growth in our community</p></div></div>
+      <div class="chart-wrap">
+        <svg viewBox="0 0 400 165" preserveAspectRatio="none" style="overflow:visible;">
+          <defs><linearGradient id="grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity=".18"/><stop offset="100%" stop-color="#3b82f6" stop-opacity=".02"/></linearGradient></defs>
+          <text x="2" y="14" font-size="9" fill="#94a3b8">8K</text><text x="2" y="54" font-size="9" fill="#94a3b8">6K</text><text x="2" y="94" font-size="9" fill="#94a3b8">4K</text><text x="2" y="134" font-size="9" fill="#94a3b8">2K</text>
+          <line x1="28" y1="10" x2="398" y2="10" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="28" y1="50" x2="398" y2="50" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="28" y1="90" x2="398" y2="90" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="28" y1="130" x2="398" y2="130" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="28" y1="148" x2="398" y2="148" stroke="#e2e8f0" stroke-width="1"/>
+          <polygon points="30,128 85,122 140,113 198,104 255,91 308,88 362,84 362,148 30,148" fill="url(#grad)"/>
+          <polyline points="30,128 85,122 140,113 198,104 255,91 308,88 362,84" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="30"  cy="128" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="85"  cy="122" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="140" cy="113" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="198" cy="104" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="255" cy="91"  r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="308" cy="88"  r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="362" cy="84"  r="5" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
+          <text x="30"  y="122" font-size="8" fill="#64748b" text-anchor="middle">3.5K</text>
+          <text x="85"  y="116" font-size="8" fill="#64748b" text-anchor="middle">3.8K</text>
+          <text x="140" y="107" font-size="8" fill="#64748b" text-anchor="middle">4.2K</text>
+          <text x="198" y="98"  font-size="8" fill="#64748b" text-anchor="middle">4.8K</text>
+          <text x="255" y="85"  font-size="8" fill="#64748b" text-anchor="middle">5.2K</text>
+          <text x="308" y="82"  font-size="8" fill="#64748b" text-anchor="middle">5.6K</text>
+          <text x="362" y="78"  font-size="8" fill="#3b82f6" font-weight="700" text-anchor="middle">6K</text>
+          <text x="30"  y="160" font-size="9" fill="#94a3b8" text-anchor="middle">Jan</text>
+          <text x="85"  y="160" font-size="9" fill="#94a3b8" text-anchor="middle">Feb</text>
+          <text x="140" y="160" font-size="9" fill="#94a3b8" text-anchor="middle">Mar</text>
+          <text x="198" y="160" font-size="9" fill="#94a3b8" text-anchor="middle">Apr</text>
+          <text x="255" y="160" font-size="9" fill="#94a3b8" text-anchor="middle">May</text>
+          <text x="308" y="160" font-size="9" fill="#94a3b8" text-anchor="middle">Jun</text>
+          <text x="362" y="160" font-size="9" fill="#94a3b8" text-anchor="middle">Jul</text>
+        </svg>
+      </div>
+    </div>
+    <!-- Quick Actions -->
+    <div class="card">
+      <div class="card-hdr"><h3>⚡ Quick Actions</h3></div>
+      <div class="qa-grid">
+        <div class="qa-btn" onclick="show('family')"><div class="qi">👤</div><p>Find People</p></div>
+        <div class="qa-btn" onclick="show('places')"><div class="qi">📍</div><p>Find Places</p></div>
+        <div class="qa-btn" onclick="show('announce')"><div class="qi">❤️</div><p>Support</p></div>
+        <div class="qa-btn" onclick="show('events')"><div class="qi">📅</div><p>Events</p></div>
+        <div class="qa-btn" onclick="show('jobs')"><div class="qi">💼</div><p>Post Job</p></div>
+        <div class="qa-btn" onclick="show('business')"><div class="qi">🏢</div><p>Business</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="db-r3">
+    <!-- Community Support -->
+    <div class="card">
+      <div class="card-hdr"><h3>🤝 Recent Support</h3><span class="va" onclick="show('announce')">View All</span></div>
+      <div class="sup-item">
+        <div class="sup-ico" style="background:#fee2e2;">🩸</div>
+        <div><div class="sup-title" style="color:var(--red);">Blood Required</div><div class="sup-desc">Urgent O+ at Ruby Hall Clinic, Pune.</div></div>
+        <div class="sup-time">2 hrs ago</div>
+      </div>
+      <div class="sup-item">
+        <div class="sup-ico" style="background:#dbeafe;">🚗</div>
+        <div><div class="sup-title">Travel Partner</div><div class="sup-desc">Pune to Hyderabad on 15-Jul.</div></div>
+        <div class="sup-time">5 hrs ago</div>
+      </div>
+      <div class="sup-item">
+        <div class="sup-ico" style="background:#fef9c3;">🏠</div>
+        <div><div class="sup-title">Looking for Maid</div><div class="sup-desc">Part-time maid needed in Wakad.</div></div>
+        <div class="sup-time">1 day ago</div>
+      </div>
+    </div>
+    <!-- Popular Places -->
+    <div class="card">
+      <div class="card-hdr"><h3>📍 Popular Places to Visit</h3><span class="va" onclick="show('places')">View All</span></div>
+      <div class="pl-grid">
+        <div class="pl-card">
+          <div class="pl-img" style="background-image:url('https://images.unsplash.com/photo-1621996659490-3275b4d0d951?w=400&q=80');"><div class="pl-ov"></div></div>
+          <div class="pl-info"><div class="pl-name">Dagdusheth Ganpati</div><div class="pl-loc">Pune, MH</div><div class="pl-rat">★ 4.8</div></div>
+        </div>
+        <div class="pl-card">
+          <div class="pl-img" style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80');"><div class="pl-ov"></div></div>
+          <div class="pl-info"><div class="pl-name">Shaniwar Wada</div><div class="pl-loc">Pune, MH</div><div class="pl-rat">★ 4.6</div></div>
+        </div>
+        <div class="pl-card">
+          <div class="pl-img" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80');"><div class="pl-ov"></div></div>
+          <div class="pl-info"><div class="pl-name">Lonavala</div><div class="pl-loc">Pune District</div><div class="pl-rat">★ 4.5</div></div>
+        </div>
+      </div>
+    </div>
+    <!-- Upcoming Events -->
+    <div class="card">
+      <div class="card-hdr"><h3>📅 Upcoming Events</h3><span class="va" onclick="show('events')">View All</span></div>
+      <div class="ev-item">
+        <div class="ev-date-box"><div class="ev-day">15</div><div class="ev-mon">Jul</div></div>
+        <div><div class="ev-title2">Community Get Together</div><div class="ev-sub">📍 Pune</div><div class="ev-time2">🕙 10:00 AM</div></div>
+      </div>
+      <div class="ev-item">
+        <div class="ev-date-box"><div class="ev-day">22</div><div class="ev-mon">Jul</div></div>
+        <div><div class="ev-title2">Career Guidance Webinar</div><div class="ev-sub">🌐 Online</div><div class="ev-time2">🕓 04:00 PM</div></div>
+      </div>
+      <div class="ev-item">
+        <div class="ev-date-box"><div class="ev-day">05</div><div class="ev-mon">Aug</div></div>
+        <div><div class="ev-title2">Ganesh Festival</div><div class="ev-sub">📍 Wakad, Pune</div><div class="ev-time2">🕕 06:00 PM</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Banner -->
+  <div class="foot-banner">
+    <div class="foot-bg"></div>
+    <div class="fb-l">
+      <h3>Together We Can Make a Difference</h3>
+      <p>Join our growing community and be part of something meaningful.</p>
+      <button class="fb-btn">👥 Join Now</button>
+    </div>
+    <div class="fb-r">
+      <div class="fb-feat"><div class="ffi">👥</div><p>Connect<br/>with People</p></div>
+      <div class="fb-feat"><div class="ffi">📍</div><p>Explore<br/>New Places</p></div>
+      <div class="fb-feat"><div class="ffi">💼</div><p>Find<br/>Opportunities</p></div>
+      <div class="fb-feat"><div class="ffi">🤝</div><p>Support<br/>Each Other</p></div>
+      <div class="fb-feat"><div class="ffi">🏛️</div><p>Preserve<br/>Our Culture</p></div>
+    </div>
+    <div class="fb-logo"><p>Community<br/>Today<br/><span>A Better<br/>Tomorrow</span></p></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 1 – FAMILY DIRECTORY
+════════════════════════════════════════ -->
+<div class="page" id="page-family">
+  <div class="ph">
+    <div class="ph-left"><h2>👨‍👩‍👧 Family Directory</h2><p>Registered Telugu families across Pune</p></div>
+    <div class="btns"><button class="btn btn-outline">⬇️ Export</button><button class="btn btn-accent">＋ Add Family</button></div>
+  </div>
+  <div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">👨‍👩‍👧</div><div><div class="scl">Total Families</div><div class="scn">1,240</div><div class="scc">▲ +8% this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">✅</div><div><div class="scl">Verified</div><div class="scn">1,086</div><div class="scc">▲ 87.6%</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">👶</div><div><div class="scl">Total Children</div><div class="scn">2,318</div><div class="scc">Avg 1.9 per family</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🩸</div><div><div class="scl">Blood Donors</div><div class="scn">432</div><div class="scc">▲ +5% this month</div></div></div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" placeholder="Search by name, location, family..."/></div>
+    <select><option>Location: All</option><option>Wakad</option><option>Baner</option><option>Hinjewadi</option><option>Kharadi</option><option>Viman Nagar</option></select>
+    <select><option>Blood Group: All</option><option>A+</option><option>B+</option><option>O+</option><option>AB+</option><option>O-</option></select>
+    <select><option>Status: All</option><option>Verified</option><option>Pending</option></select>
+    <select><option>Owner/Tenant: All</option><option>Owner</option><option>Tenant</option></select>
+    <button class="btn btn-primary">🔍 Search</button>
+    <button class="btn btn-outline" style="padding:7px 12px;">Reset</button>
+  </div>
+  <div class="tcard">
+    <div class="tc-head"><h3>📋 Family Members List</h3><span class="showing">Showing 1–5 of 1,240 entries</span></div>
+    <table>
+      <thead><tr><th>#</th><th>Member</th><th>Contact</th><th>Location (Pune)</th><th>Native Place</th><th>Family</th><th>Profession</th><th>Blood Grp</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--muted)">FAM-001</td><td><div class="ac"><div class="avi ab">RK</div><div><div class="fn">Rajesh Kumar</div><div class="fs">✉️ rajesh.k@gmail.com</div></div></div></td><td><div class="fs">📞 9876543210</div><div class="fs">💬 9876543210</div></td><td><div class="fn">Wakad</div><div class="fs">Near Phoenix Mall</div></td><td class="fs">Vijayawada, AP</td><td><div class="fn">4 members</div><div class="fs">2 children</div></td><td><div class="fn">Software Engineer</div><div class="fs">TCS, Hinjewadi</div></td><td><span class="br">O+</span></td><td><span class="bv">✔ Verified</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+        <tr><td style="color:var(--muted)">FAM-002</td><td><div class="ac"><div class="avi ap">SP</div><div><div class="fn">Sunitha Prasad</div><div class="fs">✉️ sunitha.p@gmail.com</div></div></div></td><td><div class="fs">📞 9123456780</div><div class="fs">💬 9123456780</div></td><td><div class="fn">Baner</div><div class="fs">Near D-Mart</div></td><td class="fs">Guntur, AP</td><td><div class="fn">3 members</div><div class="fs">1 child</div></td><td><div class="fn">Doctor</div><div class="fs">Sai Clinic, Baner</div></td><td><span class="ba">B+</span></td><td><span class="bv">✔ Verified</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+        <tr><td style="color:var(--muted)">FAM-003</td><td><div class="ac"><div class="avi ag">VR</div><div><div class="fn">Venkat Reddy</div><div class="fs">✉️ venkat.r@gmail.com</div></div></div></td><td><div class="fs">📞 9988776600</div><div class="fs">💬 9988776600</div></td><td><div class="fn">Hinjewadi</div><div class="fs">Phase 2</div></td><td class="fs">Tirupati, AP</td><td><div class="fn">5 members</div><div class="fs">3 children</div></td><td><div class="fn">Business Owner</div><div class="fs">Self – Grocery</div></td><td><span class="bg2">A+</span></td><td><span class="bp">⏳ Pending</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+        <tr><td style="color:var(--muted)">FAM-004</td><td><div class="ac"><div class="avi ao">LN</div><div><div class="fn">Lakshmi Naidu</div><div class="fs">✉️ lakshmi.n@gmail.com</div></div></div></td><td><div class="fs">📞 8899001122</div><div class="fs">💬 8899001122</div></td><td><div class="fn">Kharadi</div><div class="fs">Near EON IT Park</div></td><td class="fs">Kakinada, AP</td><td><div class="fn">2 members</div><div class="fs">0 children</div></td><td><div class="fn">CA</div><div class="fs">MB &amp; Co, Kharadi</div></td><td><span class="bpu">AB+</span></td><td><span class="bv">✔ Verified</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+        <tr><td style="color:var(--muted)">FAM-005</td><td><div class="ac"><div class="avi at">PS</div><div><div class="fn">Phani Sharma</div><div class="fs">✉️ phani.s@gmail.com</div></div></div></td><td><div class="fs">📞 7766554430</div><div class="fs">💬 7766554430</div></td><td><div class="fn">Viman Nagar</div><div class="fs">Near Airport Rd</div></td><td class="fs">Nellore, AP</td><td><div class="fn">4 members</div><div class="fs">2 children</div></td><td><div class="fn">IT Manager</div><div class="fs">Infosys, Hinjewadi</div></td><td><span class="br">O-</span></td><td><span class="bv">✔ Verified</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+      </tbody>
+    </table>
+    <div class="pgn"><div class="pg-info">Showing 1 to 5 of 1,240 families</div><div class="pg-btns"><button class="pgb">‹</button><button class="pgb on">1</button><button class="pgb">2</button><button class="pgb">3</button><button class="pgb">›</button></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 2 – EVENTS
+════════════════════════════════════════ -->
+<div class="page" id="page-events">
+  <div class="ph">
+    <div class="ph-left"><h2>📅 Events</h2><p>Community festivals, workshops &amp; cultural meets</p></div>
+    <div class="btns"><button class="btn btn-outline">📋 My Events</button><button class="btn btn-accent">＋ Add Event</button></div>
+  </div>
+  <div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#fef9c3;">📅</div><div><div class="scl">Upcoming Events</div><div class="scn">18</div><div class="scc">▲ +28% this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🎉</div><div><div class="scl">Festivals</div><div class="scn">6</div><div class="scc">Next: Ganesh Fest</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">🎓</div><div><div class="scl">Workshops</div><div class="scn">4</div><div class="scc">Career + Skills</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">👥</div><div><div class="scl">Registrations</div><div class="scn">842</div><div class="scc">▲ +35% this month</div></div></div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" placeholder="Search events by name, organizer..."/></div>
+    <select><option>Type: All</option><option>Festival</option><option>Cultural</option><option>Sports</option><option>Meetup</option><option>Workshop</option></select>
+    <select><option>Audience: All</option><option>Families</option><option>Youth</option><option>Kids</option><option>Women</option><option>Seniors</option></select>
+    <select><option>Language: All</option><option>Telugu</option><option>English</option><option>Hindi</option></select>
+    <select><option>Entry: All</option><option>Free</option><option>Paid</option></select>
+    <button class="btn btn-primary">🔍 Search</button>
+  </div>
+  <div class="ev-grid">
+    <div class="ev-card"><div class="ev-head" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">🪔</div><div class="ev-body"><div class="ev-dbadge">📅 14 Jan 2027 | 09:00–18:00</div><div class="ev-title3">Sankranthi Sambaram 2027</div><div class="ev-detail">🏛️ Balewadi Community Hall<br/>👤 Phani Kumar · 📞 9876543210<br/>🎯 Families · 👥 250 expected<br/>💰 ₹100/family · 🗣️ Telugu</div></div><div class="ev-foot"><span class="ba">Festival</span><span class="bv">✔ Active</span></div></div>
+    <div class="ev-card"><div class="ev-head" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);">🎓</div><div class="ev-body"><div class="ev-dbadge">📅 22 Jul 2026 | 04:00 PM</div><div class="ev-title3">Career Guidance Webinar</div><div class="ev-detail">🌐 Online (Zoom)<br/>👤 Anil Reddy · 📞 9123456700<br/>🎯 Youth · 👥 150 expected<br/>💰 Free · 🗣️ Telugu + English</div></div><div class="ev-foot"><span class="bpu">Workshop</span><span class="bv">✔ Active</span></div></div>
+    <div class="ev-card"><div class="ev-head" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);">🏏</div><div class="ev-body"><div class="ev-dbadge">📅 10 Aug 2026 | 07:00 AM</div><div class="ev-title3">Telugu Community Cricket</div><div class="ev-detail">🏟️ Balewadi Stadium<br/>👤 Suresh Naidu · 📞 9988001111<br/>🎯 Youth + Adults · 👥 100 expected<br/>💰 ₹50/player · 🗣️ Telugu</div></div><div class="ev-foot"><span class="bg2">Sports</span><span class="bp">⏳ Registering</span></div></div>
+    <div class="ev-card"><div class="ev-head" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe);">🐘</div><div class="ev-body"><div class="ev-dbadge">📅 05 Aug 2026 | 06:00 PM</div><div class="ev-title3">Ganesh Festival Celebration</div><div class="ev-detail">📍 Wakad Community Ground<br/>👤 Ravi Sharma · 📞 7766554433<br/>🎯 All · 👥 500 expected<br/>💰 Free · 🗣️ Telugu + Hindi</div></div><div class="ev-foot"><span class="ba">Festival</span><span class="bv">✔ Active</span></div></div>
+    <div class="ev-card"><div class="ev-head" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8);">👩</div><div class="ev-body"><div class="ev-dbadge">📅 18 Aug 2026 | 10:00 AM</div><div class="ev-title3">Women Empowerment Meet</div><div class="ev-detail">📍 Baner Community Hall<br/>👤 Priya Rao · 📞 9876540000<br/>🎯 Women · 👥 80 expected<br/>💰 Free · 🗣️ Telugu + English</div></div><div class="ev-foot"><span class="bpk">Meetup</span><span class="bv">✔ Active</span></div></div>
+    <div class="ev-card"><div class="ev-head" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">💻</div><div class="ev-body"><div class="ev-dbadge">📅 30 Aug 2026 | 02:00 PM</div><div class="ev-title3">IT Skills Bootcamp</div><div class="ev-detail">🌐 Online (Google Meet)<br/>👤 Kiran Tech · 📞 9001234560<br/>🎯 Youth · 👥 60 expected<br/>💰 ₹200/person · 🗣️ Telugu</div></div><div class="ev-foot"><span class="bpu">Workshop</span><span class="bp">⏳ Registering</span></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 3 – COMMUNITY CONTACTS
+════════════════════════════════════════ -->
+<div class="page" id="page-contacts">
+  <div class="ph">
+    <div class="ph-left"><h2>👥 Community Contacts</h2><p>Trusted professionals &amp; verified service providers</p></div>
+    <div class="btns"><button class="btn btn-outline">⬇️ Export</button><button class="btn btn-accent">＋ Add Contact</button></div>
+  </div>
+  <div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">👥</div><div><div class="scl">Total Contacts</div><div class="scn">248</div><div class="scc">▲ +12 this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">✅</div><div><div class="scl">Verified</div><div class="scn">234</div><div class="scc">94.3%</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">⭐</div><div><div class="scl">Avg Rating</div><div class="scn">4.6</div><div class="scc">Top rated</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🚨</div><div><div class="scl">Emergency</div><div class="scn">18</div><div class="scc">Always available</div></div></div>
+  </div>
+  <div class="chips">
+    <div class="chip c1 on">🩺 Doctor</div><div class="chip c2">⚖️ Lawyer</div><div class="chip c3">🏠 Realtor</div>
+    <div class="chip c4">🪔 Poojari</div><div class="chip c5">⚡ Electrician</div><div class="chip c6">🔧 Plumber</div>
+    <div class="chip c7">📊 CA</div><div class="chip c8">🚨 Emergency</div><div class="chip c9">🙋 Volunteer</div><div class="chip c0">⋯ More</div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" placeholder="Search by name, category, area..."/></div>
+    <select><option>Category: All</option><option>Doctor</option><option>Lawyer</option><option>CA</option><option>Electrician</option><option>Plumber</option><option>Poojari</option></select>
+    <select><option>Area: All</option><option>Wakad</option><option>Baner</option><option>Hinjewadi</option><option>Kharadi</option></select>
+    <select><option>Service Area: All</option><option>Pune</option><option>PCMC</option><option>Online</option></select>
+    <select><option>Verification: All</option><option>Verified</option><option>Pending</option></select>
+    <button class="btn btn-primary">🔍 Search</button>
+  </div>
+  <div class="tcard">
+    <div class="tc-head"><h3>📋 Contact Directory</h3><span class="showing">Showing 1–5 of 248 contacts</span></div>
+    <table>
+      <thead><tr><th>#</th><th>Contact</th><th>Category / Sub</th><th>Organization</th><th>Phone / Email</th><th>Area / Address</th><th>Hours</th><th>Rating</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--muted)">CC-001</td><td><div class="ac"><div class="avi ab">DR</div><div><div class="fn">Dr. Rajesh Reddy</div><div class="fs">Telugu ✔ | Emergency ✘</div></div></div></td><td><span class="ba">Doctor</span><div class="fs">General Physician</div></td><td class="fs">Sai Health Clinic</td><td><div class="fs">📞 9876543210</div><div class="fs">✉️ drrajesh@gmail.com</div></td><td><div class="fn">📍 Wakad</div><div class="fs">Near Phoenix Mall</div></td><td class="fs">09AM–08PM</td><td><div class="stars">★★★★★</div><div class="fs">4.8</div></td><td><span class="bv">✔ Verified</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+        <tr><td style="color:var(--muted)">CC-002</td><td><div class="ac"><div class="avi ap">SR</div><div><div class="fn">Adv. Srilatha Reddy</div><div class="fs">Telugu ✔ | Emergency ✘</div></div></div></td><td><span class="bg2">Lawyer</span><div class="fs">Property Lawyer</div></td><td class="fs">SR Legal Associates</td><td><div class="fs">📞 9123456789</div><div class="fs">✉️ srilatha@srlegal.com</div></td><td><div class="fn">📍 Baner</div><div class="fs">Near D-Mart</div></td><td class="fs">10AM–07PM</td><td><div class="stars">★★★★½</div><div class="fs">4.6</div></td><td><span class="bv">✔ Verified</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+        <tr><td style="color:var(--muted)">CC-003</td><td><div class="ac"><div class="avi ao">RK</div><div><div class="fn">Ramesh Kumar</div><div class="fs">Telugu ✔ | Emergency ✔</div></div></div></td><td><span class="bpu">Electrician</span><div class="fs">Home &amp; Office</div></td><td class="fs">Ramesh Electricals</td><td><div class="fs">📞 9988776655</div><div class="fs">✉️ ramesh.elec@gmail.com</div></td><td><div class="fn">📍 Hinjewadi</div><div class="fs">Phase 1</div></td><td class="fs">08AM–09PM</td><td><div class="stars">★★★★½</div><div class="fs">4.5</div></td><td><span class="bp">⏳ Pending</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+        <tr><td style="color:var(--muted)">CC-004</td><td><div class="ac"><div class="avi at">MB</div><div><div class="fn">CA Mahesh Babu</div><div class="fs">Telugu ✔ | Emergency ✘</div></div></div></td><td><span class="bg2">CA</span><div class="fs">Tax &amp; Finance</div></td><td class="fs">MB &amp; Co</td><td><div class="fs">📞 7766554433</div><div class="fs">✉️ mahesh@mbco.com</div></td><td><div class="fn">📍 Viman Nagar</div><div class="fs">Near Phoenix Mall</div></td><td class="fs">09AM–06PM</td><td><div class="stars">★★★★★</div><div class="fs">4.7</div></td><td><span class="bv">✔ Verified</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+        <tr><td style="color:var(--muted)">CC-005</td><td><div class="ac"><div class="avi apk">VS</div><div><div class="fn">Sri Venkatesh Sharma</div><div class="fs">Telugu ✔ | Emergency ✔</div></div></div></td><td><span class="bo">Poojari</span><div class="fs">Marriage Pooja</div></td><td class="fs">Vedic Services</td><td><div class="fs">📞 9988001122</div><div class="fs">✉️ venkatesh.sharma@gmail.com</div></td><td><div class="fn">📍 Pune &amp; PCMC</div><div class="fs">On Request</div></td><td class="fs">On Request</td><td><div class="stars">★★★★★</div><div class="fs">4.9</div></td><td><span class="bv">✔ Verified</span></td><td><div class="acts"><button class="abt ab-v">👁️</button><button class="abt ab-e">✏️</button><button class="abt ab-d">🗑️</button></div></td></tr>
+      </tbody>
+    </table>
+    <div class="pgn"><div class="pg-info">Showing 1 to 5 of 248</div><div class="pg-btns"><button class="pgb">‹</button><button class="pgb on">1</button><button class="pgb">2</button><button class="pgb">3</button><button class="pgb">›</button></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 4 – BUSINESS DIRECTORY
+════════════════════════════════════════ -->
+<div class="page" id="page-business">
+  <div class="ph">
+    <div class="ph-left"><h2>🏢 Business Directory</h2><p>Telugu-owned &amp; Telugu-friendly businesses in Pune</p></div>
+    <div class="btns"><button class="btn btn-outline">⬇️ Export</button><button class="btn btn-accent">＋ Add Business</button></div>
+  </div>
+  <div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🏢</div><div><div class="scl">Total Businesses</div><div class="scn">186</div><div class="scc">▲ +14 this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">✅</div><div><div class="scl">Verified</div><div class="scn">162</div><div class="scc">87%</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">⭐</div><div><div class="scl">Avg Rating</div><div class="scn">4.5</div></div></div>
+    <div class="sc"><div class="sci" style="background:#ede9fe;">📂</div><div><div class="scl">Categories</div><div class="scn">14</div></div></div>
+  </div>
+  <div class="chips">
+    <div class="chip c3 on">🍽️ Restaurant</div><div class="chip c1">🏥 Healthcare</div><div class="chip c2">📚 Education</div>
+    <div class="chip c4">👗 Retail</div><div class="chip c5">💻 IT Services</div><div class="chip c6">🏗️ Real Estate</div>
+    <div class="chip c7">🚗 Automobile</div><div class="chip c0">⋯ More</div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" placeholder="Search business name, category..."/></div>
+    <select><option>Category: All</option><option>Restaurant</option><option>Healthcare</option><option>Education</option><option>IT Services</option></select>
+    <select><option>Area: All</option><option>Hinjewadi</option><option>Wakad</option><option>Baner</option><option>Kharadi</option></select>
+    <select><option>Status: All</option><option>Verified</option><option>Pending</option></select>
+    <button class="btn btn-primary">🔍 Search</button>
+  </div>
+  <div class="biz-grid">
+    <div class="biz-card"><div class="biz-hdr"><div class="biz-ico" style="background:#fef9c3;">🍛</div><div><div class="biz-name">Andhra Spice Kitchen</div><div class="biz-cat">Restaurant · Andhra Cuisine</div></div></div><div class="biz-info"><div class="binfo">📞 9876540001</div><div class="binfo">📍 Hinjewadi Phase 1</div><div class="binfo">🕐 10AM–11PM · 👥 Telugu Speaking</div><div class="binfo">✉️ andhraspice@gmail.com</div></div><div class="biz-foot"><span class="stars">★★★★★ <span style="color:var(--muted)">4.8</span></span><span class="bv">✔ Verified</span></div></div>
+    <div class="biz-card"><div class="biz-hdr"><div class="biz-ico" style="background:#dbeafe;">💊</div><div><div class="biz-name">Sai Medicals &amp; Clinic</div><div class="biz-cat">Healthcare · Pharmacy</div></div></div><div class="biz-info"><div class="binfo">📞 9123456001</div><div class="binfo">📍 Wakad, Near Metro</div><div class="binfo">🕐 08AM–10PM · 👥 Telugu Speaking</div><div class="binfo">✉️ saimedicals@gmail.com</div></div><div class="biz-foot"><span class="stars">★★★★½ <span style="color:var(--muted)">4.6</span></span><span class="bv">✔ Verified</span></div></div>
+    <div class="biz-card"><div class="biz-hdr"><div class="biz-ico" style="background:#ede9fe;">💻</div><div><div class="biz-name">TechSols IT Services</div><div class="biz-cat">IT Services · Software</div></div></div><div class="biz-info"><div class="binfo">📞 9988000111</div><div class="binfo">📍 Kharadi, EON Free Zone</div><div class="binfo">🕐 09AM–06PM · 👥 Telugu Speaking</div><div class="binfo">✉️ techsols@techsols.in</div></div><div class="biz-foot"><span class="stars">★★★★½ <span style="color:var(--muted)">4.5</span></span><span class="bp">⏳ Pending</span></div></div>
+    <div class="biz-card"><div class="biz-hdr"><div class="biz-ico" style="background:#dcfce7;">🏗️</div><div><div class="biz-name">Reddy Constructions</div><div class="biz-cat">Real Estate · Construction</div></div></div><div class="biz-info"><div class="binfo">📞 7766550001</div><div class="binfo">📍 Baner, MG Road</div><div class="binfo">🕐 10AM–07PM · 👥 Telugu Speaking</div><div class="binfo">✉️ reddycons@gmail.com</div></div><div class="biz-foot"><span class="stars">★★★★★ <span style="color:var(--muted)">4.7</span></span><span class="bv">✔ Verified</span></div></div>
+    <div class="biz-card"><div class="biz-hdr"><div class="biz-ico" style="background:#ffedd5;">📚</div><div><div class="biz-name">Krishna Tutorials</div><div class="biz-cat">Education · Coaching</div></div></div><div class="biz-info"><div class="binfo">📞 8800991122</div><div class="binfo">📍 Pimple Saudagar</div><div class="binfo">🕐 06AM–09PM · 👥 Telugu Speaking</div><div class="binfo">✉️ krishnatutorials@gmail.com</div></div><div class="biz-foot"><span class="stars">★★★★ <span style="color:var(--muted)">4.3</span></span><span class="bv">✔ Verified</span></div></div>
+    <div class="biz-card"><div class="biz-hdr"><div class="biz-ico" style="background:#fce7f3;">👗</div><div><div class="biz-name">Silk &amp; Style Boutique</div><div class="biz-cat">Retail · Traditional Wear</div></div></div><div class="biz-info"><div class="binfo">📞 9876540099</div><div class="binfo">📍 Viman Nagar</div><div class="binfo">🕐 10AM–08PM · 👥 Telugu Speaking</div><div class="binfo">✉️ silknstyle@gmail.com</div></div><div class="biz-foot"><span class="stars">★★★★½ <span style="color:var(--muted)">4.6</span></span><span class="bv">✔ Verified</span></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 5 – STAY FINDER
+════════════════════════════════════════ -->
+<div class="page" id="page-stay">
+  <div class="ph">
+    <div class="ph-left"><h2>🛏️ Stay Finder</h2><p>PG, Coliving, Flats &amp; Shared Accommodation in Pune</p></div>
+    <div class="btns"><button class="btn btn-outline">🗺️ Map View</button><button class="btn btn-accent">＋ List Property</button></div>
+  </div>
+  <div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🏠</div><div><div class="scl">Total Listings</div><div class="scn">312</div><div class="scc">▲ +22 this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">✅</div><div><div class="scl">Available Now</div><div class="scn">148</div><div class="scc">Ready to move-in</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">💰</div><div><div class="scl">Avg Rent</div><div class="scn">₹8,200</div><div class="scc">Per month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🍽️</div><div><div class="scl">Food Included</div><div class="scn">98</div><div class="scc">Listings with food</div></div></div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" placeholder="Search property name, area..."/></div>
+    <select><option>Type: All</option><option>PG</option><option>Coliving</option><option>Flat</option><option>Shared Flat</option><option>Room</option></select>
+    <select><option>Gender: All</option><option>Male</option><option>Female</option><option>Family</option><option>Unisex</option></select>
+    <select><option>Budget: Any</option><option>Under ₹5K</option><option>₹5K–8K</option><option>₹8K–12K</option><option>₹12K+</option></select>
+    <select><option>Furnishing: All</option><option>Fully Furnished</option><option>Semi-Furnished</option><option>Unfurnished</option></select>
+    <select><option>Food: All</option><option>Food Included</option><option>No Food</option></select>
+    <button class="btn btn-primary">🔍 Search</button>
+  </div>
+  <div class="stay-grid">
+    <div class="stay-card"><div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=400&q=80');"><div class="stay-type">🏠 PG</div><div class="stay-rent">₹7,500/mo</div></div><div class="stay-body"><div class="stay-name">Sri Sai Residency</div><div class="stay-loc">📍 Hinjewadi Ph 1 · Near TCS Gate 3</div><div class="stay-tags"><span class="stay-tag">Double Sharing</span><span class="stay-tag">Male</span><span class="stay-tag">Food ✔</span><span class="stay-tag">WiFi ✔</span></div></div><div class="stay-foot"><span>👤 Ramesh Naidu · 📞 9876543210</span><span class="bv">✔ Available</span></div></div>
+    <div class="stay-card"><div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80');"><div class="stay-type">🏘️ 2BHK Flat</div><div class="stay-rent">₹18,000/mo</div></div><div class="stay-body"><div class="stay-name">Greenview Apartment</div><div class="stay-loc">📍 Baner · Near Balewadi Stadium</div><div class="stay-tags"><span class="stay-tag">2BHK</span><span class="stay-tag">Family</span><span class="stay-tag">Furnished</span><span class="stay-tag">Parking ✔</span></div></div><div class="stay-foot"><span>👤 Suresh Rao · 📞 9123456001</span><span class="bv">✔ Available</span></div></div>
+    <div class="stay-card"><div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80');"><div class="stay-type">🤝 Coliving</div><div class="stay-rent">₹9,000/mo</div></div><div class="stay-body"><div class="stay-name">Telugu Hub Coliving</div><div class="stay-loc">📍 Wakad · Near Highway</div><div class="stay-tags"><span class="stay-tag">Single Room</span><span class="stay-tag">Unisex</span><span class="stay-tag">AC ✔</span><span class="stay-tag">Laundry ✔</span></div></div><div class="stay-foot"><span>👤 Anita Devi · 📞 9988001133</span><span class="bp">⏳ 01 Aug</span></div></div>
+    <div class="stay-card"><div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400&q=80');"><div class="stay-type">🏠 PG</div><div class="stay-rent">₹6,000/mo</div></div><div class="stay-body"><div class="stay-name">Lakshmi Ladies PG</div><div class="stay-loc">📍 Kharadi · Near Zensar IT Park</div><div class="stay-tags"><span class="stay-tag">Triple Sharing</span><span class="stay-tag">Female</span><span class="stay-tag">Food ✔</span><span class="stay-tag">Security ✔</span></div></div><div class="stay-foot"><span>👤 Meena · 📞 8899001122</span><span class="bv">✔ Available</span></div></div>
+    <div class="stay-card"><div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1484154218962-a197022b5858?w=400&q=80');"><div class="stay-type">🏘️ 1BHK</div><div class="stay-rent">₹12,000/mo</div></div><div class="stay-body"><div class="stay-name">Sunflower Residency</div><div class="stay-loc">📍 Pimple Saudagar · Near D-Mart</div><div class="stay-tags"><span class="stay-tag">1BHK</span><span class="stay-tag">Couple/Family</span><span class="stay-tag">Semi-Furnished</span><span class="stay-tag">Lift ✔</span></div></div><div class="stay-foot"><span>👤 Vinod · 📞 7766554422</span><span class="bv">✔ Available</span></div></div>
+    <div class="stay-card"><div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400&q=80');"><div class="stay-type">🤝 Shared Flat</div><div class="stay-rent">₹8,500/mo</div></div><div class="stay-body"><div class="stay-name">Viman Shared Nest</div><div class="stay-loc">📍 Viman Nagar · Airport Road</div><div class="stay-tags"><span class="stay-tag">Double Sharing</span><span class="stay-tag">Male</span><span class="stay-tag">WiFi ✔</span><span class="stay-tag">Power Backup ✔</span></div></div><div class="stay-foot"><span>👤 Kiran · 📞 9001234567</span><span class="br">❌ Booked</span></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 6 – JOBS & OPPORTUNITY
+════════════════════════════════════════ -->
+<div class="page" id="page-jobs">
+  <div class="ph">
+    <div class="ph-left"><h2>💼 Jobs &amp; Opportunity</h2><p>Job postings, internships &amp; freelance opportunities</p></div>
+    <div class="btns"><button class="btn btn-outline">📋 My Applications</button><button class="btn btn-accent">＋ Post a Job</button></div>
+  </div>
+  <div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">💼</div><div><div class="scl">Total Jobs</div><div class="scn">120</div><div class="scc">▲ +20 this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">🎓</div><div><div class="scl">Internships</div><div class="scn">24</div><div class="scc">Fresher friendly</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">💻</div><div><div class="scl">IT / Tech</div><div class="scn">68</div><div class="scc">Highest demand</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">📩</div><div><div class="scl">Applications</div><div class="scn">540</div><div class="scc">This month</div></div></div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" placeholder="Search jobs, skills, company..."/></div>
+    <select><option>Type: All</option><option>Full Time</option><option>Part Time</option><option>Internship</option><option>Freelance</option></select>
+    <select><option>Location: All</option><option>Hinjewadi</option><option>Kharadi</option><option>Baner</option><option>Remote</option></select>
+    <select><option>Experience: All</option><option>Fresher</option><option>1–3 yrs</option><option>3–5 yrs</option><option>5+ yrs</option></select>
+    <select><option>Telugu Preferred: All</option><option>Yes</option><option>No</option></select>
+    <button class="btn btn-primary">🔍 Search</button>
+  </div>
+  <div class="job-grid">
+    <div class="job-card"><div class="job-hdr"><div class="job-co"><div class="job-logo" style="background:#dbeafe;">💻</div><div><div class="job-title">SQL Server DBA</div><div class="job-company">ABC Infotech · Hinjewadi</div></div></div><span class="ba">Full Time</span></div><div class="job-tags2"><span class="jtag" style="background:#dbeafe;color:#1d4ed8;">SQL Server</span><span class="jtag" style="background:#dcfce7;color:#065f46;">5+ yrs</span><span class="jtag" style="background:#f1f5f9;color:#374151;">Hinjewadi</span></div><div class="job-meta">📞 Anil Naidu · jobs@abc.com</div><div class="job-foot"><div class="salary">₹12–18 LPA</div><button class="apply-btn">Apply Now</button></div></div>
+    <div class="job-card"><div class="job-hdr"><div class="job-co"><div class="job-logo" style="background:#dcfce7;">📱</div><div><div class="job-title">React Native Developer</div><div class="job-company">TechVision Pvt Ltd · Kharadi</div></div></div><span class="bv">Full Time</span></div><div class="job-tags2"><span class="jtag" style="background:#ede9fe;color:#6d28d9;">React Native</span><span class="jtag" style="background:#dcfce7;color:#065f46;">3–5 yrs</span><span class="jtag" style="background:#f1f5f9;color:#374151;">Kharadi</span></div><div class="job-meta">📞 HR · hr@techvision.in</div><div class="job-foot"><div class="salary">₹10–15 LPA</div><button class="apply-btn">Apply Now</button></div></div>
+    <div class="job-card"><div class="job-hdr"><div class="job-co"><div class="job-logo" style="background:#fef9c3;">📊</div><div><div class="job-title">Data Analyst Intern</div><div class="job-company">Analytica Co · Remote</div></div></div><span class="bp">Internship</span></div><div class="job-tags2"><span class="jtag" style="background:#fef9c3;color:#854d0e;">Python</span><span class="jtag" style="background:#fef9c3;color:#854d0e;">Power BI</span><span class="jtag" style="background:#f1f5f9;color:#374151;">Remote</span></div><div class="job-meta">📞 Priya · priya@analytica.in</div><div class="job-foot"><div class="salary">₹15K/mo Stipend</div><button class="apply-btn">Apply Now</button></div></div>
+    <div class="job-card"><div class="job-hdr"><div class="job-co"><div class="job-logo" style="background:#ffedd5;">🏥</div><div><div class="job-title">Medical Receptionist</div><div class="job-company">Sai Health Clinic · Wakad</div></div></div><span class="bo">Part Time</span></div><div class="job-tags2"><span class="jtag" style="background:#ffedd5;color:#c2410c;">Telugu Required</span><span class="jtag" style="background:#dcfce7;color:#065f46;">Fresher OK</span><span class="jtag" style="background:#f1f5f9;color:#374151;">Wakad</span></div><div class="job-meta">📞 Dr. Rajesh · drrajesh@gmail.com</div><div class="job-foot"><div class="salary">₹12,000/mo</div><button class="apply-btn">Apply Now</button></div></div>
+    <div class="job-card"><div class="job-hdr"><div class="job-co"><div class="job-logo" style="background:#ede9fe;">🎨</div><div><div class="job-title">Graphic Designer</div><div class="job-company">Freelance / Project</div></div></div><span class="bpu">Freelance</span></div><div class="job-tags2"><span class="jtag" style="background:#ede9fe;color:#6d28d9;">Canva</span><span class="jtag" style="background:#ede9fe;color:#6d28d9;">Photoshop</span><span class="jtag" style="background:#f1f5f9;color:#374151;">Remote</span></div><div class="job-meta">📞 Community Post · design@community.org</div><div class="job-foot"><div class="salary">₹500–2K/project</div><button class="apply-btn">Respond</button></div></div>
+    <div class="job-card"><div class="job-hdr"><div class="job-co"><div class="job-logo" style="background:#fce7f3;">👩‍🏫</div><div><div class="job-title">Telugu Tutor Needed</div><div class="job-company">Private · Baner</div></div></div><span class="bpk">Part Time</span></div><div class="job-tags2"><span class="jtag" style="background:#fce7f3;color:#be185d;">Telugu Language</span><span class="jtag" style="background:#dcfce7;color:#065f46;">Weekends</span><span class="jtag" style="background:#f1f5f9;color:#374151;">Baner</span></div><div class="job-meta">📞 Padma · 9876541234</div><div class="job-foot"><div class="salary">₹500/hr</div><button class="apply-btn">Respond</button></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 7 – ANNOUNCEMENTS
+════════════════════════════════════════ -->
+<div class="page" id="page-announce">
+  <div class="ph">
+    <div class="ph-left"><h2>📢 Announcements</h2><p>Community support board &amp; important notices</p></div>
+    <div class="btns"><button class="btn btn-outline">📋 View All</button><button class="btn btn-accent">＋ Post Announcement</button></div>
+  </div>
+  <div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🩸</div><div><div class="scl">Blood Requests</div><div class="scn">8</div><div class="scc" style="color:var(--red);">Urgent</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🚗</div><div><div class="scl">Travel Partners</div><div class="scn">14</div><div class="scc">Active</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">🏠</div><div><div class="scl">Home Help</div><div class="scn">22</div><div class="scc">Maid / Driver etc.</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">📢</div><div><div class="scl">General Notices</div><div class="scn">56</div><div class="scc">Community notices</div></div></div>
+  </div>
+  <div class="chips">
+    <div class="chip c8 on">🩸 Blood Required</div><div class="chip c1">🚗 Travel Partner</div>
+    <div class="chip c2">💼 Job Available</div><div class="chip c6">🏠 Looking for Maid</div>
+    <div class="chip c3">🏡 House for Rent</div><div class="chip c4">🛋️ PG Needed</div>
+    <div class="chip c5">🚨 Emergency Help</div><div class="chip c0">⋯ More</div>
+  </div>
+  <div class="ann-list">
+    <div class="ann-card" style="border-left-color:var(--red);"><div class="ann-ico" style="background:#fee2e2;">🩸</div><div class="ann-body"><div class="ann-type" style="color:var(--red);">Blood Required</div><div class="ann-title">Urgent – O+ Blood Required at Ruby Hall Clinic</div><div class="ann-desc">Patient undergoing surgery at Ruby Hall Clinic, Pune. Requires 2 units of O+ blood urgently. Please contact immediately.</div><div class="ann-meta"><span>👤 Ravi Kumar</span><span>📞 9876543210</span><span>📍 Pune</span><span>🆔 SUP-001</span></div></div><div class="ann-rt"><div class="ann-time">2 hrs ago</div><div style="margin-top:5px;"><span class="br">🔴 Urgent</span></div></div></div>
+    <div class="ann-card" style="border-left-color:#3b82f6;"><div class="ann-ico" style="background:#dbeafe;">🚗</div><div class="ann-body"><div class="ann-type" style="color:#3b82f6;">Travel Partner Required</div><div class="ann-title">Pune to Hyderabad Travel Partner – 15 Jul 2026</div><div class="ann-desc">Travelling from Pune to Hyderabad on 15 July 2026. Looking for Telugu family or individual for cab sharing. Safe &amp; cost-effective.</div><div class="ann-meta"><span>👤 Suresh Reddy</span><span>📞 9876543211</span><span>📅 15-Jul-2026</span><span>🆔 SUP-002</span></div></div><div class="ann-rt"><div class="ann-time">5 hrs ago</div><div style="margin-top:5px;"><span class="ba">🔵 Active</span></div></div></div>
+    <div class="ann-card" style="border-left-color:var(--green);"><div class="ann-ico" style="background:#dcfce7;">💼</div><div class="ann-body"><div class="ann-type" style="color:var(--green);">Job Available</div><div class="ann-title">Hiring SQL Server DBA – 5+ Years · Hinjewadi</div><div class="ann-desc">IT company in Hinjewadi urgently hiring SQL Server DBA. Telugu candidates preferred. Immediate joining. Competitive salary.</div><div class="ann-meta"><span>👤 Anil Naidu</span><span>✉️ jobs@abc.com</span><span>📍 Hinjewadi</span><span>🆔 SUP-003</span></div></div><div class="ann-rt"><div class="ann-time">8 hrs ago</div><div style="margin-top:5px;"><span class="bv">🟢 Active</span></div></div></div>
+    <div class="ann-card" style="border-left-color:var(--accent);"><div class="ann-ico" style="background:#ffedd5;">🏠</div><div class="ann-body"><div class="ann-type" style="color:var(--accent);">Looking for Maid</div><div class="ann-title">Need Part-Time Maid for Cooking &amp; Cleaning – Wakad</div><div class="ann-desc">Looking for a reliable part-time maid for cooking and cleaning in Wakad. Telugu speaking preferred. Timing: 7AM–10AM daily.</div><div class="ann-meta"><span>👤 Lakshmi</span><span>📞 9876543212</span><span>📍 Wakad</span><span>🆔 SUP-004</span></div></div><div class="ann-rt"><div class="ann-time">1 day ago</div><div style="margin-top:5px;"><span class="ba">🔵 Active</span></div></div></div>
+    <div class="ann-card" style="border-left-color:var(--purple);"><div class="ann-ico" style="background:#ede9fe;">🏡</div><div class="ann-body"><div class="ann-type" style="color:var(--purple);">House for Rent</div><div class="ann-title">2BHK Available for Telugu Family – Baner</div><div class="ann-desc">Well-maintained 2BHK flat in Baner suitable for Telugu families. Semi-furnished. ₹16,000/month + maintenance. Available immediately.</div><div class="ann-meta"><span>👤 Ramesh Varma</span><span>📞 9988001234</span><span>📍 Baner</span><span>🆔 SUP-005</span></div></div><div class="ann-rt"><div class="ann-time">2 days ago</div><div style="margin-top:5px;"><span class="bv">🟢 Active</span></div></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 8 – PLACES TO VISIT
+════════════════════════════════════════ -->
+<div class="page" id="page-places">
+  <div class="ph">
+    <div class="ph-left"><h2>📍 Places to Visit</h2><p>Devotional, historical, nature &amp; adventure destinations</p></div>
+    <div class="btns"><button class="btn btn-outline">🗺️ Map View</button><button class="btn btn-accent">＋ Add Place</button></div>
+  </div>
+  <div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#fef9c3;">📍</div><div><div class="scl">Total Places</div><div class="scn">250</div><div class="scc">▲ +8% this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🛕</div><div><div class="scl">Devotional</div><div class="scn">64</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">🌿</div><div><div class="scl">Nature / Trekking</div><div class="scn">72</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🏰</div><div><div class="scl">Historical</div><div class="scn">48</div></div></div>
+  </div>
+  <div class="chips">
+    <div class="chip c4 on">🛕 Devotional</div><div class="chip c2">🌿 Trekking</div><div class="chip c3">🏰 Historical</div>
+    <div class="chip c9">⛰️ Hill Station</div><div class="chip c6">💧 Waterfall</div><div class="chip c1">🦁 Wildlife</div>
+    <div class="chip c7">🏖️ Beaches</div><div class="chip c5">🏕️ Camping</div><div class="chip c8">🪂 Adventure</div><div class="chip c0">👨‍👩‍👧 Family Outing</div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" placeholder="Search place name, district..."/></div>
+    <select><option>Category: All</option><option>Devotional</option><option>Trekking</option><option>Historical</option><option>Hill Station</option><option>Waterfall</option></select>
+    <select><option>District: All</option><option>Pune</option><option>Ratnagiri</option><option>Nashik</option><option>Lonavala</option></select>
+    <select><option>Status: All</option><option>Active</option><option>Pending</option></select>
+    <button class="btn btn-primary">🔍 Search</button>
+  </div>
+  <div class="g3">
+    <div class="pcard"><div class="pimg" style="background-image:url('https://images.unsplash.com/photo-1621996659490-3275b4d0d951?w=400&q=80');"><div class="pov"></div><span class="pbadge" style="background:#fce7f3;color:#be185d;">🛕 Devotional</span></div><div class="pinfo"><div class="pname">Shreemant Dagdusheth Halwai Ganpati</div><div class="ploc2">📍 Budhwar Peth, Pune · PLC-001</div><div class="prat2">★★★★★ 4.8 <span style="color:var(--muted)">(1.2K reviews)</span></div><div class="pcat2">SubCategory: Temple · District: Pune</div></div></div>
+    <div class="pcard"><div class="pimg" style="background-image:url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80');"><div class="pov"></div><span class="pbadge" style="background:#dbeafe;color:#1d4ed8;">🏰 Historical</span></div><div class="pinfo"><div class="pname">Shaniwar Wada</div><div class="ploc2">📍 Shaniwar Peth, Pune · PLC-002</div><div class="prat2">★★★★½ 4.6 <span style="color:var(--muted)">(980 reviews)</span></div><div class="pcat2">SubCategory: Fort · District: Pune</div></div></div>
+    <div class="pcard"><div class="pimg" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80');"><div class="pov"></div><span class="pbadge" style="background:#dcfce7;color:#065f46;">⛰️ Hill Station</span></div><div class="pinfo"><div class="pname">Lonavala</div><div class="ploc2">📍 Lonavala, Pune District · PLC-003</div><div class="prat2">★★★★½ 4.5 <span style="color:var(--muted)">(860 reviews)</span></div><div class="pcat2">SubCategory: Hill Station · District: Pune</div></div></div>
+    <div class="pcard"><div class="pimg" style="background-image:url('https://images.unsplash.com/photo-1592496001020-d31bd830651f?w=400&q=80');"><div class="pov"></div><span class="pbadge" style="background:#d1fae5;color:#065f46;">🌿 Trekking</span></div><div class="pinfo"><div class="pname">Sinhagad Fort Trek</div><div class="ploc2">📍 Sinhagad, Pune · PLC-004</div><div class="prat2">★★★★★ 4.7 <span style="color:var(--muted)">(1.5K reviews)</span></div><div class="pcat2">SubCategory: Trekking · District: Pune</div></div></div>
+    <div class="pcard"><div class="pimg" style="background-image:url('https://images.unsplash.com/photo-1536768139911-e290a59011e4?w=400&q=80');"><div class="pov"></div><span class="pbadge" style="background:#fef9c3;color:#854d0e;">🏖️ Beach</span></div><div class="pinfo"><div class="pname">Ganpatipule Beach</div><div class="ploc2">📍 Ratnagiri, Maharashtra · PLC-005</div><div class="prat2">★★★★½ 4.6 <span style="color:var(--muted)">(720 reviews)</span></div><div class="pcat2">SubCategory: Beach · District: Ratnagiri</div></div></div>
+    <div class="pcard"><div class="pimg" style="background-image:url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&q=80');"><div class="pov"></div><span class="pbadge" style="background:#ede9fe;color:#6d28d9;">🏕️ Camping</span></div><div class="pinfo"><div class="pname">Pawna Lake Camping</div><div class="ploc2">📍 Pawna, Pune District · PLC-006</div><div class="prat2">★★★★★ 4.8 <span style="color:var(--muted)">(940 reviews)</span></div><div class="pcat2">SubCategory: Camping · District: Pune</div></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 9 – MY PROFILE
+════════════════════════════════════════ -->
+<div class="page" id="page-profile">
+  <div class="ph">
+    <div class="ph-left"><h2>👤 My Profile</h2><p>Manage your community member profile &amp; information</p></div>
+    <div class="btns"><button class="btn btn-outline">🔒 Change Password</button><button class="btn btn-primary">💾 Save Changes</button></div>
+  </div>
+  <div class="prof-wrap">
+    <div>
+      <div class="prof-card2">
+        <div class="prof-av2">SS</div>
+        <div class="prof-name">Sravanthi Sharma</div>
+        <div class="prof-role">Community Member since 2024</div>
+        <div class="prof-badges"><span class="bv">✔ Verified</span><span class="ba">🤝 Volunteer</span></div>
+        <div class="prof-info">
+          <div class="pi-row"><span class="pi-lbl">User ID</span><span class="pi-val">MTP-1001</span></div>
+          <div class="pi-row"><span class="pi-lbl">Blood Group</span><span class="pi-val" style="color:var(--red);">B+</span></div>
+          <div class="pi-row"><span class="pi-lbl">Mobile</span><span class="pi-val">9876543200</span></div>
+          <div class="pi-row"><span class="pi-lbl">WhatsApp</span><span class="pi-val">9876543200</span></div>
+          <div class="pi-row"><span class="pi-lbl">Location</span><span class="pi-val">Wakad, Pune</span></div>
+          <div class="pi-row"><span class="pi-lbl">Native Place</span><span class="pi-val">Vijayawada, AP</span></div>
+          <div class="pi-row"><span class="pi-lbl">Religion</span><span class="pi-val">Hindu</span></div>
+          <div class="pi-row"><span class="pi-lbl">Community</span><span class="pi-val">Kamma</span></div>
+          <div class="pi-row"><span class="pi-lbl">Membership</span><span class="pi-val" style="color:var(--green);">Active ✔</span></div>
+        </div>
+        <button class="btn btn-outline" style="width:100%;margin-top:12px;justify-content:center;">📸 Change Photo</button>
+      </div>
+    </div>
+    <div class="prof-detail">
+      <div class="stitle">🧾 Basic Information</div>
+      <div class="form-grid">
+        <div class="fgrp"><label>User ID</label><input type="text" value="MTP-1001" readonly/></div>
+        <div class="fgrp"><label>Family Surname</label><input type="text" value="Sharma"/></div>
+        <div class="fgrp"><label>Primary Contact Name</label><input type="text" value="Sravanthi Sharma"/></div>
+        <div class="fgrp"><label>Gender</label><select><option>Female</option><option>Male</option><option>Other</option></select></div>
+        <div class="fgrp"><label>Date of Birth</label><input type="date" value="1992-05-15"/></div>
+        <div class="fgrp"><label>Religion</label><input type="text" value="Hindu"/></div>
+        <div class="fgrp"><label>Community / Caste</label><input type="text" value="Kamma"/></div>
+        <div class="fgrp"><label>Email Address</label><input type="email" value="sravanthi.s@gmail.com"/></div>
+        <div class="fgrp"><label>Mobile Number</label><input type="text" value="9876543200"/></div>
+        <div class="fgrp"><label>WhatsApp Number</label><input type="text" value="9876543200"/></div>
+      </div>
+      <div class="stitle">📍 Address Information</div>
+      <div class="form-grid fg3">
+        <div class="fgrp"><label>Society Name</label><input type="text" value="Green Valley Society"/></div>
+        <div class="fgrp"><label>Flat Number</label><input type="text" value="B-204"/></div>
+        <div class="fgrp"><label>PIN Code</label><input type="text" value="411057"/></div>
+        <div class="fgrp"><label>Current Location in Pune</label><input type="text" value="Wakad"/></div>
+        <div class="fgrp"><label>Native Place</label><input type="text" value="Vijayawada, AP"/></div>
+        <div class="fgrp"><label>Owner / Tenant</label><select><option>Tenant</option><option>Owner</option></select></div>
+      </div>
+      <div class="stitle">👨‍👩‍👧 Family Details</div>
+      <div class="form-grid">
+        <div class="fgrp"><label>Family Members Count</label><input type="number" value="3"/></div>
+        <div class="fgrp"><label>Children Count</label><input type="number" value="1"/></div>
+      </div>
+      <div class="stitle">💼 Professional Information</div>
+      <div class="form-grid fg3">
+        <div class="fgrp"><label>Profession / Occupation</label><input type="text" value="Software Engineer"/></div>
+        <div class="fgrp"><label>Company Name</label><input type="text" value="Infosys Ltd"/></div>
+        <div class="fgrp"><label>Designation</label><input type="text" value="Senior Engineer"/></div>
+        <div class="fgrp"><label>Work Location</label><input type="text" value="Hinjewadi, Pune"/></div>
+        <div class="fgrp"><label>Work From Home</label><select><option>No</option><option>Yes</option><option>Hybrid</option></select></div>
+        <div class="fgrp"><label>Professional Skills</label><input type="text" value="Java, React, SQL"/></div>
+      </div>
+      <div class="stitle">🚨 Emergency Information</div>
+      <div class="form-grid">
+        <div class="fgrp"><label>Blood Group</label><select><option>B+</option><option>O+</option><option>A+</option><option>AB+</option><option>O-</option></select></div>
+        <div class="fgrp"><label>Emergency Contact Number</label><input type="text" value="9876543201"/></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PAGE 10 – SETTINGS
+════════════════════════════════════════ -->
+<div class="page" id="page-settings">
+  <div class="ph">
+    <div class="ph-left"><h2>⚙️ Settings</h2><p>Manage account preferences, privacy &amp; notifications</p></div>
+    <button class="btn btn-primary">💾 Save All Settings</button>
+  </div>
+  <div class="sett-wrap">
+    <div class="sett-menu">
+      <div class="sm-item on">🔔 Notifications</div>
+      <div class="sm-item">🔒 Privacy &amp; Security</div>
+      <div class="sm-item">🌐 Language</div>
+      <div class="sm-item">💳 Membership</div>
+      <div class="sm-item">📱 App Preferences</div>
+      <div class="sm-item" style="color:var(--red);">🗑️ Delete Account</div>
+    </div>
+    <div class="sett-panel">
+      <div class="stitle">🔔 Notification Preferences</div>
+      <div class="tog-row"><div class="tr-l"><h4>Community Announcements</h4><p>Blood requests, travel partners, emergency help alerts</p></div><div class="tog on"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>Event Reminders</h4><p>Reminders for upcoming events you've registered for</p></div><div class="tog on"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>New Job Postings</h4><p>Alerts when new jobs match your skills profile</p></div><div class="tog"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>New Stay Listings</h4><p>Alerts for new PG/flat listings in your area</p></div><div class="tog"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>WhatsApp Notifications</h4><p>Receive key community alerts on WhatsApp</p></div><div class="tog on"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>Weekly Email Digest</h4><p>Weekly email summary of community activity</p></div><div class="tog on"></div></div>
+      <div class="stitle" style="margin-top:20px;">🔒 Privacy Settings</div>
+      <div class="tog-row"><div class="tr-l"><h4>Show Profile in Family Directory</h4><p>Allow other members to find your family profile</p></div><div class="tog on"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>Show Mobile Number Publicly</h4><p>Visible to verified members only</p></div><div class="tog"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>Blood Donor Visibility</h4><p>Allow community to contact you for blood requests</p></div><div class="tog on"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>Volunteer Availability</h4><p>Show your availability for community volunteer activities</p></div><div class="tog on"></div></div>
+      <div class="stitle" style="margin-top:20px;">🌐 Language &amp; App Preferences</div>
+      <div class="form-grid" style="margin-top:10px;">
+        <div class="fgrp"><label>App Language</label><select><option>Telugu</option><option>English</option><option>Hindi</option></select></div>
+        <div class="fgrp"><label>Communication Preference</label><select><option>WhatsApp</option><option>Email</option><option>SMS</option></select></div>
+        <div class="fgrp"><label>Membership Type</label><select><option>Member</option><option>Premium</option><option>Volunteer</option></select></div>
+        <div class="fgrp"><label>Account Status</label><select><option>Active</option><option>Inactive</option></select></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+function show(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nv').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  const nav = document.getElementById('nav-' + page);
+  if (nav) nav.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.querySelectorAll('.tog').forEach(t => {
+  t.addEventListener('click', function(){ this.classList.toggle('on'); });
+});
+document.querySelectorAll('.chip').forEach(c => {
+  c.addEventListener('click', function(){
+    const parent = this.closest('.chips');
+    if(parent) parent.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+    this.classList.add('on');
+  });
+});
+document.querySelectorAll('.sm-item').forEach(s => {
+  s.addEventListener('click', function(){
+    document.querySelectorAll('.sm-item').forEach(x => x.classList.remove('on'));
+    this.classList.add('on');
+  });
+});
+</script>
+</body>
+</html>
