@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mana Telugu Pune – Community Portal</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--primary:#1e3a5f;--accent:#f97316;--green:#10b981;--red:#ef4444;--border:#e2e8f0;--light:#f1f5f9;--text:#1e293b;--muted:#64748b;--sw:230px;--nh:60px;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f0f4f8;color:var(--text);overflow-x:hidden;}
+.topnav{background:var(--primary);height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:fixed;top:0;left:0;right:0;z-index:400;box-shadow:0 2px 12px rgba(0,0,0,.35);}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.logo-icon{font-size:27px;}
+.logo-text h1{font-size:15px;color:#fff;font-weight:800;line-height:1.15;}
+.logo-text p{font-size:10px;color:#93c5fd;}
+.nav-search{flex:1;max-width:420px;margin:0 24px;position:relative;}
+.nav-search input{width:100%;padding:8px 14px 8px 36px;border-radius:24px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:13px;outline:none;}
+.nav-search input::placeholder{color:#cbd5e1;}
+.nav-search .si{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#93c5fd;font-size:14px;}
+.nr{display:flex;align-items:center;gap:14px;}
+.bell-w{position:relative;cursor:pointer;color:#fff;font-size:20px;}
+.bdg{position:absolute;top:-5px;right:-6px;background:var(--accent);color:#fff;font-size:9px;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-weight:800;}
+.av{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.uinfo .un{color:#fff;font-size:13px;font-weight:700;}.uinfo .ur{color:#93c5fd;font-size:10px;}
+.shell{display:flex;margin-top:var(--nh);}
+.sidebar{width:var(--sw);background:#fff;border-right:1px solid var(--border);position:fixed;top:var(--nh);bottom:0;overflow-y:auto;display:flex;flex-direction:column;z-index:300;}
+.sidebar::-webkit-scrollbar{width:4px;}.sidebar::-webkit-scrollbar-thumb{background:#e2e8f0;border-radius:4px;}
+.sidebar nav{flex:1;padding:8px 0;}
+.nv{display:flex;align-items:center;gap:10px;padding:11px 16px;font-size:13px;color:var(--muted);cursor:pointer;border-left:3px solid transparent;transition:all .15s;user-select:none;}
+.nv:hover{background:#f8fafc;color:var(--primary);}
+.nv.active{background:#eff6ff;color:var(--primary);border-left-color:var(--accent);font-weight:700;}
+.nv .ni{font-size:16px;width:22px;text-align:center;flex-shrink:0;}
+.sdiv{height:1px;background:var(--border);margin:5px 12px;}
+.slbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:8px 16px 3px;}
+.sf{padding:14px;text-align:center;border-top:1px solid var(--border);flex-shrink:0;}
+.sf p{font-size:10px;color:var(--muted);line-height:1.7;}
+.main{margin-left:var(--sw);flex:1;padding:20px;min-height:calc(100vh - var(--nh));}
+.page{display:none;animation:fadeIn .2s ease;}.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+.ph-left h2{font-size:19px;font-weight:800;}.ph-left p{font-size:12px;color:var(--muted);margin-top:3px;}
+.btn{padding:8px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:.15s;}
+.btn-primary{background:var(--primary);color:#fff;}.btn-primary:hover{background:#1e40af;}
+.btn-accent{background:var(--accent);color:#fff;}.btn-accent:hover{background:#ea580c;}
+.btn-outline{background:#fff;color:var(--primary);border:1.5px solid var(--primary);}.btn-outline:hover{background:#eff6ff;}
+.btns{display:flex;gap:8px;flex-wrap:wrap;}
+.srow{display:grid;gap:14px;margin-bottom:16px;}
+.s4{grid-template-columns:repeat(4,1fr);}.s5{grid-template-columns:repeat(5,1fr);}
+.sc{background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 1px 5px rgba(0,0,0,.06);display:flex;align-items:center;gap:12px;}
+.sci{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;}
+.scn{font-size:22px;font-weight:800;line-height:1.1;}.scl{font-size:10px;color:var(--muted);margin-bottom:3px;}
+.scc{font-size:11px;color:var(--green);font-weight:600;}
+.toolbar{background:#fff;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:14px;}
+.toolbar input,.toolbar select{border:1px solid var(--border);border-radius:7px;padding:7px 10px;font-size:12px;color:var(--text);outline:none;background:#fff;}
+.toolbar input:focus,.toolbar select:focus{border-color:#3b82f6;}
+.ts{flex:1;min-width:160px;position:relative;}.ts input{width:100%;padding-left:30px;}
+.ts .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;}
+.tcard{background:#fff;border-radius:14px;box-shadow:0 1px 6px rgba(0,0,0,.07);overflow:hidden;}
+.tc-head{padding:13px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.tc-head h3{font-size:14px;font-weight:700;}.showing{font-size:12px;color:var(--muted);}
+table{width:100%;border-collapse:collapse;}
+thead tr{background:#f8fafc;}
+th{padding:9px 13px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap;}
+td{padding:11px 13px;font-size:12px;border-bottom:1px solid #f1f5f9;vertical-align:middle;}
+tr:last-child td{border-bottom:none;}tr:hover td{background:#fafcff;}
+.pgn{display:flex;align-items:center;justify-content:space-between;padding:11px 18px;border-top:1px solid var(--border);}
+.pg-info{font-size:12px;color:var(--muted);}
+.pg-btns{display:flex;gap:4px;}
+.pgb{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;}
+.pgb.on{background:var(--primary);color:#fff;border-color:var(--primary);}.pgb:hover:not(.on){background:#f1f5f9;}
+.bv{background:#dcfce7;color:#15803d;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bp{background:#fef9c3;color:#854d0e;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.ba{background:#dbeafe;color:#1d4ed8;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.br{background:#fee2e2;color:#b91c1c;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bg2{background:#d1fae5;color:#065f46;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bo{background:#ffedd5;color:#c2410c;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bpu{background:#ede9fe;color:#6d28d9;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bpk{background:#fce7f3;color:#be185d;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.ac{display:flex;align-items:center;gap:9px;}
+.avi{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0;}
+.fn{font-size:13px;font-weight:600;}.fs{font-size:11px;color:var(--muted);}
+.acts{display:flex;gap:5px;}
+.abt{width:28px;height:28px;border-radius:7px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:.15s;}
+.abt:hover{transform:scale(1.1);}
+.ab-v{background:#dbeafe;color:#1d4ed8;}.ab-e{background:#d1fae5;color:#065f46;}.ab-d{background:#fee2e2;color:#b91c1c;}
+.stars{color:#f59e0b;font-size:12px;}
+.card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.card-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.card-hdr h3{font-size:13px;font-weight:700;}.card-hdr p{font-size:11px;color:var(--muted);margin-top:2px;}
+.va{font-size:12px;color:#3b82f6;cursor:pointer;font-weight:600;}
+.stitle{font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;padding-bottom:8px;border-bottom:2px solid var(--light);margin-bottom:14px;}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+.chip{display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:22px;font-size:11px;font-weight:700;cursor:pointer;border:2px solid transparent;transition:.15s;user-select:none;}
+.chip:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.1);}
+.chip.on{border-color:currentColor;}
+.c1{background:#dbeafe;color:#1d4ed8;}.c2{background:#dcfce7;color:#15803d;}.c3{background:#fef9c3;color:#854d0e;}
+.c4{background:#fce7f3;color:#be185d;}.c5{background:#ede9fe;color:#6d28d9;}.c6{background:#ffedd5;color:#c2410c;}
+.c7{background:#d1fae5;color:#065f46;}.c8{background:#fee2e2;color:#b91c1c;}.c9{background:#e0f2fe;color:#0369a1;}.c0{background:#f3f4f6;color:#374151;}
+.call{background:#f8fafc;color:#475569;border:1.5px solid var(--border);}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fgrp label{font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:4px;}
+.fgrp input,.fgrp select,.fgrp textarea{width:100%;border:1px solid var(--border);border-radius:7px;padding:8px 10px;font-size:12px;color:var(--text);outline:none;background:#f8fafc;resize:vertical;}
+.fgrp input:focus,.fgrp select:focus,.fgrp textarea:focus{border-color:#3b82f6;background:#fff;}
+/* Dashboard */
+.hero-banner{border-radius:14px;overflow:hidden;position:relative;height:165px;margin-bottom:18px;background:linear-gradient(120deg,#0f2942 0%,#1e3a8a 50%,#0e7490 100%);display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1597040663342-45b6af3d91a5?w=1400&q=80') center/cover no-repeat;opacity:.3;}
+.hero-content{position:relative;z-index:1;padding:22px 32px;}
+.hero-content h3{font-size:13px;color:#93c5fd;font-weight:400;margin-bottom:4px;}
+.hero-content h2{font-size:30px;color:#fff;font-weight:900;line-height:1.15;}
+.hero-content .tagline{color:#bfdbfe;font-size:12px;margin-top:8px;}
+.hero-content .tagline span{margin-right:14px;}
+.hero-rt{position:absolute;right:30px;top:50%;transform:translateY(-50%);z-index:1;text-align:right;}
+.hero-rt p{font-size:17px;color:#fff;font-weight:800;font-style:italic;line-height:1.55;}
+.db-charts{display:grid;grid-template-columns:1fr 2fr;gap:14px;margin-bottom:14px;}
+.db-bottom{display:grid;grid-template-columns:1fr 1.7fr 1fr;gap:14px;margin-bottom:14px;}
+.donut-wrap{display:flex;align-items:center;gap:14px;}
+.legend{display:flex;flex-direction:column;gap:4px;}
+.li{display:flex;align-items:center;gap:6px;font-size:11px;}
+.ld{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.lp{margin-left:auto;color:var(--muted);font-weight:700;font-size:10px;padding-left:6px;}
+.chart-wrap{position:relative;height:168px;margin-top:4px;overflow:visible;}
+.chart-wrap svg{width:100%;height:100%;}
+.sup-item{display:flex;align-items:flex-start;gap:9px;padding:9px 0;border-bottom:1px solid #f1f5f9;}
+.sup-item:last-child{border-bottom:none;}
+.sup-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.sup-title{font-size:12px;font-weight:700;}.sup-desc{font-size:10px;color:var(--muted);margin-top:1px;}
+.sup-time{font-size:10px;color:var(--muted);white-space:nowrap;margin-left:auto;}
+.pl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.pl-card{border-radius:9px;overflow:hidden;border:1px solid var(--border);}
+.pl-img{height:72px;background:center/cover no-repeat;position:relative;}
+.pl-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55),transparent);}
+.pl-info{padding:8px;}.pl-name{font-size:11px;font-weight:700;line-height:1.3;}.pl-loc{font-size:10px;color:var(--muted);}.pl-rat{font-size:10px;color:#f59e0b;}
+.ev-item{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid #f1f5f9;}
+.ev-item:last-child{border-bottom:none;}
+.ev-date-box{background:#eff6ff;border-radius:7px;padding:4px 8px;text-align:center;flex-shrink:0;}
+.ev-day{font-size:16px;font-weight:900;color:var(--primary);line-height:1;}.ev-mon{font-size:9px;color:var(--muted);}
+.ev-title2{font-size:12px;font-weight:700;}.ev-sub{font-size:10px;color:var(--muted);}
+.ev-time2{font-size:10px;color:var(--green);font-weight:700;}
+/* Event cards */
+.ev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ev-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.07);}
+.ev-head{height:68px;display:flex;align-items:center;justify-content:center;font-size:30px;}
+.ev-body{padding:12px;}.ev-dbadge{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--accent);font-weight:700;margin-bottom:4px;}
+.ev-title3{font-size:13px;font-weight:800;margin-bottom:5px;}.ev-detail{font-size:11px;color:var(--muted);line-height:1.6;}
+.ev-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;border-top:1px solid #f1f5f9;}
+/* Place cards */
+.pcard{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.07);transition:.15s;}
+.pcard:hover{transform:translateY(-2px);box-shadow:0 5px 14px rgba(0,0,0,.12);}
+.pimg{height:100px;background:center/cover no-repeat;position:relative;}
+.pov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);}
+.pbadge{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:18px;font-size:10px;font-weight:800;}
+.pinfo{padding:10px;}.pname{font-size:13px;font-weight:800;line-height:1.3;}
+.ploc2{font-size:10px;color:var(--muted);margin:2px 0;}.prat2{font-size:11px;color:#f59e0b;}.pcat2{font-size:10px;color:var(--muted);}
+.pfoot{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-top:1px solid #f1f5f9;}
+/* Stay cards */
+.stay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.stay-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.07);}
+.stay-img{height:88px;background:center/cover no-repeat;position:relative;}
+.stay-type-badge{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:18px;font-size:10px;font-weight:800;background:rgba(30,58,95,.85);color:#fff;}
+.stay-rent{position:absolute;bottom:8px;right:8px;font-size:13px;font-weight:900;color:#fff;background:rgba(16,185,129,.88);padding:2px 8px;border-radius:18px;}
+.stay-body{padding:10px;}.stay-name{font-size:13px;font-weight:700;}
+.stay-loc{font-size:10px;color:var(--muted);margin:2px 0 6px;}
+.stay-tags{display:flex;gap:4px;flex-wrap:wrap;}
+.stay-tag{font-size:10px;padding:2px 7px;border-radius:18px;background:#f1f5f9;color:var(--muted);font-weight:600;}
+.stay-foot{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-top:1px solid #f1f5f9;font-size:10px;color:var(--muted);}
+/* Job cards */
+.job-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.job-card{background:#fff;border-radius:12px;padding:15px;box-shadow:0 1px 5px rgba(0,0,0,.07);}
+.job-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:9px;}
+.job-co{display:flex;align-items:center;gap:9px;}
+.job-logo{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.job-title{font-size:13px;font-weight:800;}.job-company{font-size:11px;color:var(--muted);}
+.job-tags2{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;}
+.jtag{padding:3px 8px;border-radius:18px;font-size:10px;font-weight:700;}
+.job-meta{font-size:11px;color:var(--muted);margin-bottom:8px;}
+.job-foot{display:flex;align-items:center;justify-content:space-between;padding-top:9px;border-top:1px solid #f1f5f9;}
+.salary{font-size:14px;font-weight:900;color:var(--green);}
+.apply-btn{padding:6px 14px;background:var(--primary);color:#fff;border-radius:7px;border:none;font-size:11px;font-weight:700;cursor:pointer;}
+.apply-btn:hover{background:#1e40af;}
+/* Biz cards */
+.biz-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.biz-card{background:#fff;border-radius:12px;padding:15px;box-shadow:0 1px 5px rgba(0,0,0,.07);}
+.biz-hdr{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+.biz-ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:21px;}
+.biz-name{font-size:13px;font-weight:800;}.biz-cat{font-size:11px;color:var(--muted);}
+.biz-info{display:flex;flex-direction:column;gap:3px;margin-bottom:9px;}
+.binfo{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px;}
+.biz-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #f1f5f9;padding-top:8px;}
+/* Ann cards */
+.ann-list{display:flex;flex-direction:column;gap:11px;}
+.ann-card{background:#fff;border-radius:12px;padding:15px;box-shadow:0 1px 5px rgba(0,0,0,.06);display:flex;align-items:flex-start;gap:13px;border-left:4px solid var(--accent);}
+.ann-ico{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ann-body{flex:1;}.ann-type{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+.ann-title{font-size:13px;font-weight:800;}
+.ann-desc{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5;}
+.ann-meta{display:flex;gap:10px;margin-top:7px;font-size:10px;color:var(--muted);flex-wrap:wrap;}
+.ann-rt{text-align:right;flex-shrink:0;}.ann-time{font-size:10px;color:var(--muted);}
+/* Profile */
+.prof-wrap{display:grid;grid-template-columns:290px 1fr;gap:16px;}
+.prof-card2{background:#fff;border-radius:14px;padding:22px;box-shadow:0 1px 6px rgba(0,0,0,.07);text-align:center;}
+.prof-av2{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#c2410c);color:#fff;font-size:28px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;}
+.prof-name{font-size:17px;font-weight:900;}.prof-role{font-size:11px;color:var(--muted);}
+.prof-badges{display:flex;gap:5px;justify-content:center;margin-top:9px;flex-wrap:wrap;}
+.prof-info{margin-top:14px;text-align:left;}
+.pi-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f1f5f9;font-size:12px;}
+.pi-row:last-child{border-bottom:none;}
+.pi-lbl{color:var(--muted);}.pi-val{font-weight:700;}
+.prof-detail{background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+/* Settings */
+.sett-wrap{display:grid;grid-template-columns:220px 1fr;gap:16px;}
+.sett-menu{background:#fff;border-radius:14px;padding:10px;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.sm-item{padding:10px 12px;border-radius:8px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--muted);transition:.15s;}
+.sm-item:hover{background:#f1f5f9;color:var(--primary);}.sm-item.on{background:#eff6ff;color:var(--primary);font-weight:700;}
+.sett-panel{background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 6px rgba(0,0,0,.07);}
+.tog-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #f1f5f9;}
+.tog-row:last-child{border-bottom:none;}
+.tr-l h4{font-size:13px;font-weight:700;}.tr-l p{font-size:11px;color:var(--muted);}
+.tog{width:40px;height:22px;border-radius:11px;background:#e2e8f0;position:relative;cursor:pointer;transition:.2s;flex-shrink:0;}
+.tog.on{background:var(--green);}
+.tog::after{content:'';width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.tog.on::after{left:20px;}
+/* Modal */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;}
+.modal-ov.open{display:flex;}
+.modal-box{background:#fff;border-radius:16px;padding:24px;width:700px;max-width:95vw;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:mIn .2s ease;margin:auto;}
+@keyframes mIn{from{opacity:0;transform:scale(.95);}to{opacity:1;transform:scale(1);}}
+.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid var(--light);}
+.modal-title{font-size:16px;font-weight:800;}
+.modal-close{width:32px;height:32px;border-radius:8px;border:none;background:#f1f5f9;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;}
+.modal-close:hover{background:#fee2e2;color:var(--red);}
+.modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;padding-top:14px;border-top:1px solid var(--border);}
+/* Confirm */
+.cfm-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100;display:none;align-items:center;justify-content:center;}
+.cfm-ov.open{display:flex;}
+.cfm-box{background:#fff;border-radius:14px;padding:28px;width:340px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.15);}
+.cfm-box .cfm-icon{font-size:40px;margin-bottom:10px;}
+.cfm-box h3{font-size:16px;font-weight:800;margin-bottom:8px;}
+.cfm-box p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5;}
+.cfm-btns{display:flex;gap:10px;justify-content:center;}
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;background:#1e3a5f;color:#fff;padding:13px 22px;border-radius:12px;font-size:13px;font-weight:600;z-index:2000;opacity:0;transform:translateY(10px);transition:.3s;pointer-events:none;display:flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,.2);}
+.toast.show{opacity:1;transform:translateY(0);}
+.empty{text-align:center;padding:50px 20px;color:var(--muted);}
+.empty .ei{font-size:48px;margin-bottom:12px;}
+.empty h3{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);}
+.empty p{font-size:13px;}
+.card-acts{display:flex;gap:5px;justify-content:flex-end;}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="logo"><span class="logo-icon">🏛️</span><div class="logo-text"><h1>Mana Telugu Pune</h1><p>Connecting Telugu Hearts Across Pune</p></div></div>
+  <div class="nav-search"><span class="si">🔍</span><input type="text" placeholder="Search people, places, events, jobs..."/></div>
+  <div class="nr">
+    <div class="bell-w">🔔<div class="bdg" id="notif-bdg">4</div></div>
+    <div class="av">SS</div>
+    <div class="uinfo"><div class="un">Sravanthi</div><div class="ur">Member</div></div>
+  </div>
+</header>
+
+<div class="shell">
+<aside class="sidebar">
+  <nav>
+    <div class="slbl">Main Menu</div>
+    <div class="nv active" onclick="show('dashboard')" id="nav-dashboard"><span class="ni">🏠</span>Dashboard</div>
+    <div class="sdiv"></div>
+    <div class="slbl">Community</div>
+    <div class="nv" onclick="show('family')" id="nav-family"><span class="ni">👨‍👩‍👧</span>Family Directory</div>
+    <div class="nv" onclick="show('events')" id="nav-events"><span class="ni">📅</span>Events</div>
+    <div class="nv" onclick="show('contacts')" id="nav-contacts"><span class="ni">👥</span>Community Contacts</div>
+    <div class="nv" onclick="show('business')" id="nav-business"><span class="ni">🏢</span>Business Directory</div>
+    <div class="sdiv"></div>
+    <div class="slbl">Listings</div>
+    <div class="nv" onclick="show('stay')" id="nav-stay"><span class="ni">🛏️</span>Stay Finder</div>
+    <div class="nv" onclick="show('jobs')" id="nav-jobs"><span class="ni">💼</span>Jobs &amp; Opportunity</div>
+    <div class="nv" onclick="show('places')" id="nav-places"><span class="ni">📍</span>Places to Visit</div>
+    <div class="sdiv"></div>
+    <div class="slbl">Notices</div>
+    <div class="nv" onclick="show('announce')" id="nav-announce"><span class="ni">📢</span>Announcements</div>
+    <div class="sdiv"></div>
+    <div class="slbl">Account</div>
+    <div class="nv" onclick="show('profile')" id="nav-profile"><span class="ni">👤</span>My Profile</div>
+    <div class="nv" onclick="show('settings')" id="nav-settings"><span class="ni">⚙️</span>Settings</div>
+  </nav>
+  <div class="sf"><p>Together · Stronger Community<br/>Brighter Tomorrow ❤️</p></div>
+</aside>
+
+<main class="main">
+
+<!-- ═══ DASHBOARD ═══ -->
+<div class="page active" id="page-dashboard">
+  <div class="hero-banner">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h3>Welcome to</h3><h2>Community Connect</h2>
+      <p class="tagline"><span>👥 People</span><span>📍 Places</span><span>💼 Opportunities</span><span>🌅 Stronger Tomorrow</span></p>
+    </div>
+    <div class="hero-rt"><p>Stronger People<br/>Brighter Tomorrows</p></div>
+  </div>
+  <div id="db-stats"></div>
+  <div class="db-charts">
+    <div class="card">
+      <div class="card-hdr"><div><h3>📍 Members by Location</h3><p>Top areas in Pune</p></div></div>
+      <div class="donut-wrap">
+        <svg width="130" height="130" viewBox="0 0 130 130" style="flex-shrink:0;">
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#e2e8f0" stroke-width="22"/>
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#3b82f6" stroke-width="22" stroke-dasharray="30 272" stroke-dashoffset="0" transform="rotate(-90 65 65)"/>
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#f97316" stroke-width="22" stroke-dasharray="24 278" stroke-dashoffset="-30" transform="rotate(-90 65 65)"/>
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#10b981" stroke-width="22" stroke-dasharray="21 281" stroke-dashoffset="-54" transform="rotate(-90 65 65)"/>
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#8b5cf6" stroke-width="22" stroke-dasharray="18 284" stroke-dashoffset="-75" transform="rotate(-90 65 65)"/>
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#ec4899" stroke-width="22" stroke-dasharray="18 284" stroke-dashoffset="-93" transform="rotate(-90 65 65)"/>
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#f59e0b" stroke-width="22" stroke-dasharray="16 286" stroke-dashoffset="-111" transform="rotate(-90 65 65)"/>
+          <circle cx="65" cy="65" r="48" fill="none" stroke="#cbd5e1" stroke-width="22" stroke-dasharray="174 128" stroke-dashoffset="-127" transform="rotate(-90 65 65)"/>
+          <text x="65" y="61" text-anchor="middle" font-size="13" font-weight="900" fill="#1e293b" id="db-donut-total">6,000</text>
+          <text x="65" y="74" text-anchor="middle" font-size="9" fill="#64748b">Members</text>
+        </svg>
+        <div class="legend">
+          <div class="li"><div class="ld" style="background:#3b82f6;"></div>Kharadi<span class="lp">10%</span></div>
+          <div class="li"><div class="ld" style="background:#f97316;"></div>Hinjewadi<span class="lp">8%</span></div>
+          <div class="li"><div class="ld" style="background:#10b981;"></div>Wakad<span class="lp">7%</span></div>
+          <div class="li"><div class="ld" style="background:#8b5cf6;"></div>Baner<span class="lp">6%</span></div>
+          <div class="li"><div class="ld" style="background:#ec4899;"></div>Pimple Saudagar<span class="lp">6%</span></div>
+          <div class="li"><div class="ld" style="background:#f59e0b;"></div>Hadapsar<span class="lp">5%</span></div>
+          <div class="li"><div class="ld" style="background:#cbd5e1;"></div>Others<span class="lp">58%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-hdr"><div><h3>📈 Member Growth</h3><p>Steady community growth Jan – Jul 2026</p></div></div>
+      <div class="chart-wrap">
+        <svg viewBox="0 0 520 168" preserveAspectRatio="none" style="overflow:visible;">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity=".18"/><stop offset="100%" stop-color="#3b82f6" stop-opacity=".02"/></linearGradient></defs>
+          <text x="2" y="14" font-size="9" fill="#94a3b8">8K</text><text x="2" y="54" font-size="9" fill="#94a3b8">6K</text>
+          <text x="2" y="94" font-size="9" fill="#94a3b8">4K</text><text x="2" y="134" font-size="9" fill="#94a3b8">2K</text>
+          <line x1="28" y1="10" x2="518" y2="10" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="28" y1="50" x2="518" y2="50" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="28" y1="90" x2="518" y2="90" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="28" y1="130" x2="518" y2="130" stroke="#f1f5f9" stroke-width="1"/>
+          <line x1="28" y1="150" x2="518" y2="150" stroke="#e2e8f0" stroke-width="1"/>
+          <polygon points="40,128 120,122 200,113 280,104 360,91 440,88 500,83 500,150 40,150" fill="url(#g1)"/>
+          <polyline points="40,128 120,122 200,113 280,104 360,91 440,88 500,83" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="40" cy="128" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="120" cy="122" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="200" cy="113" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="280" cy="104" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="360" cy="91" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="440" cy="88" r="4" fill="#fff" stroke="#3b82f6" stroke-width="2.5"/>
+          <circle cx="500" cy="83" r="5" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
+          <text x="40" y="122" font-size="8" fill="#64748b" text-anchor="middle">3,500</text>
+          <text x="120" y="116" font-size="8" fill="#64748b" text-anchor="middle">3,800</text>
+          <text x="200" y="107" font-size="8" fill="#64748b" text-anchor="middle">4,200</text>
+          <text x="280" y="98" font-size="8" fill="#64748b" text-anchor="middle">4,800</text>
+          <text x="360" y="85" font-size="8" fill="#64748b" text-anchor="middle">5,200</text>
+          <text x="440" y="82" font-size="8" fill="#64748b" text-anchor="middle">5,600</text>
+          <text x="500" y="77" font-size="8" fill="#3b82f6" font-weight="700" text-anchor="middle">6,000</text>
+          <text x="40" y="163" font-size="9" fill="#94a3b8" text-anchor="middle">Jan</text>
+          <text x="120" y="163" font-size="9" fill="#94a3b8" text-anchor="middle">Feb</text>
+          <text x="200" y="163" font-size="9" fill="#94a3b8" text-anchor="middle">Mar</text>
+          <text x="280" y="163" font-size="9" fill="#94a3b8" text-anchor="middle">Apr</text>
+          <text x="360" y="163" font-size="9" fill="#94a3b8" text-anchor="middle">May</text>
+          <text x="440" y="163" font-size="9" fill="#94a3b8" text-anchor="middle">Jun</text>
+          <text x="500" y="163" font-size="9" fill="#94a3b8" text-anchor="middle">Jul</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="db-bottom">
+    <div class="card"><div class="card-hdr"><h3>🤝 Recent Support</h3><span class="va" onclick="show('announce')">View All</span></div><div id="db-support"></div></div>
+    <div class="card"><div class="card-hdr"><h3>📍 Popular Places</h3><span class="va" onclick="show('places')">View All</span></div><div id="db-places"></div></div>
+    <div class="card"><div class="card-hdr"><h3>📅 Upcoming Events</h3><span class="va" onclick="show('events')">View All</span></div><div id="db-events"></div></div>
+  </div>
+</div>
+
+<!-- ═══ FAMILY DIRECTORY ═══ -->
+<div class="page" id="page-family">
+  <div class="ph">
+    <div class="ph-left"><h2>👨‍👩‍👧 Family Directory</h2><p>Registered Telugu families across Pune</p></div>
+    <div class="btns"><button class="btn btn-accent" onclick="openAddModal('family')">＋ Add Family</button></div>
+  </div>
+  <div id="stats-family"></div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" id="fam-search" placeholder="Search by name, email, phone..." oninput="renderFamilies()"/></div>
+    <select id="fam-loc" onchange="renderFamilies()"><option value="">Location: All</option><option>Wakad</option><option>Baner</option><option>Hinjewadi</option><option>Kharadi</option><option>Viman Nagar</option><option>Pimple Saudagar</option><option>Hadapsar</option></select>
+    <select id="fam-blood" onchange="renderFamilies()"><option value="">Blood Group: All</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select>
+    <select id="fam-status" onchange="renderFamilies()"><option value="">Status: All</option><option>Verified</option><option>Pending</option></select>
+    <select id="fam-type" onchange="renderFamilies()"><option value="">Owner/Tenant: All</option><option>Owner</option><option>Tenant</option></select>
+    <button class="btn btn-outline" onclick="resetFilters('fam')">↺ Reset</button>
+  </div>
+  <div id="content-family"></div>
+</div>
+
+<!-- ═══ EVENTS ═══ -->
+<div class="page" id="page-events">
+  <div class="ph">
+    <div class="ph-left"><h2>📅 Events</h2><p>Community festivals, workshops &amp; cultural meets</p></div>
+    <div class="btns"><button class="btn btn-accent" onclick="openAddModal('event')">＋ Add Event</button></div>
+  </div>
+  <div id="stats-events"></div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" id="ev-search" placeholder="Search events..." oninput="renderEvents()"/></div>
+    <select id="ev-type" onchange="renderEvents()"><option value="">Type: All</option><option>Festival</option><option>Cultural</option><option>Sports</option><option>Meetup</option><option>Workshop</option><option>Health</option></select>
+    <select id="ev-audience" onchange="renderEvents()"><option value="">Audience: All</option><option>All</option><option>Families</option><option>Youth</option><option>Women</option><option>Kids</option></select>
+    <select id="ev-status" onchange="renderEvents()"><option value="">Status: All</option><option>Active</option><option>Registering</option><option>Completed</option></select>
+    <button class="btn btn-outline" onclick="resetFilters('ev')">↺ Reset</button>
+  </div>
+  <div id="content-events"></div>
+</div>
+
+<!-- ═══ COMMUNITY CONTACTS ═══ -->
+<div class="page" id="page-contacts">
+  <div class="ph">
+    <div class="ph-left"><h2>👥 Community Contacts</h2><p>Trusted professionals &amp; verified service providers</p></div>
+    <div class="btns"><button class="btn btn-accent" onclick="openAddModal('contact')">＋ Add Contact</button></div>
+  </div>
+  <div id="stats-contacts"></div>
+  <div class="chips" id="chips-contacts">
+    <div class="chip call on" onclick="setChip('contacts','')">🔍 All</div>
+    <div class="chip c1" onclick="setChip('contacts','Doctor')">🩺 Doctor</div>
+    <div class="chip c2" onclick="setChip('contacts','Lawyer')">⚖️ Lawyer</div>
+    <div class="chip c3" onclick="setChip('contacts','CA')">📊 CA</div>
+    <div class="chip c4" onclick="setChip('contacts','Poojari')">🪔 Poojari</div>
+    <div class="chip c5" onclick="setChip('contacts','Electrician')">⚡ Electrician</div>
+    <div class="chip c6" onclick="setChip('contacts','Plumber')">🔧 Plumber</div>
+    <div class="chip c7" onclick="setChip('contacts','Realtor')">🏠 Realtor</div>
+    <div class="chip c8" onclick="setChip('contacts','Emergency')">🚨 Emergency</div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" id="ct-search" placeholder="Search by name, org, area..." oninput="renderContacts()"/></div>
+    <select id="ct-area" onchange="renderContacts()"><option value="">Area: All</option><option>Wakad</option><option>Baner</option><option>Hinjewadi</option><option>Kharadi</option><option>Viman Nagar</option></select>
+    <select id="ct-status" onchange="renderContacts()"><option value="">Status: All</option><option>Verified</option><option>Pending</option></select>
+    <button class="btn btn-outline" onclick="resetFilters('ct')">↺ Reset</button>
+  </div>
+  <div id="content-contacts"></div>
+</div>
+
+<!-- ═══ BUSINESS DIRECTORY ═══ -->
+<div class="page" id="page-business">
+  <div class="ph">
+    <div class="ph-left"><h2>🏢 Business Directory</h2><p>Telugu-owned &amp; Telugu-friendly businesses in Pune</p></div>
+    <div class="btns"><button class="btn btn-accent" onclick="openAddModal('business')">＋ Add Business</button></div>
+  </div>
+  <div id="stats-business"></div>
+  <div class="chips" id="chips-business">
+    <div class="chip call on" onclick="setChip('business','')">🔍 All</div>
+    <div class="chip c3" onclick="setChip('business','Restaurant')">🍽️ Restaurant</div>
+    <div class="chip c1" onclick="setChip('business','Healthcare')">🏥 Healthcare</div>
+    <div class="chip c2" onclick="setChip('business','Education')">📚 Education</div>
+    <div class="chip c5" onclick="setChip('business','IT Services')">💻 IT Services</div>
+    <div class="chip c6" onclick="setChip('business','Real Estate')">🏗️ Real Estate</div>
+    <div class="chip c4" onclick="setChip('business','Retail')">👗 Retail</div>
+    <div class="chip c7" onclick="setChip('business','Automobile')">🚗 Automobile</div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" id="biz-search" placeholder="Search business, category..." oninput="renderBusinesses()"/></div>
+    <select id="biz-status" onchange="renderBusinesses()"><option value="">Status: All</option><option>Verified</option><option>Pending</option></select>
+    <button class="btn btn-outline" onclick="resetFilters('biz')">↺ Reset</button>
+  </div>
+  <div id="content-business"></div>
+</div>
+
+<!-- ═══ STAY FINDER ═══ -->
+<div class="page" id="page-stay">
+  <div class="ph">
+    <div class="ph-left"><h2>🛏️ Stay Finder</h2><p>PG, Coliving, Flats &amp; Shared Accommodation in Pune</p></div>
+    <div class="btns"><button class="btn btn-accent" onclick="openAddModal('stay')">＋ List Property</button></div>
+  </div>
+  <div id="stats-stay"></div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" id="stay-search" placeholder="Search property, area..." oninput="renderStays()"/></div>
+    <select id="stay-type" onchange="renderStays()"><option value="">Type: All</option><option>PG</option><option>Coliving</option><option>Flat</option><option>Shared Flat</option><option>Room</option></select>
+    <select id="stay-gender" onchange="renderStays()"><option value="">Gender: All</option><option>Male</option><option>Female</option><option>Family</option><option>Unisex</option></select>
+    <select id="stay-food" onchange="renderStays()"><option value="">Food: All</option><option>Yes</option><option>No</option></select>
+    <select id="stay-status" onchange="renderStays()"><option value="">Status: All</option><option>Available</option><option>Booked</option><option>Coming Soon</option></select>
+    <button class="btn btn-outline" onclick="resetFilters('stay')">↺ Reset</button>
+  </div>
+  <div id="content-stay"></div>
+</div>
+
+<!-- ═══ JOBS ═══ -->
+<div class="page" id="page-jobs">
+  <div class="ph">
+    <div class="ph-left"><h2>💼 Jobs &amp; Opportunity</h2><p>Job postings, internships &amp; freelance opportunities</p></div>
+    <div class="btns"><button class="btn btn-accent" onclick="openAddModal('job')">＋ Post a Job</button></div>
+  </div>
+  <div id="stats-jobs"></div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" id="job-search" placeholder="Search job title, company, skills..." oninput="renderJobs()"/></div>
+    <select id="job-type" onchange="renderJobs()"><option value="">Type: All</option><option>Full Time</option><option>Part Time</option><option>Internship</option><option>Freelance</option></select>
+    <select id="job-loc" onchange="renderJobs()"><option value="">Location: All</option><option>Hinjewadi</option><option>Kharadi</option><option>Baner</option><option>Wakad</option><option>Remote</option></select>
+    <select id="job-exp" onchange="renderJobs()"><option value="">Experience: All</option><option>Fresher</option><option>1–3 yrs</option><option>3–5 yrs</option><option>5+ yrs</option></select>
+    <button class="btn btn-outline" onclick="resetFilters('job')">↺ Reset</button>
+  </div>
+  <div id="content-jobs"></div>
+</div>
+
+<!-- ═══ ANNOUNCEMENTS ═══ -->
+<div class="page" id="page-announce">
+  <div class="ph">
+    <div class="ph-left"><h2>📢 Announcements</h2><p>Community support board &amp; important notices</p></div>
+    <div class="btns"><button class="btn btn-accent" onclick="openAddModal('announce')">＋ Post Announcement</button></div>
+  </div>
+  <div id="stats-announce"></div>
+  <div class="chips" id="chips-announce">
+    <div class="chip call on" onclick="setChip('announce','')">🔍 All</div>
+    <div class="chip c8" onclick="setChip('announce','Blood Required')">🩸 Blood Required</div>
+    <div class="chip c1" onclick="setChip('announce','Travel Partner')">🚗 Travel Partner</div>
+    <div class="chip c2" onclick="setChip('announce','Job Available')">💼 Job Available</div>
+    <div class="chip c6" onclick="setChip('announce','Looking for Maid')">🏠 Maid Needed</div>
+    <div class="chip c3" onclick="setChip('announce','House for Rent')">🏡 House for Rent</div>
+    <div class="chip c4" onclick="setChip('announce','PG Needed')">🛋️ PG Needed</div>
+    <div class="chip c5" onclick="setChip('announce','Volunteer Needed')">🙋 Volunteer</div>
+    <div class="chip c7" onclick="setChip('announce','Lost & Found')">🔑 Lost &amp; Found</div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" id="ann-search" placeholder="Search announcements..." oninput="renderAnnouncements()"/></div>
+    <select id="ann-urgency" onchange="renderAnnouncements()"><option value="">Urgency: All</option><option>Very Urgent</option><option>Urgent</option><option>Normal</option></select>
+    <select id="ann-status" onchange="renderAnnouncements()"><option value="">Status: All</option><option>Active</option><option>Resolved</option><option>Expired</option></select>
+    <button class="btn btn-outline" onclick="resetFilters('ann')">↺ Reset</button>
+  </div>
+  <div id="content-announce"></div>
+</div>
+
+<!-- ═══ PLACES ═══ -->
+<div class="page" id="page-places">
+  <div class="ph">
+    <div class="ph-left"><h2>📍 Places to Visit</h2><p>Devotional, historical, nature &amp; adventure destinations</p></div>
+    <div class="btns"><button class="btn btn-accent" onclick="openAddModal('place')">＋ Add Place</button></div>
+  </div>
+  <div id="stats-places"></div>
+  <div class="chips" id="chips-places">
+    <div class="chip call on" onclick="setChip('places','')">🔍 All</div>
+    <div class="chip c4" onclick="setChip('places','Devotional')">🛕 Devotional</div>
+    <div class="chip c1" onclick="setChip('places','Historical')">🏰 Historical</div>
+    <div class="chip c9" onclick="setChip('places','Hill Station')">⛰️ Hill Station</div>
+    <div class="chip c2" onclick="setChip('places','Trekking')">🌿 Trekking</div>
+    <div class="chip c3" onclick="setChip('places','Beach')">🏖️ Beach</div>
+    <div class="chip c5" onclick="setChip('places','Camping')">🏕️ Camping</div>
+    <div class="chip c6" onclick="setChip('places','Wildlife')">🦁 Wildlife</div>
+    <div class="chip c7" onclick="setChip('places','Adventure')">🪂 Adventure</div>
+  </div>
+  <div class="toolbar">
+    <div class="ts"><span class="si">🔍</span><input type="text" id="pl-search" placeholder="Search place name, district..." oninput="renderPlaces()"/></div>
+    <select id="pl-district" onchange="renderPlaces()"><option value="">District: All</option><option>Pune</option><option>Ratnagiri</option><option>Nashik</option><option>Satara</option></select>
+    <select id="pl-status" onchange="renderPlaces()"><option value="">Status: All</option><option>Active</option><option>Pending</option></select>
+    <button class="btn btn-outline" onclick="resetFilters('pl')">↺ Reset</button>
+  </div>
+  <div id="content-places"></div>
+</div>
+
+<!-- ═══ PROFILE ═══ -->
+<div class="page" id="page-profile">
+  <div class="ph">
+    <div class="ph-left"><h2>👤 My Profile</h2><p>Manage your community member profile</p></div>
+    <div class="btns"><button class="btn btn-outline">🔒 Change Password</button><button class="btn btn-primary">💾 Save Changes</button></div>
+  </div>
+  <div class="prof-wrap">
+    <div>
+      <div class="prof-card2">
+        <div class="prof-av2">SS</div>
+        <div class="prof-name">Sravanthi Sharma</div><div class="prof-role">Community Member since 2024</div>
+        <div class="prof-badges"><span class="bv">✔ Verified</span><span class="ba">🤝 Volunteer</span></div>
+        <div class="prof-info">
+          <div class="pi-row"><span class="pi-lbl">User ID</span><span class="pi-val">MTP-1001</span></div>
+          <div class="pi-row"><span class="pi-lbl">Blood Group</span><span class="pi-val" style="color:var(--red);">B+</span></div>
+          <div class="pi-row"><span class="pi-lbl">Mobile</span><span class="pi-val">9876543200</span></div>
+          <div class="pi-row"><span class="pi-lbl">Location</span><span class="pi-val">Wakad, Pune</span></div>
+          <div class="pi-row"><span class="pi-lbl">Native</span><span class="pi-val">Vijayawada, AP</span></div>
+          <div class="pi-row"><span class="pi-lbl">Membership</span><span class="pi-val" style="color:var(--green);">Active ✔</span></div>
+        </div>
+        <button class="btn btn-outline" style="width:100%;margin-top:12px;justify-content:center;">📸 Change Photo</button>
+      </div>
+    </div>
+    <div class="prof-detail">
+      <div class="stitle">🧾 Basic Information</div>
+      <div class="form-grid" style="margin-bottom:16px;">
+        <div class="fgrp"><label>User ID</label><input type="text" value="MTP-1001" readonly/></div>
+        <div class="fgrp"><label>Family Surname</label><input type="text" value="Sharma"/></div>
+        <div class="fgrp"><label>Primary Contact Name</label><input type="text" value="Sravanthi Sharma"/></div>
+        <div class="fgrp"><label>Gender</label><select><option>Female</option><option>Male</option></select></div>
+        <div class="fgrp"><label>Date of Birth</label><input type="date" value="1992-05-15"/></div>
+        <div class="fgrp"><label>Blood Group</label><select><option>B+</option><option>O+</option><option>A+</option><option>AB+</option></select></div>
+        <div class="fgrp"><label>Religion</label><input type="text" value="Hindu"/></div>
+        <div class="fgrp"><label>Community/Caste</label><input type="text" value="Kamma"/></div>
+        <div class="fgrp"><label>Mobile Number</label><input type="text" value="9876543200"/></div>
+        <div class="fgrp"><label>WhatsApp Number</label><input type="text" value="9876543200"/></div>
+        <div class="fgrp"><label>Email Address</label><input type="email" value="sravanthi.s@gmail.com"/></div>
+        <div class="fgrp"><label>Native Place</label><input type="text" value="Vijayawada, AP"/></div>
+        <div class="fgrp"><label>Current Location</label><input type="text" value="Wakad, Pune"/></div>
+        <div class="fgrp"><label>Owner / Tenant</label><select><option>Tenant</option><option>Owner</option></select></div>
+        <div class="fgrp"><label>Profession</label><input type="text" value="Software Engineer"/></div>
+        <div class="fgrp"><label>Company</label><input type="text" value="Infosys Ltd"/></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SETTINGS ═══ -->
+<div class="page" id="page-settings">
+  <div class="ph">
+    <div class="ph-left"><h2>⚙️ Settings</h2><p>Manage account preferences &amp; notifications</p></div>
+    <button class="btn btn-primary">💾 Save Settings</button>
+  </div>
+  <div class="sett-wrap">
+    <div class="sett-menu">
+      <div class="sm-item on">🔔 Notifications</div><div class="sm-item">🔒 Privacy</div>
+      <div class="sm-item">🌐 Language</div><div class="sm-item">💳 Membership</div>
+      <div class="sm-item" style="color:var(--red);">🗑️ Delete Account</div>
+    </div>
+    <div class="sett-panel">
+      <div class="stitle">🔔 Notification Preferences</div>
+      <div class="tog-row"><div class="tr-l"><h4>Community Announcements</h4><p>Blood requests, travel partners, emergency alerts</p></div><div class="tog on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>Event Reminders</h4><p>Reminders for upcoming registered events</p></div><div class="tog on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>New Job Postings</h4><p>Alerts for jobs matching your skills</p></div><div class="tog" onclick="this.classList.toggle('on')"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>WhatsApp Notifications</h4><p>Receive key alerts on WhatsApp</p></div><div class="tog on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>Weekly Email Digest</h4><p>Weekly summary of community activity</p></div><div class="tog on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="stitle" style="margin-top:20px;">🔒 Privacy Settings</div>
+      <div class="tog-row"><div class="tr-l"><h4>Show Profile in Family Directory</h4><p>Allow members to find your family profile</p></div><div class="tog on" onclick="this.classList.toggle('on')"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>Show Mobile Number Publicly</h4><p>Visible to verified members only</p></div><div class="tog" onclick="this.classList.toggle('on')"></div></div>
+      <div class="tog-row"><div class="tr-l"><h4>Blood Donor Visibility</h4><p>Allow community to contact for blood</p></div><div class="tog on" onclick="this.classList.toggle('on')"></div></div>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<!-- ═══ MODAL ═══ -->
+<div class="modal-ov" id="modal-ov" onclick="modalOverlayClick(event)">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 class="modal-title" id="modal-title">Add Record</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" id="modal-save-btn" onclick="submitModal()">💾 Save Record</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONFIRM ═══ -->
+<div class="cfm-ov" id="cfm-ov">
+  <div class="cfm-box">
+    <div class="cfm-icon">🗑️</div>
+    <h3>Delete Record?</h3>
+    <p>This action cannot be undone. The record will be permanently removed.</p>
+    <div class="cfm-btns">
+      <button class="btn btn-outline" onclick="closeCfm()">Cancel</button>
+      <button class="btn" style="background:var(--red);color:#fff;" onclick="confirmDelete()">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════
+// DATA ARRAYS
+// ═══════════════════════════════════════════
+let families = [
+  {id:'FAM-001',name:'Rajesh Kumar',surname:'Kumar',email:'rajesh.k@gmail.com',phone:'9876543210',whatsapp:'9876543210',location:'Wakad',address:'Green Valley Society, B-204, Near Phoenix Mall',native:'Vijayawada, AP',members:4,children:2,profession:'Software Engineer',company:'TCS, Hinjewadi',blood:'O+',ownerType:'Tenant',status:'Verified'},
+  {id:'FAM-002',name:'Sunitha Prasad',surname:'Prasad',email:'sunitha.p@gmail.com',phone:'9123456780',whatsapp:'9123456780',location:'Baner',address:'Shree Park, A-103, Near D-Mart',native:'Guntur, AP',members:3,children:1,profession:'Doctor',company:'Sai Clinic, Baner',blood:'B+',ownerType:'Tenant',status:'Verified'},
+  {id:'FAM-003',name:'Venkat Reddy',surname:'Reddy',email:'venkat.r@gmail.com',phone:'9988776600',whatsapp:'9988776600',location:'Hinjewadi',address:'Marunji Road, Phase 2',native:'Tirupati, AP',members:5,children:3,profession:'Business Owner',company:'Self – Grocery',blood:'A+',ownerType:'Owner',status:'Pending'},
+  {id:'FAM-004',name:'Lakshmi Naidu',surname:'Naidu',email:'lakshmi.n@gmail.com',phone:'8899001122',whatsapp:'8899001122',location:'Kharadi',address:'EON Free Zone Colony, C-305',native:'Kakinada, AP',members:2,children:0,profession:'Chartered Accountant',company:'MB & Co, Kharadi',blood:'AB+',ownerType:'Tenant',status:'Verified'},
+  {id:'FAM-005',name:'Phani Sharma',surname:'Sharma',email:'phani.s@gmail.com',phone:'7766554430',whatsapp:'7766554430',location:'Viman Nagar',address:'Sai Paradise, D-501, Airport Road',native:'Nellore, AP',members:4,children:2,profession:'IT Manager',company:'Infosys, Hinjewadi',blood:'O-',ownerType:'Tenant',status:'Verified'},
+  {id:'FAM-006',name:'Ramesh Babu Varma',surname:'Varma',email:'ramesh.v@gmail.com',phone:'9001234567',whatsapp:'9001234567',location:'Pimple Saudagar',address:'Royal Residency, F-102',native:'Krishna, AP',members:4,children:2,profession:'Teacher',company:'DPS School',blood:'B-',ownerType:'Owner',status:'Verified'},
+  {id:'FAM-007',name:'Kavitha Rao',surname:'Rao',email:'kavitha.rao@gmail.com',phone:'9876540011',whatsapp:'9876540011',location:'Wakad',address:'Harmony Heights, A-401, Near Highway',native:'Visakhapatnam, AP',members:3,children:1,profession:'HR Manager',company:'Wipro, Hinjewadi',blood:'A+',ownerType:'Tenant',status:'Verified'},
+  {id:'FAM-008',name:'Srinivas Varma',surname:'Varma',email:'srinivas.v@gmail.com',phone:'8800991100',whatsapp:'8800991100',location:'Baner',address:'Silver Oak Society, B-601, MG Road',native:'Tenali, AP',members:5,children:2,profession:'Senior Doctor',company:'Apollo Hospital',blood:'O+',ownerType:'Owner',status:'Verified'},
+  {id:'FAM-009',name:'Deepika Chowdary',surname:'Chowdary',email:'deepika.c@gmail.com',phone:'9988001234',whatsapp:'9988001234',location:'Hadapsar',address:'Sun Plaza, C-201, Magarpatta Road',native:'Rajahmundry, AP',members:3,children:1,profession:'Entrepreneur',company:'Self – Fashion',blood:'AB-',ownerType:'Tenant',status:'Pending'},
+  {id:'FAM-010',name:'Anil Kumar Reddy',surname:'Reddy',email:'anil.reddy@gmail.com',phone:'7788990011',whatsapp:'7788990011',location:'Hinjewadi',address:'Tech Park Residency, A-201, Phase 3',native:'Nandyal, AP',members:4,children:2,profession:'Senior Engineer',company:'Cognizant',blood:'B+',ownerType:'Tenant',status:'Verified'}
+];
+
+let events = [
+  {id:'EVT-001',name:'Sankranthi Sambaram 2027',type:'Festival',date:'2027-01-14',startTime:'09:00',endTime:'18:00',venue:'Balewadi Community Hall, Pune',organizer:'Phani Kumar',orgContact:'9876543210',audience:'Families',entryFee:'₹100/family',expected:250,language:'Telugu',status:'Active',emoji:'🪔'},
+  {id:'EVT-002',name:'Career Guidance Webinar',type:'Workshop',date:'2026-07-22',startTime:'16:00',endTime:'18:00',venue:'Online (Zoom)',organizer:'Anil Reddy',orgContact:'9123456700',audience:'Youth',entryFee:'Free',expected:150,language:'Telugu + English',status:'Active',emoji:'🎓'},
+  {id:'EVT-003',name:'Telugu Community Cricket Tournament',type:'Sports',date:'2026-08-10',startTime:'07:00',endTime:'17:00',venue:'Balewadi Stadium, Pune',organizer:'Suresh Naidu',orgContact:'9988001111',audience:'Youth',entryFee:'₹50/player',expected:100,language:'Telugu',status:'Registering',emoji:'🏏'},
+  {id:'EVT-004',name:'Ganesh Festival Celebration',type:'Festival',date:'2026-08-05',startTime:'18:00',endTime:'23:00',venue:'Wakad Community Ground',organizer:'Ravi Sharma',orgContact:'7766554433',audience:'All',entryFee:'Free',expected:500,language:'Telugu + Hindi',status:'Active',emoji:'🐘'},
+  {id:'EVT-005',name:'Women Empowerment Meet',type:'Meetup',date:'2026-08-18',startTime:'10:00',endTime:'14:00',venue:'Baner Community Hall',organizer:'Priya Rao',orgContact:'9876540000',audience:'Women',entryFee:'Free',expected:80,language:'Telugu + English',status:'Active',emoji:'👩'},
+  {id:'EVT-006',name:'IT Skills Bootcamp',type:'Workshop',date:'2026-08-30',startTime:'14:00',endTime:'18:00',venue:'Online (Google Meet)',organizer:'Kiran Tech',orgContact:'9001234560',audience:'Youth',entryFee:'₹200/person',expected:60,language:'Telugu',status:'Registering',emoji:'💻'},
+  {id:'EVT-007',name:'Blood Donation Camp',type:'Health',date:'2026-09-15',startTime:'09:00',endTime:'14:00',venue:'Ruby Hall Clinic, Pune',organizer:'MTP Health Team',orgContact:'9123456789',audience:'All',entryFee:'Free',expected:200,language:'Telugu + English',status:'Active',emoji:'🩸'},
+  {id:'EVT-008',name:'Diwali Celebrations 2026',type:'Festival',date:'2026-10-20',startTime:'17:00',endTime:'22:00',venue:'Hinjewadi Community Center',organizer:'Srinivas Varma',orgContact:'8800991100',audience:'Families',entryFee:'₹150/family',expected:400,language:'Telugu',status:'Active',emoji:'🪔'}
+];
+
+let contacts = [
+  {id:'CC-001',name:'Dr. Rajesh Reddy',category:'Doctor',subcat:'General Physician',org:'Sai Health Clinic',phone:'9876543210',whatsapp:'9876543210',email:'drrajesh@gmail.com',area:'Wakad',address:'Near Phoenix Mall, Wakad',serviceArea:'Pune',hours:'09:00 AM – 08:00 PM',emergency:'No',rating:4.8,status:'Verified'},
+  {id:'CC-002',name:'Adv. Srilatha Reddy',category:'Lawyer',subcat:'Property Lawyer',org:'SR Legal Associates',phone:'9123456789',whatsapp:'9123456789',email:'srilatha@srlegal.com',area:'Baner',address:'Near D-Mart, Baner',serviceArea:'Pune & PCMC',hours:'10:00 AM – 07:00 PM',emergency:'No',rating:4.6,status:'Verified'},
+  {id:'CC-003',name:'Ramesh Kumar',category:'Electrician',subcat:'Home & Office',org:'Ramesh Electricals',phone:'9988776655',whatsapp:'9988776655',email:'ramesh.elec@gmail.com',area:'Hinjewadi',address:'Phase 1, Hinjewadi',serviceArea:'Pune & PCMC',hours:'08:00 AM – 09:00 PM',emergency:'Yes',rating:4.5,status:'Pending'},
+  {id:'CC-004',name:'CA Mahesh Babu',category:'CA',subcat:'Tax & Finance',org:'MB & Co',phone:'7766554433',whatsapp:'7766554433',email:'mahesh@mbco.com',area:'Viman Nagar',address:'Near Phoenix Mall, Viman Nagar',serviceArea:'Pune',hours:'09:00 AM – 06:00 PM',emergency:'No',rating:4.7,status:'Verified'},
+  {id:'CC-005',name:'Sri Venkatesh Sharma',category:'Poojari',subcat:'Marriage Pooja',org:'Vedic Services',phone:'9988001122',whatsapp:'9988001122',email:'venkatesh.sharma@gmail.com',area:'Pune & PCMC',address:'Available on request',serviceArea:'Citywide',hours:'On Request',emergency:'Yes',rating:4.9,status:'Verified'},
+  {id:'CC-006',name:'Suresh Plumbing',category:'Plumber',subcat:'Home Plumbing',org:'Suresh Plumbing Services',phone:'9800112233',whatsapp:'9800112233',email:'suresh.plumb@gmail.com',area:'Wakad',address:'Wakad, Near Metro',serviceArea:'Pune & PCMC',hours:'08:00 AM – 08:00 PM',emergency:'Yes',rating:4.3,status:'Verified'},
+  {id:'CC-007',name:'Dr. Anitha Nair',category:'Doctor',subcat:'Gynaecologist',org:'Women Care Clinic',phone:'9876541234',whatsapp:'9876541234',email:'anitha.nair@womencare.com',area:'Kharadi',address:'Near EON IT Park, Kharadi',serviceArea:'Pune',hours:'10:00 AM – 06:00 PM',emergency:'No',rating:4.8,status:'Verified'},
+  {id:'CC-008',name:'Arjun Realty',category:'Realtor',subcat:'Buy / Sell / Rent',org:'Arjun Properties',phone:'9901234567',whatsapp:'9901234567',email:'arjun@arjunrealty.in',area:'Baner',address:'Baner Main Road',serviceArea:'Pune',hours:'09:00 AM – 07:00 PM',emergency:'No',rating:4.5,status:'Verified'}
+];
+
+let businesses = [
+  {id:'BIZ-001',name:'Andhra Spice Kitchen',category:'Restaurant',phone:'9876540001',email:'andhraspice@gmail.com',location:'Hinjewadi Phase 1',address:'Near TCS Gate 3, Hinjewadi',hours:'10:00 AM – 11:00 PM',telugu:'Yes',rating:4.8,status:'Verified',emoji:'🍛'},
+  {id:'BIZ-002',name:'Sai Medicals & Clinic',category:'Healthcare',phone:'9123456001',email:'saimedicals@gmail.com',location:'Wakad, Near Metro',address:'Metro Road, Wakad',hours:'08:00 AM – 10:00 PM',telugu:'Yes',rating:4.6,status:'Verified',emoji:'💊'},
+  {id:'BIZ-003',name:'TechSols IT Services',category:'IT Services',phone:'9988000111',email:'techsols@techsols.in',location:'Kharadi, EON Free Zone',address:'EON Free Zone, Kharadi',hours:'09:00 AM – 06:00 PM',telugu:'Yes',rating:4.5,status:'Pending',emoji:'💻'},
+  {id:'BIZ-004',name:'Reddy Constructions',category:'Real Estate',phone:'7766550001',email:'reddycons@gmail.com',location:'Baner, MG Road',address:'MG Road, Baner',hours:'10:00 AM – 07:00 PM',telugu:'Yes',rating:4.7,status:'Verified',emoji:'🏗️'},
+  {id:'BIZ-005',name:'Krishna Tutorials',category:'Education',phone:'8800991122',email:'krishnatutorials@gmail.com',location:'Pimple Saudagar',address:'Near D-Mart, Pimple Saudagar',hours:'06:00 AM – 09:00 PM',telugu:'Yes',rating:4.3,status:'Verified',emoji:'📚'},
+  {id:'BIZ-006',name:'Silk & Style Boutique',category:'Retail',phone:'9876540099',email:'silknstyle@gmail.com',location:'Viman Nagar',address:'Main Road, Viman Nagar',hours:'10:00 AM – 08:00 PM',telugu:'Yes',rating:4.6,status:'Verified',emoji:'👗'},
+  {id:'BIZ-007',name:'Rayalaseema Sweets',category:'Restaurant',phone:'9900881122',email:'rayalaseema@gmail.com',location:'Hadapsar',address:'Near Magarpatta, Hadapsar',hours:'07:00 AM – 10:00 PM',telugu:'Yes',rating:4.7,status:'Verified',emoji:'🍮'},
+  {id:'BIZ-008',name:'Naidu Motors',category:'Automobile',phone:'8811223344',email:'naidumotors@gmail.com',location:'Hinjewadi Phase 2',address:'Main Road, Hinjewadi Ph 2',hours:'09:00 AM – 07:00 PM',telugu:'Yes',rating:4.4,status:'Verified',emoji:'🚗'},
+  {id:'BIZ-009',name:'Lakshmi Beauty Parlour',category:'Beauty',phone:'9876543399',email:'lakshmibeauty@gmail.com',location:'Wakad',address:'Near Bus Stand, Wakad',hours:'09:00 AM – 08:00 PM',telugu:'Yes',rating:4.6,status:'Verified',emoji:'💄'}
+];
+
+let stays = [
+  {id:'STY-001',type:'PG',propType:'PG Bed',name:'Sri Sai Residency',owner:'Ramesh Naidu',phone:'9876543210',whatsapp:'9876543210',email:'contact@srisaipg.com',location:'Hinjewadi Phase 1',address:'Near TCS Gate 3, Hinjewadi',gender:'Male',occupancy:'Double Sharing',rent:7500,deposit:15000,furnishing:'Fully Furnished',food:'Yes',facilities:'WiFi, Food, Laundry, Parking',availFrom:'2026-07-01',status:'Available'},
+  {id:'STY-002',type:'Flat',propType:'2BHK',name:'Greenview Apartment',owner:'Suresh Rao',phone:'9123456001',whatsapp:'9123456001',email:'suresh.rao@gmail.com',location:'Baner',address:'Near Balewadi Stadium, Baner',gender:'Family',occupancy:'Single',rent:18000,deposit:36000,furnishing:'Fully Furnished',food:'No',facilities:'Parking, Lift, Power Backup, Security',availFrom:'2026-07-15',status:'Available'},
+  {id:'STY-003',type:'Coliving',propType:'Shared Room',name:'Telugu Hub Coliving',owner:'Anita Devi',phone:'9988001133',whatsapp:'9988001133',email:'teluguhub@gmail.com',location:'Wakad',address:'Near Highway, Wakad',gender:'Unisex',occupancy:'Single',rent:9000,deposit:18000,furnishing:'Fully Furnished',food:'No',facilities:'WiFi, AC, Laundry, Gym',availFrom:'2026-08-01',status:'Coming Soon'},
+  {id:'STY-004',type:'PG',propType:'PG Bed',name:'Lakshmi Ladies PG',owner:'Meena Lakshmi',phone:'8899001122',whatsapp:'8899001122',email:'lakshmi.pg@gmail.com',location:'Kharadi',address:'Near Zensar IT Park, Kharadi',gender:'Female',occupancy:'Triple Sharing',rent:6000,deposit:12000,furnishing:'Semi-Furnished',food:'Yes',facilities:'WiFi, Food, Security, CCTV',availFrom:'2026-07-01',status:'Available'},
+  {id:'STY-005',type:'Flat',propType:'1BHK',name:'Sunflower Residency',owner:'Vinod Kumar',phone:'7766554422',whatsapp:'7766554422',email:'vinod.flat@gmail.com',location:'Pimple Saudagar',address:'Near D-Mart, Pimple Saudagar',gender:'Family',occupancy:'Single',rent:12000,deposit:24000,furnishing:'Semi-Furnished',food:'No',facilities:'Lift, Parking, Power Backup',availFrom:'2026-07-10',status:'Available'},
+  {id:'STY-006',type:'Shared Flat',propType:'Shared Room',name:'Viman Shared Nest',owner:'Kiran Rao',phone:'9001234567',whatsapp:'9001234567',email:'viman.nest@gmail.com',location:'Viman Nagar',address:'Airport Road, Viman Nagar',gender:'Male',occupancy:'Double Sharing',rent:8500,deposit:17000,furnishing:'Fully Furnished',food:'No',facilities:'WiFi, Power Backup, AC',availFrom:'2026-07-01',status:'Booked'},
+  {id:'STY-007',type:'PG',propType:'PG Bed',name:'Ganga PG for Gents',owner:'Prasad Reddy',phone:'9900881122',whatsapp:'9900881122',email:'ganga.pg@gmail.com',location:'Hadapsar',address:'Near Magarpatta, Hadapsar',gender:'Male',occupancy:'Double Sharing',rent:7000,deposit:14000,furnishing:'Fully Furnished',food:'Yes',facilities:'WiFi, Food, Laundry',availFrom:'2026-07-01',status:'Available'},
+  {id:'STY-008',type:'Flat',propType:'3BHK',name:'Krishna Apartments',owner:'Suresh Varma',phone:'8811002233',whatsapp:'8811002233',email:'krishna.apt@gmail.com',location:'Baner',address:'Near Baner Gaon, Baner',gender:'Family',occupancy:'Single',rent:26000,deposit:52000,furnishing:'Semi-Furnished',food:'No',facilities:'Parking, Lift, Security, Garden',availFrom:'2026-08-01',status:'Available'}
+];
+
+let jobs = [
+  {id:'JOB-001',title:'SQL Server DBA',company:'ABC Infotech',type:'Full Time',location:'Hinjewadi',experience:'5+ yrs',skills:'SQL Server, T-SQL, Performance Tuning',salary:'₹12–18 LPA',contact:'Anil Naidu',phone:'9876543201',email:'jobs@abc.com',telugu:'Yes',status:'Active',emoji:'💻'},
+  {id:'JOB-002',title:'React Native Developer',company:'TechVision Pvt Ltd',type:'Full Time',location:'Kharadi',experience:'3–5 yrs',skills:'React Native, JavaScript, REST API',salary:'₹10–15 LPA',contact:'HR Team',phone:'9123456789',email:'hr@techvision.in',telugu:'No',status:'Active',emoji:'📱'},
+  {id:'JOB-003',title:'Data Analyst Intern',company:'Analytica Co',type:'Internship',location:'Remote',experience:'Fresher',skills:'Python, Power BI, Excel, SQL',salary:'₹15K/mo Stipend',contact:'Priya',phone:'9876541111',email:'priya@analytica.in',telugu:'No',status:'Active',emoji:'📊'},
+  {id:'JOB-004',title:'Medical Receptionist',company:'Sai Health Clinic',type:'Part Time',location:'Wakad',experience:'Fresher',skills:'Communication, MS Office, Telugu',salary:'₹12,000/mo',contact:'Dr. Rajesh',phone:'9876543210',email:'drrajesh@gmail.com',telugu:'Yes',status:'Active',emoji:'🏥'},
+  {id:'JOB-005',title:'Graphic Designer',company:'Freelance / Project',type:'Freelance',location:'Remote',experience:'1–3 yrs',skills:'Canva, Photoshop, Illustrator',salary:'₹500–2K/project',contact:'Community Post',phone:'',email:'design@community.org',telugu:'No',status:'Active',emoji:'🎨'},
+  {id:'JOB-006',title:'Telugu Tutor Needed',company:'Private',type:'Part Time',location:'Baner',experience:'Any',skills:'Telugu Language, Teaching',salary:'₹500/hr',contact:'Padma',phone:'9876541234',email:'',telugu:'Yes',status:'Active',emoji:'👩‍🏫'},
+  {id:'JOB-007',title:'Python Developer',company:'SoftTech Solutions',type:'Full Time',location:'Hinjewadi',experience:'3–5 yrs',skills:'Python, Django, REST APIs, PostgreSQL',salary:'₹8–14 LPA',contact:'HR Divya',phone:'9900112234',email:'hr@softtech.in',telugu:'No',status:'Active',emoji:'🐍'},
+  {id:'JOB-008',title:'Marketing Executive',company:'Reddy Enterprises',type:'Full Time',location:'Kharadi',experience:'1–3 yrs',skills:'Marketing, Social Media, Communication',salary:'₹4–7 LPA',contact:'Ravi Reddy',phone:'9988112233',email:'ravi@reddyent.com',telugu:'Yes',status:'Active',emoji:'📣'}
+];
+
+let announcements = [
+  {id:'SUP-001',type:'Blood Required',title:'Urgent – O+ Blood Required at Ruby Hall Clinic',desc:'Patient undergoing surgery at Ruby Hall Clinic, Pune. Requires 2 units of O+ blood urgently. Please contact immediately.',contactName:'Ravi Kumar',phone:'9876543210',whatsapp:'9876543210',email:'',location:'Pune',urgency:'Very Urgent',status:'Active',time:'2 hrs ago'},
+  {id:'SUP-002',type:'Travel Partner',title:'Pune to Hyderabad Travel Partner – 15 Jul 2026',desc:'Travelling from Pune to Hyderabad on 15 July 2026. Looking for Telugu family or individual for cab sharing. Safe & cost-effective.',contactName:'Suresh Reddy',phone:'9876543211',whatsapp:'9876543211',email:'',location:'Pune',urgency:'Normal',status:'Active',time:'5 hrs ago'},
+  {id:'SUP-003',type:'Job Available',title:'Hiring SQL Server DBA – 5+ Years at Hinjewadi',desc:'IT company in Hinjewadi urgently hiring SQL Server DBA. Telugu candidates preferred. Immediate joining. Competitive salary.',contactName:'Anil Naidu',phone:'',whatsapp:'',email:'jobs@abc.com',location:'Hinjewadi',urgency:'Normal',status:'Active',time:'8 hrs ago'},
+  {id:'SUP-004',type:'Looking for Maid',title:'Need Part-Time Maid for Cooking & Cleaning – Wakad',desc:'Looking for a reliable part-time maid for cooking and cleaning in Wakad. Telugu speaking preferred. 7AM–10AM daily. Good pay.',contactName:'Lakshmi Devi',phone:'9876543212',whatsapp:'9876543212',email:'',location:'Wakad',urgency:'Normal',status:'Active',time:'1 day ago'},
+  {id:'SUP-005',type:'House for Rent',title:'2BHK Available for Telugu Family – Baner',desc:'Well-maintained 2BHK flat in Baner for Telugu families. Semi-furnished. ₹16,000/month + maintenance. Available immediately.',contactName:'Ramesh Varma',phone:'9988001234',whatsapp:'9988001234',email:'',location:'Baner',urgency:'Normal',status:'Active',time:'2 days ago'},
+  {id:'SUP-006',type:'PG Needed',title:'Looking for Female PG near Hinjewadi IT Park',desc:'Telugu girl (software engineer) looking for PG near Hinjewadi IT Park Phase 1 or 2. Telugu speaking environment preferred. Budget ₹7000–9000.',contactName:'Sruthi Reddy',phone:'9900112233',whatsapp:'9900112233',email:'sruthi.r@gmail.com',location:'Hinjewadi',urgency:'Normal',status:'Active',time:'3 days ago'},
+  {id:'SUP-007',type:'Lost & Found',title:'Lost House Keys Near Wakad Metro Station',desc:'Lost a set of house keys (with car key & Ganesh keychain) near Wakad Metro Station on 25-Jul. Finder please contact. Reward offered.',contactName:'Naresh Kumar',phone:'9876540022',whatsapp:'9876540022',email:'',location:'Wakad',urgency:'Urgent',status:'Active',time:'4 days ago'},
+  {id:'SUP-008',type:'Volunteer Needed',title:'Volunteers Needed for Ganesh Festival Setup – Aug 5',desc:'Looking for enthusiastic Telugu volunteers to help setup and organize the Ganesh Festival on Aug 5 at Wakad Community Ground. Lunch provided.',contactName:'Ravi Sharma',phone:'7766554433',whatsapp:'7766554433',email:'ravi.events@gmail.com',location:'Wakad',urgency:'Normal',status:'Active',time:'5 days ago'}
+];
+
+let places = [
+  {id:'PLC-001',name:'Shreemant Dagdusheth Halwai Ganpati',category:'Devotional',subcat:'Temple',location:'Budhwar Peth, Pune',district:'Pune',desc:'One of the most famous Ganesh temples in India with rich traditions.',rating:4.8,reviews:1200,distance:'City Center',bestTime:'Year Round',status:'Active',img:'https://images.unsplash.com/photo-1621996659490-3275b4d0d951?w=400&q=80'},
+  {id:'PLC-002',name:'Shaniwar Wada',category:'Historical',subcat:'Fort',location:'Shaniwar Peth, Pune',district:'Pune',desc:'17th century fortification and former seat of the Peshwa rulers of the Maratha Empire.',rating:4.6,reviews:980,distance:'City Center',bestTime:'Oct – Mar',status:'Active',img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80'},
+  {id:'PLC-003',name:'Lonavala Hill Station',category:'Hill Station',subcat:'Hill Station',location:'Lonavala',district:'Pune',desc:'Popular hill station known for Bhushi Dam, Rajmachi Fort and Tiger Point.',rating:4.5,reviews:860,distance:'65 km',bestTime:'Jun – Sep',status:'Active',img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80'},
+  {id:'PLC-004',name:'Sinhagad Fort Trek',category:'Trekking',subcat:'Trekking',location:'Sinhagad, Pune',district:'Pune',desc:'Historic fort and popular trekking destination, famous for the Battle of Sinhagad.',rating:4.7,reviews:1500,distance:'30 km',bestTime:'Oct – Feb',status:'Active',img:'https://images.unsplash.com/photo-1592496001020-d31bd830651f?w=400&q=80'},
+  {id:'PLC-005',name:'Ganpatipule Beach',category:'Beach',subcat:'Beach',location:'Ganpatipule, Ratnagiri',district:'Ratnagiri',desc:'Clean beach with the famous Swayambhu Ganesh temple. Great for family trips.',rating:4.6,reviews:720,distance:'330 km',bestTime:'Nov – Feb',status:'Active',img:'https://images.unsplash.com/photo-1536768139911-e290a59011e4?w=400&q=80'},
+  {id:'PLC-006',name:'Pawna Lake Camping',category:'Camping',subcat:'Camping',location:'Pawna, Pune',district:'Pune',desc:'Overnight camping by Pawna Lake with stunning fort views.',rating:4.8,reviews:940,distance:'50 km',bestTime:'Oct – Mar',status:'Active',img:'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&q=80'},
+  {id:'PLC-007',name:'Aga Khan Palace',category:'Historical',subcat:'Museum',location:'Nagar Road, Pune',district:'Pune',desc:'Iconic palace-turned-memorial where Mahatma Gandhi was held during Quit India Movement.',rating:4.5,reviews:650,distance:'Near City',bestTime:'Year Round',status:'Active',img:'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=400&q=80'},
+  {id:'PLC-008',name:'Mahabaleshwar',category:'Hill Station',subcat:'Hill Station',location:'Mahabaleshwar',district:'Satara',desc:'Famous hill station known for strawberries, Venna Lake boating and scenic viewpoints.',rating:4.7,reviews:1100,distance:'120 km',bestTime:'Mar – Jun',status:'Active',img:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80'},
+  {id:'PLC-009',name:'Rajiv Gandhi Zoological Park',category:'Wildlife',subcat:'Zoo & Wildlife',location:'Katraj, Pune',district:'Pune',desc:'Famous zoo housing tigers, lions, crocodiles and various reptiles. Great family outing.',rating:4.3,reviews:820,distance:'10 km',bestTime:'Year Round',status:'Active',img:'https://images.unsplash.com/photo-1534567110243-8875d62b3b8d?w=400&q=80'}
+];
+
+// ═══════════════════════════════════════════
+// MODAL FORM CONFIGS
+// ═══════════════════════════════════════════
+const CONFIGS = {
+  family:{title:'👨‍👩‍👧 Family',idPrefix:'FAM',
+    fields:[
+      {id:'name',label:'Primary Contact Name',type:'text',req:true},{id:'surname',label:'Family Surname',type:'text'},
+      {id:'phone',label:'Phone Number',type:'tel',req:true},{id:'whatsapp',label:'WhatsApp Number',type:'tel'},
+      {id:'email',label:'Email Address',type:'email'},{id:'blood',label:'Blood Group',type:'select',options:['A+','A-','B+','B-','O+','O-','AB+','AB-']},
+      {id:'location',label:'Location in Pune',type:'select',options:['Wakad','Baner','Hinjewadi','Kharadi','Viman Nagar','Pimple Saudagar','Hadapsar','Nigdi','Ravet','Other']},
+      {id:'address',label:'Address / Landmark',type:'text',full:true},
+      {id:'native',label:'Native Place',type:'text'},{id:'members',label:'Family Members',type:'number'},
+      {id:'children',label:'Children Count',type:'number'},{id:'profession',label:'Profession',type:'text'},
+      {id:'company',label:'Company / Employer',type:'text'},{id:'ownerType',label:'Owner / Tenant',type:'select',options:['Owner','Tenant']},
+      {id:'status',label:'Status',type:'select',options:['Verified','Pending']}
+    ]},
+  event:{title:'📅 Event',idPrefix:'EVT',
+    fields:[
+      {id:'name',label:'Event Name',type:'text',req:true,full:true},
+      {id:'type',label:'Event Type',type:'select',options:['Festival','Cultural','Sports','Meetup','Workshop','Health','Other']},
+      {id:'date',label:'Event Date',type:'date',req:true},{id:'startTime',label:'Start Time',type:'time'},
+      {id:'endTime',label:'End Time',type:'time'},{id:'venue',label:'Venue',type:'text',full:true},
+      {id:'organizer',label:'Organizer Name',type:'text'},{id:'orgContact',label:'Organizer Contact',type:'tel'},
+      {id:'audience',label:'Target Audience',type:'select',options:['All','Families','Youth','Women','Kids','Seniors']},
+      {id:'entryFee',label:'Entry Fee',type:'text'},{id:'expected',label:'Expected Participants',type:'number'},
+      {id:'language',label:'Language',type:'select',options:['Telugu','English','Telugu + English','Telugu + Hindi','All']},
+      {id:'status',label:'Status',type:'select',options:['Active','Registering','Completed']}
+    ]},
+  contact:{title:'👥 Contact',idPrefix:'CC',
+    fields:[
+      {id:'name',label:'Full Name',type:'text',req:true},{id:'category',label:'Category',type:'select',options:['Doctor','Lawyer','CA','Electrician','Plumber','Poojari','Realtor','Volunteer','Emergency','Other']},
+      {id:'subcat',label:'Sub Category',type:'text'},{id:'org',label:'Organization',type:'text'},
+      {id:'phone',label:'Phone',type:'tel',req:true},{id:'whatsapp',label:'WhatsApp',type:'tel'},
+      {id:'email',label:'Email',type:'email'},{id:'area',label:'Area / Locality',type:'select',options:['Wakad','Baner','Hinjewadi','Kharadi','Viman Nagar','Pimple Saudagar','Hadapsar','Pune & PCMC','Online','Other']},
+      {id:'address',label:'Full Address',type:'text',full:true},
+      {id:'hours',label:'Available Hours',type:'text'},{id:'serviceArea',label:'Service Area',type:'select',options:['Pune','PCMC','Pune & PCMC','Online','Citywide']},
+      {id:'emergency',label:'Emergency Contact',type:'select',options:['No','Yes']},
+      {id:'rating',label:'Rating (1–5)',type:'number'},{id:'status',label:'Status',type:'select',options:['Verified','Pending']}
+    ]},
+  business:{title:'🏢 Business',idPrefix:'BIZ',
+    fields:[
+      {id:'name',label:'Business Name',type:'text',req:true,full:true},
+      {id:'category',label:'Category',type:'select',options:['Restaurant','Healthcare','IT Services','Real Estate','Education','Retail','Automobile','Beauty','Finance','Other']},
+      {id:'phone',label:'Phone',type:'tel',req:true},{id:'email',label:'Email',type:'email'},
+      {id:'location',label:'Location',type:'text'},{id:'address',label:'Full Address',type:'text',full:true},
+      {id:'hours',label:'Working Hours',type:'text'},{id:'telugu',label:'Telugu Speaking',type:'select',options:['Yes','No']},
+      {id:'rating',label:'Rating (1–5)',type:'number'},{id:'status',label:'Status',type:'select',options:['Verified','Pending']}
+    ]},
+  stay:{title:'🛏️ Stay Listing',idPrefix:'STY',
+    fields:[
+      {id:'name',label:'Property Name',type:'text',req:true,full:true},
+      {id:'type',label:'Listing Type',type:'select',options:['PG','Coliving','Flat','Shared Flat','Room']},
+      {id:'propType',label:'Property Type',type:'select',options:['PG Bed','1RK','1BHK','2BHK','3BHK','Shared Room']},
+      {id:'owner',label:'Owner / Contact Name',type:'text',req:true},{id:'phone',label:'Phone',type:'tel',req:true},
+      {id:'whatsapp',label:'WhatsApp',type:'tel'},{id:'email',label:'Email',type:'email'},
+      {id:'location',label:'Location',type:'select',options:['Hinjewadi','Wakad','Baner','Kharadi','Viman Nagar','Pimple Saudagar','Hadapsar','Nigdi','Other']},
+      {id:'address',label:'Full Address',type:'text',full:true},
+      {id:'gender',label:'Gender Allowed',type:'select',options:['Male','Female','Family','Unisex']},
+      {id:'occupancy',label:'Occupancy Type',type:'select',options:['Single','Double Sharing','Triple Sharing','Quad Sharing']},
+      {id:'rent',label:'Monthly Rent (₹)',type:'number',req:true},{id:'deposit',label:'Deposit Amount (₹)',type:'number'},
+      {id:'furnishing',label:'Furnishing',type:'select',options:['Fully Furnished','Semi-Furnished','Unfurnished']},
+      {id:'food',label:'Food Available',type:'select',options:['Yes','No']},
+      {id:'facilities',label:'Facilities (WiFi, AC, etc.)',type:'text',full:true},
+      {id:'availFrom',label:'Available From',type:'date'},{id:'status',label:'Status',type:'select',options:['Available','Coming Soon','Booked']}
+    ]},
+  job:{title:'💼 Job',idPrefix:'JOB',
+    fields:[
+      {id:'title',label:'Job Title',type:'text',req:true,full:true},
+      {id:'company',label:'Company Name',type:'text'},{id:'type',label:'Job Type',type:'select',options:['Full Time','Part Time','Internship','Freelance','Contract']},
+      {id:'location',label:'Location',type:'select',options:['Hinjewadi','Kharadi','Baner','Wakad','Viman Nagar','Remote','PCMC','Other']},
+      {id:'experience',label:'Experience',type:'select',options:['Fresher','1–3 yrs','3–5 yrs','5+ yrs','Any']},
+      {id:'skills',label:'Required Skills',type:'text',full:true},
+      {id:'salary',label:'Salary / Compensation',type:'text'},{id:'contact',label:'Contact Person',type:'text'},
+      {id:'phone',label:'Contact Phone',type:'tel'},{id:'email',label:'Contact Email',type:'email'},
+      {id:'telugu',label:'Telugu Preferred',type:'select',options:['No','Yes']},{id:'status',label:'Status',type:'select',options:['Active','Filled','On Hold']}
+    ]},
+  announce:{title:'📢 Announcement',idPrefix:'SUP',
+    fields:[
+      {id:'type',label:'Announcement Type',type:'select',options:['Blood Required','Travel Partner','Job Available','Job Seeking','Looking for Maid','House for Rent','PG Needed','Emergency Help','Lost & Found','Volunteer Needed','Other']},
+      {id:'title',label:'Title',type:'text',req:true,full:true},
+      {id:'desc',label:'Description',type:'textarea',full:true,rows:3},
+      {id:'contactName',label:'Your Name',type:'text',req:true},{id:'phone',label:'Phone',type:'tel',req:true},
+      {id:'whatsapp',label:'WhatsApp',type:'tel'},{id:'email',label:'Email',type:'email'},
+      {id:'location',label:'Location',type:'text'},{id:'urgency',label:'Urgency',type:'select',options:['Normal','Urgent','Very Urgent']},
+      {id:'status',label:'Status',type:'select',options:['Active','Resolved','Expired']}
+    ]},
+  place:{title:'📍 Place',idPrefix:'PLC',
+    fields:[
+      {id:'name',label:'Place Name',type:'text',req:true,full:true},
+      {id:'category',label:'Category',type:'select',options:['Devotional','Historical','Hill Station','Trekking','Waterfall','Beach','Camping','Adventure','Wildlife','Family Outing']},
+      {id:'subcat',label:'Sub Category',type:'text'},{id:'location',label:'Location',type:'text',req:true},
+      {id:'district',label:'District',type:'select',options:['Pune','Ratnagiri','Nashik','Kolhapur','Satara','Aurangabad','Other']},
+      {id:'desc',label:'Description',type:'textarea',full:true,rows:2},
+      {id:'rating',label:'Rating (1–5)',type:'number'},{id:'reviews',label:'Reviews Count',type:'number'},
+      {id:'distance',label:'Distance from Pune',type:'text'},{id:'bestTime',label:'Best Time to Visit',type:'text'},
+      {id:'status',label:'Status',type:'select',options:['Active','Pending']}
+    ]}
+};
+
+// ═══════════════════════════════════════════
+// HELPERS
+// ═══════════════════════════════════════════
+const AV_COLORS = ['ab','ag','ao','ap','apk','at','ay'];
+const AV_HEX = ['#3b82f6','#10b981','#f97316','#8b5cf6','#ec4899','#14b8a6','#f59e0b'];
+function avc(name){return AV_COLORS[(name||'A').charCodeAt(0)%AV_COLORS.length];}
+function avhex(name){return AV_HEX[(name||'A').charCodeAt(0)%AV_HEX.length];}
+function init2(name){return (name||'?').split(' ').map(w=>w[0]||'').join('').slice(0,2).toUpperCase();}
+function bbadge(bg){const m={'O+':'br','O-':'br','A+':'bg2','A-':'bg2','B+':'ba','B-':'ba','AB+':'bpu','AB-':'bpu'};return`<span class="${m[bg]||'ba'}">${bg}</span>`;}
+function sbadge(s){
+  if(['Verified','Active'].includes(s))return`<span class="bv">✔ ${s}</span>`;
+  if(['Pending','Registering'].includes(s))return`<span class="bp">⏳ ${s}</span>`;
+  if(s==='Available')return`<span class="bv">✔ ${s}</span>`;
+  if(s==='Booked')return`<span class="br">❌ ${s}</span>`;
+  if(s==='Coming Soon')return`<span class="bo">📅 ${s}</span>`;
+  if(s==='Resolved')return`<span class="bg2">✔ ${s}</span>`;
+  if(s==='Expired')return`<span class="c0">${s}</span>`;
+  return`<span class="ba">${s}</span>`;
+}
+function typeBadge(t){
+  const m={Festival:'ba',Workshop:'bpu',Sports:'bg2',Meetup:'bpk',Health:'br',Cultural:'bo','Full Time':'bv','Part Time':'bo',Internship:'bp',Freelance:'bpu',Contract:'ba'};
+  return`<span class="${m[t]||'ba'}">${t}</span>`;
+}
+function evEmoji(t){const m={Festival:'🪔',Cultural:'🎭',Sports:'🏆',Meetup:'🤝',Workshop:'💡',Health:'🩸',Other:'📌'};return m[t]||'📅';}
+function evBg(t){const m={Festival:'linear-gradient(135deg,#fef3c7,#fde68a)',Cultural:'linear-gradient(135deg,#dbeafe,#bfdbfe)',Sports:'linear-gradient(135deg,#d1fae5,#a7f3d0)',Meetup:'linear-gradient(135deg,#fce7f3,#fbcfe8)',Workshop:'linear-gradient(135deg,#ede9fe,#ddd6fe)',Health:'linear-gradient(135deg,#fee2e2,#fecaca)',Other:'linear-gradient(135deg,#f1f5f9,#e2e8f0)'};return m[t]||m.Other;}
+function bizEmoji(c){const m={Restaurant:'🍛',Healthcare:'💊','IT Services':'💻','Real Estate':'🏗️',Education:'📚',Retail:'👗',Automobile:'🚗',Beauty:'💄',Finance:'💰',Other:'🏢'};return m[c]||'🏢';}
+function annColor(t){const m={'Blood Required':'var(--red)','Travel Partner':'#3b82f6','Job Available':'var(--green)','Looking for Maid':'var(--accent)','House for Rent':'var(--purple,#8b5cf6)','PG Needed':'#8b5cf6','Emergency Help':'var(--red)','Lost & Found':'#f59e0b','Volunteer Needed':'#14b8a6','Job Seeking':'#3b82f6',Other:'var(--accent)'};return m[t]||'var(--accent)';}
+function annIcon(t){const m={'Blood Required':'🩸','Travel Partner':'🚗','Job Available':'💼','Looking for Maid':'🏠','House for Rent':'🏡','PG Needed':'🛋️','Emergency Help':'🚨','Lost & Found':'🔑','Volunteer Needed':'🙋','Job Seeking':'👨‍💼',Other:'📢'};return m[t]||'📢';}
+function annBg(t){const m={'Blood Required':'#fee2e2','Travel Partner':'#dbeafe','Job Available':'#dcfce7','Looking for Maid':'#ffedd5','House for Rent':'#ede9fe','PG Needed':'#fce7f3','Emergency Help':'#fee2e2','Lost & Found':'#fef9c3','Volunteer Needed':'#d1fae5',Other:'#f1f5f9'};return m[t]||'#f1f5f9';}
+function catBadge(c){const m={Devotional:'bpk',Historical:'ba',Trekking:'bg2','Hill Station':'c9',Beach:'bo',Camping:'bpu',Wildlife:'bg2',Adventure:'br',Waterfall:'ba','Family Outing':'bp'};return`<span class="${m[c]||'ba'}" style="font-size:10px;padding:2px 7px;">${c}</span>`;}
+function stayImg(l){const imgs={Hinjewadi:'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=400&q=80',Baner:'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80',Wakad:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80',Kharadi:'https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=400&q=80',Viman:'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=400&q=80'};for(const k in imgs)if(l&&l.includes(k))return imgs[k];return imgs.Hinjewadi;}
+function emptyState(ic,h,p){return`<div class="empty"><div class="ei">${ic}</div><h3>${h}</h3><p>${p}</p></div>`;}
+function starsHtml(r){const f=Math.floor(r),h=r-f>=0.5;let s='';for(let i=0;i<f;i++)s+='★';if(h)s+='½';return`<span class="stars">${s}</span> <span style="color:var(--muted);font-size:11px;">${r}</span>`;}
+
+// ═══════════════════════════════════════════
+// CHIP FILTERS STATE
+// ═══════════════════════════════════════════
+const chipState = {contacts:'',business:'',announce:'',places:''};
+function setChip(section,val){
+  chipState[section]=val;
+  document.querySelectorAll(`#chips-${section} .chip`).forEach(c=>{
+    const cv=c.getAttribute('onclick').match(/setChip\('[^']+','([^']*)'\)/);
+    if(cv)c.classList.toggle('on',cv[1]===val);
+  });
+  if(section==='contacts')renderContacts();
+  if(section==='business')renderBusinesses();
+  if(section==='announce')renderAnnouncements();
+  if(section==='places')renderPlaces();
+}
+
+// ═══════════════════════════════════════════
+// PAGINATION STATE
+// ═══════════════════════════════════════════
+const pg = {family:1,contacts:1};
+function goPage(s,p){pg[s]=p;if(s==='family')renderFamilies();if(s==='contacts')renderContacts();}
+
+// ═══════════════════════════════════════════
+// FORM BUILDER
+// ═══════════════════════════════════════════
+function buildForm(section,data){
+  const cfg=CONFIGS[section];
+  return`<div class="form-grid">${cfg.fields.map(f=>{
+    const val=data[f.id]!==undefined?data[f.id]:'';
+    let inp;
+    if(f.type==='select'){
+      const opts=f.options.map(o=>`<option value="${o}"${o==val?' selected':''}>${o}</option>`).join('');
+      inp=`<select id="f_${f.id}">${opts}</select>`;
+    }else if(f.type==='textarea'){
+      inp=`<textarea id="f_${f.id}" rows="${f.rows||3}">${val}</textarea>`;
+    }else{
+      inp=`<input type="${f.type||'text'}" id="f_${f.id}" value="${val}"${f.req?' required':''}/>`;
+    }
+    return`<div class="fgrp"${f.full?' style="grid-column:1/-1;"':''}><label>${f.label}${f.req?' <span style="color:var(--red)">*</span>':''}</label>${inp}</div>`;
+  }).join('')}</div>`;
+}
+function readForm(section){
+  const data={};
+  CONFIGS[section].fields.forEach(f=>{const el=document.getElementById('f_'+f.id);if(el)data[f.id]=el.value;});
+  return data;
+}
+
+// ═══════════════════════════════════════════
+// MODAL SYSTEM
+// ═══════════════════════════════════════════
+let mMode=null,mSection=null,mIdx=null;
+function getArr(s){const m={family:families,event:events,contact:contacts,business:businesses,stay:stays,job:jobs,announce:announcements,place:places};return m[s];}
+function rerender(s){const m={family:renderFamilies,event:renderEvents,contact:renderContacts,business:renderBusinesses,stay:renderStays,job:renderJobs,announce:renderAnnouncements,place:renderPlaces};if(m[s])m[s]();}
+
+function openAddModal(s){
+  mMode='add';mSection=s;mIdx=null;
+  document.getElementById('modal-title').textContent=CONFIGS[s].title+' – Add New Record';
+  document.getElementById('modal-body').innerHTML=buildForm(s,{});
+  document.getElementById('modal-save-btn').style.display='';
+  document.getElementById('modal-ov').classList.add('open');
+}
+function editRecord(s,i){
+  mMode='edit';mSection=s;mIdx=i;
+  const data=getArr(s)[i];
+  document.getElementById('modal-title').textContent=CONFIGS[s].title+' – Edit Record';
+  document.getElementById('modal-body').innerHTML=buildForm(s,data);
+  document.getElementById('modal-save-btn').style.display='';
+  document.getElementById('modal-ov').classList.add('open');
+}
+function viewRecord(s,i){
+  mMode='view';mSection=s;mIdx=i;
+  const data=getArr(s)[i];
+  const rows=CONFIGS[s].fields.map(f=>`<div class="pi-row"><span class="pi-lbl">${f.label}</span><span class="pi-val">${data[f.id]||'–'}</span></div>`).join('');
+  document.getElementById('modal-title').textContent=CONFIGS[s].title+' – '+data.id;
+  document.getElementById('modal-body').innerHTML=`<div class="prof-info">${rows}</div>`;
+  document.getElementById('modal-save-btn').style.display='none';
+  document.getElementById('modal-ov').classList.add('open');
+}
+function closeModal(){document.getElementById('modal-ov').classList.remove('open');}
+function modalOverlayClick(e){if(e.target===document.getElementById('modal-ov'))closeModal();}
+function submitModal(){
+  const cfg=CONFIGS[mSection];
+  for(const f of cfg.fields){if(f.req){const el=document.getElementById('f_'+f.id);if(!el||!el.value.trim()){showToast('⚠️ '+f.label+' is required');return;}}}
+  const data=readForm(mSection);
+  const arr=getArr(mSection);
+  if(mMode==='add'){
+    const num=arr.length+1;
+    data.id=`${cfg.idPrefix}-${String(num).padStart(3,'0')}`;
+    if(mSection==='announce')data.time='Just now';
+    arr.push(data);
+    showToast('✅ Record added successfully!');
+  }else{
+    Object.assign(arr[mIdx],data);
+    showToast('✅ Record updated successfully!');
+  }
+  closeModal();
+  rerender(mSection);
+  renderDashboard();
+}
+
+// ═══════════════════════════════════════════
+// DELETE SYSTEM
+// ═══════════════════════════════════════════
+let dSection=null,dIdx=null;
+function deleteRecord(s,i){dSection=s;dIdx=i;document.getElementById('cfm-ov').classList.add('open');}
+function closeCfm(){document.getElementById('cfm-ov').classList.remove('open');}
+function confirmDelete(){
+  getArr(dSection).splice(dIdx,1);
+  closeCfm();
+  showToast('🗑️ Record deleted successfully');
+  rerender(dSection);
+  renderDashboard();
+}
+
+// ═══════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+
+// ═══════════════════════════════════════════
+// RESET FILTERS
+// ═══════════════════════════════════════════
+function resetFilters(pfx){
+  document.querySelectorAll(`[id^="${pfx}-"]`).forEach(el=>{el.value='';});
+  if(pfx==='fam')renderFamilies();
+  if(pfx==='ev')renderEvents();
+  if(pfx==='ct')renderContacts();
+  if(pfx==='biz')renderBusinesses();
+  if(pfx==='stay')renderStays();
+  if(pfx==='job')renderJobs();
+  if(pfx==='ann')renderAnnouncements();
+  if(pfx==='pl')renderPlaces();
+}
+
+// ═══════════════════════════════════════════
+// RENDER: FAMILY DIRECTORY
+// ═══════════════════════════════════════════
+function renderFamilies(){
+  const s=(document.getElementById('fam-search')||{}).value||'';
+  const loc=(document.getElementById('fam-loc')||{}).value||'';
+  const blood=(document.getElementById('fam-blood')||{}).value||'';
+  const status=(document.getElementById('fam-status')||{}).value||'';
+  const otype=(document.getElementById('fam-type')||{}).value||'';
+  const filtered=families.filter(f=>{
+    const q=s.toLowerCase();
+    return(!s||(f.name+f.email+f.phone+f.profession).toLowerCase().includes(q))
+      &&(!loc||f.location===loc)&&(!blood||f.blood===blood)
+      &&(!status||f.status===status)&&(!otype||f.ownerType===otype);
+  });
+  const ver=families.filter(f=>f.status==='Verified').length;
+  const totalCh=families.reduce((a,f)=>a+(+f.children||0),0);
+  document.getElementById('stats-family').innerHTML=`<div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">👨‍👩‍👧</div><div><div class="scl">Total Families</div><div class="scn">${families.length}</div><div class="scc">▲ +2 this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">✅</div><div><div class="scl">Verified</div><div class="scn">${ver}</div><div class="scc">${Math.round(ver/families.length*100)}% verified</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">👶</div><div><div class="scl">Total Children</div><div class="scn">${totalCh}</div><div class="scc">Avg ${(totalCh/families.length).toFixed(1)} per family</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🩸</div><div><div class="scl">Blood Donors</div><div class="scn">${families.length}</div><div class="scc">All registered</div></div></div>
+  </div>`;
+  if(!filtered.length){document.getElementById('content-family').innerHTML=emptyState('👨‍👩‍👧','No families found','Try adjusting your filters or add a new family.');return;}
+  const perPage=6,page=pg.family,total=filtered.length,start=(page-1)*perPage;
+  const pageData=filtered.slice(start,start+perPage);
+  const rows=pageData.map(f=>{
+    const ri=families.indexOf(f);
+    return`<tr>
+      <td style="color:var(--muted);font-weight:700;">${f.id}</td>
+      <td><div class="ac"><div class="avi ${avc(f.name)}">${init2(f.name)}</div><div><div class="fn">${f.name}</div><div class="fs">✉️ ${f.email||'–'}</div></div></div></td>
+      <td><div class="fs">📞 ${f.phone}</div><div class="fs">💬 ${f.whatsapp||f.phone}</div></td>
+      <td><div class="fn">${f.location}</div><div class="fs">${f.address||'–'}</div></td>
+      <td class="fs">${f.native||'–'}</td>
+      <td><div class="fn">${f.members||0} members</div><div class="fs">${f.children||0} children</div></td>
+      <td><div class="fn">${f.profession||'–'}</div><div class="fs">${f.company||''}</div></td>
+      <td>${bbadge(f.blood)}</td>
+      <td>${sbadge(f.status)}</td>
+      <td><div class="acts">
+        <button class="abt ab-v" onclick="viewRecord('family',${ri})">👁️</button>
+        <button class="abt ab-e" onclick="editRecord('family',${ri})">✏️</button>
+        <button class="abt ab-d" onclick="deleteRecord('family',${ri})">🗑️</button>
+      </div></td>
+    </tr>`;}).join('');
+  const pages=Math.ceil(total/perPage);
+  const pgBtns=Array.from({length:pages},(_,i)=>`<button class="pgb${page===i+1?' on':''}" onclick="goPage('family',${i+1})">${i+1}</button>`).join('');
+  document.getElementById('content-family').innerHTML=`<div class="tcard">
+    <div class="tc-head"><h3>📋 Family Members List</h3><span class="showing">Showing ${start+1}–${Math.min(start+perPage,total)} of ${total}</span></div>
+    <table><thead><tr><th>#</th><th>Member</th><th>Contact</th><th>Location</th><th>Native Place</th><th>Family</th><th>Profession</th><th>Blood</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody></table>
+    <div class="pgn"><div class="pg-info">Showing ${start+1}–${Math.min(start+perPage,total)} of ${total} families</div>
+    <div class="pg-btns"><button class="pgb" onclick="goPage('family',${Math.max(1,page-1)})">‹</button>${pgBtns}<button class="pgb" onclick="goPage('family',${Math.min(pages,page+1)})">›</button></div></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════
+// RENDER: EVENTS
+// ═══════════════════════════════════════════
+function renderEvents(){
+  const s=(document.getElementById('ev-search')||{}).value||'';
+  const tp=(document.getElementById('ev-type')||{}).value||'';
+  const au=(document.getElementById('ev-audience')||{}).value||'';
+  const st=(document.getElementById('ev-status')||{}).value||'';
+  const filtered=events.filter(e=>
+    (!s||e.name.toLowerCase().includes(s.toLowerCase()))
+    &&(!tp||e.type===tp)&&(!au||e.audience===au)&&(!st||e.status===st));
+  document.getElementById('stats-events').innerHTML=`<div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#fef9c3;">📅</div><div><div class="scl">Total Events</div><div class="scn">${events.length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🎉</div><div><div class="scl">Festivals</div><div class="scn">${events.filter(e=>e.type==='Festival').length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">🎓</div><div><div class="scl">Workshops</div><div class="scn">${events.filter(e=>e.type==='Workshop').length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">👥</div><div><div class="scl">Active</div><div class="scn">${events.filter(e=>e.status==='Active').length}</div></div></div>
+  </div>`;
+  if(!filtered.length){document.getElementById('content-events').innerHTML=emptyState('📅','No events found','Add a new event to get started.');return;}
+  const cards=filtered.map(e=>{
+    const i=events.indexOf(e);
+    const emoji=e.emoji||evEmoji(e.type);
+    const bg=evBg(e.type);
+    const dateStr=e.date?new Date(e.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'TBD';
+    return`<div class="ev-card">
+      <div class="ev-head" style="background:${bg};">${emoji}</div>
+      <div class="ev-body">
+        <div class="ev-dbadge">📅 ${dateStr} · ${e.startTime||'TBD'}–${e.endTime||'TBD'}</div>
+        <div class="ev-title3">${e.name}</div>
+        <div class="ev-detail">📍 ${e.venue||'TBD'}<br/>👤 ${e.organizer||'TBD'} · 📞 ${e.orgContact||'–'}<br/>🎯 ${e.audience||'All'} · 👥 ${e.expected||'–'} expected<br/>💰 ${e.entryFee||'Free'} · 🗣️ ${e.language||'Telugu'}</div>
+      </div>
+      <div class="ev-foot">${typeBadge(e.type)}${sbadge(e.status)}
+        <div class="acts" style="margin-left:auto;">
+          <button class="abt ab-e" onclick="editRecord('event',${i})">✏️</button>
+          <button class="abt ab-d" onclick="deleteRecord('event',${i})">🗑️</button>
+        </div>
+      </div>
+    </div>`;}).join('');
+  document.getElementById('content-events').innerHTML=`<div class="ev-grid">${cards}</div>`;
+}
+
+// ═══════════════════════════════════════════
+// RENDER: CONTACTS
+// ═══════════════════════════════════════════
+function renderContacts(){
+  const s=(document.getElementById('ct-search')||{}).value||'';
+  const area=(document.getElementById('ct-area')||{}).value||'';
+  const st=(document.getElementById('ct-status')||{}).value||'';
+  const cat=chipState.contacts||'';
+  const filtered=contacts.filter(c=>
+    (!s||(c.name+c.org+c.area).toLowerCase().includes(s.toLowerCase()))
+    &&(!area||c.area===area)&&(!st||c.status===st)&&(!cat||c.category===cat));
+  const ver=contacts.filter(c=>c.status==='Verified').length;
+  const emr=contacts.filter(c=>c.emergency==='Yes').length;
+  const avgRat=(contacts.reduce((a,c)=>a+(+c.rating||0),0)/contacts.length).toFixed(1);
+  document.getElementById('stats-contacts').innerHTML=`<div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">👥</div><div><div class="scl">Total Contacts</div><div class="scn">${contacts.length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">✅</div><div><div class="scl">Verified</div><div class="scn">${ver}</div><div class="scc">${Math.round(ver/contacts.length*100)}%</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">⭐</div><div><div class="scl">Avg Rating</div><div class="scn">${avgRat}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🚨</div><div><div class="scl">Emergency</div><div class="scn">${emr}</div></div></div>
+  </div>`;
+  if(!filtered.length){document.getElementById('content-contacts').innerHTML=emptyState('👥','No contacts found','Try a different category or add a new contact.');return;}
+  const perPage=6,page=pg.contacts,total=filtered.length,start=(page-1)*perPage;
+  const pageData=filtered.slice(start,start+perPage);
+  const rows=pageData.map(c=>{
+    const i=contacts.indexOf(c);
+    return`<tr>
+      <td style="color:var(--muted);font-weight:700;">${c.id}</td>
+      <td><div class="ac"><div class="avi ${avc(c.name)}">${init2(c.name)}</div><div><div class="fn">${c.name}</div><div class="fs">${c.emergency==='Yes'?'🚨 Emergency':'✔️ Telugu'}</div></div></div></td>
+      <td><span class="ba">${c.category}</span><div class="fs">${c.subcat||'–'}</div></td>
+      <td class="fs">${c.org||'–'}</td>
+      <td><div class="fs">📞 ${c.phone}</div><div class="fs">✉️ ${c.email||'–'}</div></td>
+      <td><div class="fn">📍 ${c.area}</div><div class="fs">${c.address||''}</div></td>
+      <td class="fs">${c.hours||'–'}</td>
+      <td>${starsHtml(+c.rating||0)}</td>
+      <td>${sbadge(c.status)}</td>
+      <td><div class="acts">
+        <button class="abt ab-v" onclick="viewRecord('contact',${i})">👁️</button>
+        <button class="abt ab-e" onclick="editRecord('contact',${i})">✏️</button>
+        <button class="abt ab-d" onclick="deleteRecord('contact',${i})">🗑️</button>
+      </div></td>
+    </tr>`;}).join('');
+  const pages=Math.ceil(total/perPage);
+  const pgBtns=Array.from({length:pages},(_,i)=>`<button class="pgb${page===i+1?' on':''}" onclick="goPage('contacts',${i+1})">${i+1}</button>`).join('');
+  document.getElementById('content-contacts').innerHTML=`<div class="tcard">
+    <div class="tc-head"><h3>📋 Contact Directory</h3><span class="showing">Showing ${start+1}–${Math.min(start+perPage,total)} of ${total}</span></div>
+    <table><thead><tr><th>#</th><th>Contact</th><th>Category</th><th>Organization</th><th>Phone / Email</th><th>Area</th><th>Hours</th><th>Rating</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>${rows}</tbody></table>
+    <div class="pgn"><div class="pg-info">Showing ${start+1}–${Math.min(start+perPage,total)} of ${total}</div>
+    <div class="pg-btns"><button class="pgb" onclick="goPage('contacts',${Math.max(1,page-1)})">‹</button>${pgBtns}<button class="pgb" onclick="goPage('contacts',${Math.min(pages,page+1)})">›</button></div></div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════
+// RENDER: BUSINESS DIRECTORY
+// ═══════════════════════════════════════════
+function renderBusinesses(){
+  const s=(document.getElementById('biz-search')||{}).value||'';
+  const st=(document.getElementById('biz-status')||{}).value||'';
+  const cat=chipState.business||'';
+  const filtered=businesses.filter(b=>
+    (!s||(b.name+b.category+b.location).toLowerCase().includes(s.toLowerCase()))
+    &&(!st||b.status===st)&&(!cat||b.category===cat));
+  document.getElementById('stats-business').innerHTML=`<div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🏢</div><div><div class="scl">Total Businesses</div><div class="scn">${businesses.length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">✅</div><div><div class="scl">Verified</div><div class="scn">${businesses.filter(b=>b.status==='Verified').length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">⭐</div><div><div class="scl">Avg Rating</div><div class="scn">${(businesses.reduce((a,b)=>a+(+b.rating||0),0)/businesses.length).toFixed(1)}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#ede9fe;">📂</div><div><div class="scl">Categories</div><div class="scn">${[...new Set(businesses.map(b=>b.category))].length}</div></div></div>
+  </div>`;
+  if(!filtered.length){document.getElementById('content-business').innerHTML=emptyState('🏢','No businesses found','Add a Telugu business to the directory.');return;}
+  const cards=filtered.map(b=>{
+    const i=businesses.indexOf(b);
+    const emoji=b.emoji||bizEmoji(b.category);
+    return`<div class="biz-card">
+      <div class="biz-hdr"><div class="biz-ico" style="background:#f0f4f8;">${emoji}</div><div><div class="biz-name">${b.name}</div><div class="biz-cat">${b.category}</div></div></div>
+      <div class="biz-info">
+        <div class="binfo">📞 ${b.phone}</div>
+        <div class="binfo">📍 ${b.location||'–'}</div>
+        <div class="binfo">🕐 ${b.hours||'–'} · 👥 ${b.telugu==='Yes'?'Telugu ✔':'–'}</div>
+        <div class="binfo">✉️ ${b.email||'–'}</div>
+      </div>
+      <div class="biz-foot">${starsHtml(+b.rating||0)}${sbadge(b.status)}
+        <div class="acts">
+          <button class="abt ab-e" onclick="editRecord('business',${i})">✏️</button>
+          <button class="abt ab-d" onclick="deleteRecord('business',${i})">🗑️</button>
+        </div>
+      </div>
+    </div>`;}).join('');
+  document.getElementById('content-business').innerHTML=`<div class="biz-grid">${cards}</div>`;
+}
+
+// ═══════════════════════════════════════════
+// RENDER: STAY FINDER
+// ═══════════════════════════════════════════
+function renderStays(){
+  const s=(document.getElementById('stay-search')||{}).value||'';
+  const tp=(document.getElementById('stay-type')||{}).value||'';
+  const gn=(document.getElementById('stay-gender')||{}).value||'';
+  const fd=(document.getElementById('stay-food')||{}).value||'';
+  const st=(document.getElementById('stay-status')||{}).value||'';
+  const filtered=stays.filter(x=>
+    (!s||(x.name+x.location+x.owner).toLowerCase().includes(s.toLowerCase()))
+    &&(!tp||x.type===tp)&&(!gn||x.gender===gn)&&(!fd||x.food===fd)&&(!st||x.status===st));
+  const avail=stays.filter(x=>x.status==='Available').length;
+  const avgRent=Math.round(stays.reduce((a,x)=>a+(+x.rent||0),0)/stays.length);
+  const withFood=stays.filter(x=>x.food==='Yes').length;
+  document.getElementById('stats-stay').innerHTML=`<div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🏠</div><div><div class="scl">Total Listings</div><div class="scn">${stays.length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">✅</div><div><div class="scl">Available Now</div><div class="scn">${avail}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">💰</div><div><div class="scl">Avg Rent</div><div class="scn">₹${avgRent.toLocaleString()}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🍽️</div><div><div class="scl">Food Included</div><div class="scn">${withFood}</div></div></div>
+  </div>`;
+  if(!filtered.length){document.getElementById('content-stay').innerHTML=emptyState('🛏️','No listings found','Try different filters or list a property.');return;}
+  const cards=filtered.map(x=>{
+    const i=stays.indexOf(x);
+    const img=stayImg(x.location);
+    return`<div class="stay-card">
+      <div class="stay-img" style="background-image:url('${img}');">
+        <div class="stay-type-badge">🏠 ${x.type||'PG'}</div>
+        <div class="stay-rent">₹${(+x.rent||0).toLocaleString()}/mo</div>
+      </div>
+      <div class="stay-body">
+        <div class="stay-name">${x.name}</div>
+        <div class="stay-loc">📍 ${x.location||'–'} · ${x.address||''}</div>
+        <div class="stay-tags">
+          <span class="stay-tag">${x.occupancy||'Sharing'}</span>
+          <span class="stay-tag">${x.gender||'–'}</span>
+          ${x.food==='Yes'?'<span class="stay-tag">Food ✔</span>':''}
+          ${(x.facilities||'').split(',').slice(0,2).map(f=>`<span class="stay-tag">${f.trim()}</span>`).join('')}
+        </div>
+      </div>
+      <div class="stay-foot">
+        <span>👤 ${x.owner||'–'} · 📞 ${x.phone||'–'}</span>${sbadge(x.status)}
+        <div class="acts">
+          <button class="abt ab-e" onclick="editRecord('stay',${i})">✏️</button>
+          <button class="abt ab-d" onclick="deleteRecord('stay',${i})">🗑️</button>
+        </div>
+      </div>
+    </div>`;}).join('');
+  document.getElementById('content-stay').innerHTML=`<div class="stay-grid">${cards}</div>`;
+}
+
+// ═══════════════════════════════════════════
+// RENDER: JOBS
+// ═══════════════════════════════════════════
+function renderJobs(){
+  const s=(document.getElementById('job-search')||{}).value||'';
+  const tp=(document.getElementById('job-type')||{}).value||'';
+  const loc=(document.getElementById('job-loc')||{}).value||'';
+  const exp=(document.getElementById('job-exp')||{}).value||'';
+  const filtered=jobs.filter(j=>
+    (!s||(j.title+j.company+j.skills).toLowerCase().includes(s.toLowerCase()))
+    &&(!tp||j.type===tp)&&(!loc||j.location===loc)&&(!exp||j.experience===exp));
+  const ft=jobs.filter(j=>j.type==='Full Time').length;
+  const intern=jobs.filter(j=>j.type==='Internship').length;
+  document.getElementById('stats-jobs').innerHTML=`<div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">💼</div><div><div class="scl">Total Jobs</div><div class="scn">${jobs.length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">🎓</div><div><div class="scl">Internships</div><div class="scn">${intern}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">💻</div><div><div class="scl">Full Time</div><div class="scn">${ft}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">📩</div><div><div class="scl">Active</div><div class="scn">${jobs.filter(j=>j.status==='Active').length}</div></div></div>
+  </div>`;
+  if(!filtered.length){document.getElementById('content-jobs').innerHTML=emptyState('💼','No jobs found','Post a new job opportunity.');return;}
+  const cards=filtered.map(j=>{
+    const i=jobs.indexOf(j);
+    const emoji=j.emoji||'💼';
+    const bg={lc:'#dbeafe',tc:'#3b82f6'};
+    return`<div class="job-card">
+      <div class="job-hdr">
+        <div class="job-co">
+          <div class="job-logo" style="background:#f0f4f8;">${emoji}</div>
+          <div><div class="job-title">${j.title}</div><div class="job-company">${j.company||'–'} · ${j.location||'–'}</div></div>
+        </div>${typeBadge(j.type)}
+      </div>
+      <div class="job-tags2">
+        ${(j.skills||'').split(',').slice(0,3).map(sk=>`<span class="jtag" style="background:#dbeafe;color:#1d4ed8;">${sk.trim()}</span>`).join('')}
+        <span class="jtag" style="background:#dcfce7;color:#065f46;">${j.experience||'Any'}</span>
+        ${j.telugu==='Yes'?'<span class="jtag" style="background:#ffedd5;color:#c2410c;">Telugu ✔</span>':''}
+      </div>
+      <div class="job-meta">📞 ${j.contact||'–'} · ${j.phone||''} ${j.email?'· '+j.email:''}</div>
+      <div class="job-foot">
+        <div class="salary">${j.salary||'–'}</div>
+        <div class="acts">
+          <button class="apply-btn">Apply Now</button>
+          <button class="abt ab-e" onclick="editRecord('job',${i})" style="margin-left:6px;">✏️</button>
+          <button class="abt ab-d" onclick="deleteRecord('job',${i})">🗑️</button>
+        </div>
+      </div>
+    </div>`;}).join('');
+  document.getElementById('content-jobs').innerHTML=`<div class="job-grid">${cards}</div>`;
+}
+
+// ═══════════════════════════════════════════
+// RENDER: ANNOUNCEMENTS
+// ═══════════════════════════════════════════
+function renderAnnouncements(){
+  const s=(document.getElementById('ann-search')||{}).value||'';
+  const urg=(document.getElementById('ann-urgency')||{}).value||'';
+  const st=(document.getElementById('ann-status')||{}).value||'';
+  const cat=chipState.announce||'';
+  const filtered=announcements.filter(a=>
+    (!s||(a.title+a.desc+a.contactName).toLowerCase().includes(s.toLowerCase()))
+    &&(!urg||a.urgency===urg)&&(!st||a.status===st)&&(!cat||a.type===cat));
+  const blood=announcements.filter(a=>a.type==='Blood Required').length;
+  const travel=announcements.filter(a=>a.type==='Travel Partner').length;
+  const maid=announcements.filter(a=>a.type==='Looking for Maid').length;
+  const gen=announcements.filter(a=>!['Blood Required','Travel Partner','Looking for Maid'].includes(a.type)).length;
+  document.getElementById('stats-announce').innerHTML=`<div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🩸</div><div><div class="scl">Blood Requests</div><div class="scn">${blood}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🚗</div><div><div class="scl">Travel Partners</div><div class="scn">${travel}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">🏠</div><div><div class="scl">Home Help</div><div class="scn">${maid}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">📢</div><div><div class="scl">General Notices</div><div class="scn">${gen}</div></div></div>
+  </div>`;
+  if(!filtered.length){document.getElementById('content-announce').innerHTML=emptyState('📢','No announcements found','Post a community announcement.');return;}
+  const cards=filtered.map(a=>{
+    const i=announcements.indexOf(a);
+    const color=annColor(a.type);const icon=annIcon(a.type);const bg=annBg(a.type);
+    const urgBadge=a.urgency==='Very Urgent'?'<span class="br">🔴 Very Urgent</span>':a.urgency==='Urgent'?'<span class="bp">🟡 Urgent</span>':'<span class="ba">🔵 Active</span>';
+    return`<div class="ann-card" style="border-left-color:${color};">
+      <div class="ann-ico" style="background:${bg};">${icon}</div>
+      <div class="ann-body">
+        <div class="ann-type" style="color:${color};">${a.type}</div>
+        <div class="ann-title">${a.title}</div>
+        <div class="ann-desc">${a.desc||'–'}</div>
+        <div class="ann-meta">
+          <span>👤 ${a.contactName}</span>${a.phone?`<span>📞 ${a.phone}</span>`:''}${a.email?`<span>✉️ ${a.email}</span>`:''}${a.location?`<span>📍 ${a.location}</span>`:''}<span>🆔 ${a.id}</span>
+        </div>
+      </div>
+      <div class="ann-rt">
+        <div class="ann-time">${a.time||'–'}</div>
+        <div style="margin-top:5px;">${urgBadge}</div>
+        <div class="acts" style="margin-top:6px;justify-content:flex-end;">
+          <button class="abt ab-e" onclick="editRecord('announce',${i})">✏️</button>
+          <button class="abt ab-d" onclick="deleteRecord('announce',${i})">🗑️</button>
+        </div>
+      </div>
+    </div>`;}).join('');
+  document.getElementById('content-announce').innerHTML=`<div class="ann-list">${cards}</div>`;
+}
+
+// ═══════════════════════════════════════════
+// RENDER: PLACES
+// ═══════════════════════════════════════════
+function renderPlaces(){
+  const s=(document.getElementById('pl-search')||{}).value||'';
+  const dist=(document.getElementById('pl-district')||{}).value||'';
+  const st=(document.getElementById('pl-status')||{}).value||'';
+  const cat=chipState.places||'';
+  const filtered=places.filter(p=>
+    (!s||(p.name+p.location+p.subcat).toLowerCase().includes(s.toLowerCase()))
+    &&(!dist||p.district===dist)&&(!st||p.status===st)&&(!cat||p.category===cat));
+  document.getElementById('stats-places').innerHTML=`<div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#fef9c3;">📍</div><div><div class="scl">Total Places</div><div class="scn">${places.length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🛕</div><div><div class="scl">Devotional</div><div class="scn">${places.filter(p=>p.category==='Devotional').length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">🌿</div><div><div class="scl">Nature / Trek</div><div class="scn">${places.filter(p=>['Trekking','Camping','Wildlife'].includes(p.category)).length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🏰</div><div><div class="scl">Historical</div><div class="scn">${places.filter(p=>p.category==='Historical').length}</div></div></div>
+  </div>`;
+  if(!filtered.length){document.getElementById('content-places').innerHTML=emptyState('📍','No places found','Add a new place to visit.');return;}
+  const cards=filtered.map(p=>{
+    const i=places.indexOf(p);
+    const img=p.img||'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80';
+    return`<div class="pcard">
+      <div class="pimg" style="background-image:url('${img}');">
+        <div class="pov"></div>
+        <span class="pbadge" style="background:rgba(255,255,255,.9);">${p.category||'–'}</span>
+      </div>
+      <div class="pinfo">
+        <div class="pname">${p.name}</div>
+        <div class="ploc2">📍 ${p.location||'–'} · ${p.id}</div>
+        <div class="prat2">${starsHtml(+p.rating||0)} <span style="color:var(--muted);font-size:10px;">(${p.reviews||0})</span></div>
+        <div class="pcat2">${p.subcat||''} · ${p.district||'Pune'} · 🏕️ ${p.distance||'–'}</div>
+      </div>
+      <div class="pfoot">${sbadge(p.status)}
+        <div class="acts">
+          <button class="abt ab-e" onclick="editRecord('place',${i})">✏️</button>
+          <button class="abt ab-d" onclick="deleteRecord('place',${i})">🗑️</button>
+        </div>
+      </div>
+    </div>`;}).join('');
+  document.getElementById('content-places').innerHTML=`<div class="g3">${cards}</div>`;
+}
+
+// ═══════════════════════════════════════════
+// RENDER: DASHBOARD
+// ═══════════════════════════════════════════
+function renderDashboard(){
+  document.getElementById('db-stats').innerHTML=`<div class="srow s5">
+    <div class="sc"><div class="sci" style="background:#dbeafe;">👥</div><div><div class="scl">Total Families</div><div class="scn">${families.length}</div><div class="scc">▲ Active</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">📍</div><div><div class="scl">Places Listed</div><div class="scn">${places.length}</div><div class="scc">▲ +2 this month</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fef9c3;">📅</div><div><div class="scl">Events</div><div class="scn">${events.length}</div><div class="scc">${events.filter(e=>e.status==='Active').length} active</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🤝</div><div><div class="scl">Support Posts</div><div class="scn">${announcements.length}</div><div class="scc">${announcements.filter(a=>a.urgency==='Very Urgent').length} urgent</div></div></div>
+    <div class="sc"><div class="sci" style="background:#ede9fe;">💼</div><div><div class="scl">Job Posts</div><div class="scn">${jobs.length}</div><div class="scc">${jobs.filter(j=>j.status==='Active').length} active</div></div></div>
+  </div>`;
+  // Support
+  const sup=announcements.slice(0,3);
+  document.getElementById('db-support').innerHTML=sup.map(a=>`<div class="sup-item">
+    <div class="sup-ico" style="background:${annBg(a.type)};">${annIcon(a.type)}</div>
+    <div><div class="sup-title" style="color:${annColor(a.type)};">${a.type}</div><div class="sup-desc">${(a.desc||'').slice(0,60)}...</div></div>
+    <div class="sup-time">${a.time||'–'}</div>
+  </div>`).join('');
+  // Places
+  const pls=places.slice(0,3);
+  document.getElementById('db-places').innerHTML=`<div class="pl-grid">${pls.map(p=>`<div class="pl-card">
+    <div class="pl-img" style="background-image:url('${p.img||''}');"><div class="pl-ov"></div></div>
+    <div class="pl-info"><div class="pl-name">${p.name}</div><div class="pl-loc">📍 ${p.location||'–'}</div><div class="pl-rat">★ ${p.rating||'–'} (${p.reviews||0})</div></div>
+  </div>`).join('')}</div>`;
+  // Events
+  const evs=events.slice(0,3);
+  document.getElementById('db-events').innerHTML=evs.map(e=>{
+    const d=e.date?new Date(e.date):null;
+    const day=d?d.getDate():'?';const mon=d?d.toLocaleString('en',{month:'short'}):'–';
+    return`<div class="ev-item">
+      <div class="ev-date-box"><div class="ev-day">${day}</div><div class="ev-mon">${mon}</div></div>
+      <div><div class="ev-title2">${e.name}</div><div class="ev-sub">📍 ${e.venue||'–'}</div><div class="ev-time2">🕙 ${e.startTime||'–'}</div></div>
+    </div>`;}).join('');
+}
+
+// ═══════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════
+function show(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nv').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  const n=document.getElementById('nav-'+p);if(n)n.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.sm-item').forEach(s=>{
+  s.addEventListener('click',function(){document.querySelectorAll('.sm-item').forEach(x=>x.classList.remove('on'));this.classList.add('on');});
+});
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+(function init(){
+  renderDashboard();
+  renderFamilies();
+  renderEvents();
+  renderContacts();
+  renderBusinesses();
+  renderStays();
+  renderJobs();
+  renderAnnouncements();
+  renderPlaces();
+})();
+</script>
+</body>
+</html>
