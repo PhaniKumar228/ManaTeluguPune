@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mana Telugu Pune – Places to Visit</title>
+<style>
+/* ═══ RESET & VARIABLES ═══ */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --primary:#1e3a5f;--accent:#f97316;--green:#10b981;--red:#ef4444;
+  --border:#e2e8f0;--light:#f1f5f9;--text:#1e293b;--muted:#64748b;--nh:62px;
+}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#f0f4f8;color:var(--text);overflow-x:hidden;}
+
+/* ═══ SCREENS ═══ */
+.screen{display:none;}
+.screen.active{display:block;}
+
+/* ═══════════════════════════════
+   AUTH SCREEN
+═══════════════════════════════ */
+.auth-bg{
+  min-height:100vh;
+  background:linear-gradient(145deg,#0f172a 0%,#1e3a5f 50%,#1e40af 100%);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  position:relative;overflow:hidden;
+}
+.auth-bg::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.auth-wrap{display:flex;align-items:stretch;width:860px;max-width:96vw;border-radius:22px;
+  overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.4);animation:slideUp .4s ease;position:relative;}
+@keyframes slideUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.auth-hero{width:320px;flex-shrink:0;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  padding:40px 28px;display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid rgba(255,255,255,.1);}
+.ah-icon{font-size:52px;margin-bottom:16px;}
+.ah-title{font-size:22px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:8px;}
+.ah-sub{font-size:13px;color:#93c5fd;line-height:1.7;margin-bottom:24px;}
+.ah-perks{display:flex;flex-direction:column;gap:10px;}
+.perk{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:#cbd5e1;}
+.perk-icon{font-size:18px;flex-shrink:0;margin-top:-1px;}
+.perk strong{display:block;color:#e0f2fe;font-size:12px;}
+.price-pill{background:linear-gradient(135deg,var(--accent),#ea580c);color:#fff;
+  font-size:13px;font-weight:900;padding:8px 16px;border-radius:24px;display:inline-block;
+  margin-top:22px;box-shadow:0 4px 16px rgba(249,115,22,.4);}
+.auth-card{flex:1;background:#fff;padding:36px;}
+.auth-logo-sm{display:flex;align-items:center;gap:8px;margin-bottom:22px;}
+.auth-logo-sm span{font-size:24px;}
+.auth-logo-sm h2{font-size:15px;font-weight:800;color:var(--primary);}
+.auth-tabs{display:flex;background:#f1f5f9;border-radius:10px;padding:4px;margin-bottom:22px;}
+.auth-tab{flex:1;padding:9px;border-radius:8px;text-align:center;font-size:13px;
+  font-weight:700;cursor:pointer;color:var(--muted);transition:.2s;user-select:none;}
+.auth-tab.on{background:#fff;color:var(--primary);box-shadow:0 1px 5px rgba(0,0,0,.1);}
+.auth-form{display:none;}
+.auth-form.on{display:block;}
+.af-group{margin-bottom:13px;}
+.af-group label{font-size:11px;font-weight:700;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;}
+.af-group input{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:9px;
+  font-size:13px;color:var(--text);outline:none;background:#f8fafc;transition:.15s;}
+.af-group input:focus{border-color:#3b82f6;background:#fff;box-shadow:0 0 0 3px rgba(59,130,246,.1);}
+.af-hint{font-size:10px;color:var(--muted);margin-top:4px;}
+.auth-btn{width:100%;padding:12px;border:none;border-radius:10px;font-size:14px;
+  font-weight:800;cursor:pointer;transition:.2s;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.auth-btn-primary{background:var(--primary);color:#fff;}
+.auth-btn-primary:hover{background:#1e40af;}
+.auth-btn-accent{background:linear-gradient(135deg,var(--accent),#ea580c);color:#fff;box-shadow:0 4px 14px rgba(249,115,22,.35);}
+.auth-btn-accent:hover{opacity:.9;}
+.auth-divider{text-align:center;font-size:11px;color:var(--muted);margin:12px 0;position:relative;}
+.auth-divider::before,.auth-divider::after{content:'';position:absolute;top:50%;width:38%;height:1px;background:var(--border);}
+.auth-divider::before{left:0;}.auth-divider::after{right:0;}
+
+/* ═══════════════════════════════
+   PAYMENT SCREEN
+═══════════════════════════════ */
+.pay-bg{
+  min-height:100vh;
+  background:linear-gradient(145deg,#0f172a 0%,#1e3a5f 50%,#1e40af 100%);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.pay-card{background:#fff;border-radius:22px;width:500px;max-width:95vw;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);animation:slideUp .3s ease;}
+.pay-header{background:linear-gradient(135deg,var(--primary),#1e40af);padding:24px 26px;color:#fff;}
+.pay-header h2{font-size:19px;font-weight:900;}
+.pay-header p{font-size:12px;color:#93c5fd;margin-top:4px;}
+.pay-body{padding:26px;}
+.pay-back-btn{background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:4px;margin-bottom:18px;padding:0;}
+.pay-back-btn:hover{color:var(--primary);}
+.plan-box{border:2px solid var(--accent);border-radius:14px;padding:18px;margin-bottom:22px;
+  background:linear-gradient(135deg,#fff7ed,#fffbf7);}
+.plan-label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+.plan-price-row{display:flex;align-items:baseline;gap:6px;}
+.plan-price{font-size:40px;font-weight:900;color:var(--primary);line-height:1;}
+.plan-period{font-size:14px;color:var(--muted);font-weight:600;}
+.plan-features{margin-top:12px;display:flex;flex-direction:column;gap:6px;}
+.pf-item{font-size:12px;color:var(--text);display:flex;align-items:center;gap:7px;}
+.pf-item::before{content:'✓';color:var(--green);font-weight:900;font-size:13px;flex-shrink:0;}
+.pay-tabs{display:flex;background:#f1f5f9;border-radius:10px;padding:4px;margin-bottom:18px;}
+.pay-tab{flex:1;padding:9px;border-radius:8px;text-align:center;font-size:12px;
+  font-weight:700;cursor:pointer;color:var(--muted);transition:.2s;user-select:none;}
+.pay-tab.on{background:#fff;color:var(--primary);box-shadow:0 1px 5px rgba(0,0,0,.1);}
+.pay-panel{display:none;}
+.pay-panel.on{display:block;}
+.upi-qr-box{background:#f8fafc;border:2px dashed var(--border);border-radius:14px;
+  padding:20px;text-align:center;margin-bottom:16px;}
+.upi-qr{width:110px;height:110px;background:linear-gradient(135deg,#e0f2fe,#dbeafe);
+  border-radius:12px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:46px;}
+.upi-id-text{font-size:14px;font-weight:800;color:var(--primary);letter-spacing:.03em;}
+.upi-note{font-size:11px;color:var(--muted);margin-top:4px;}
+.pay-input{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:9px;
+  font-size:13px;outline:none;margin-bottom:14px;background:#f8fafc;transition:.15s;}
+.pay-input:focus{border-color:#3b82f6;background:#fff;}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.pay-group label{font-size:11px;font-weight:700;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;}
+.pay-btn{width:100%;padding:14px;border:none;border-radius:11px;font-size:15px;font-weight:900;
+  cursor:pointer;transition:.2s;background:linear-gradient(135deg,var(--accent),#ea580c);
+  color:#fff;box-shadow:0 4px 16px rgba(249,115,22,.35);display:flex;align-items:center;justify-content:center;gap:8px;}
+.pay-btn:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 6px 20px rgba(249,115,22,.4);}
+.pay-secure{text-align:center;font-size:10px;color:var(--muted);margin-top:10px;}
+
+/* ═══════════════════════════════
+   APP LAYOUT
+═══════════════════════════════ */
+.topnav{background:var(--primary);height:var(--nh);display:flex;align-items:center;
+  justify-content:space-between;padding:0 22px;position:fixed;top:0;left:0;right:0;
+  z-index:400;box-shadow:0 2px 16px rgba(0,0,0,.35);}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.logo-icon{font-size:26px;}
+.logo-text h1{font-size:15px;color:#fff;font-weight:800;line-height:1.2;}
+.logo-text p{font-size:10px;color:#93c5fd;}
+.nav-search{flex:1;max-width:380px;margin:0 22px;position:relative;}
+.nav-search input{width:100%;padding:8px 13px 8px 34px;border-radius:24px;border:none;
+  background:rgba(255,255,255,.14);color:#fff;font-size:13px;outline:none;transition:.15s;}
+.nav-search input:focus{background:rgba(255,255,255,.22);}
+.nav-search input::placeholder{color:#94a3b8;}
+.nav-si{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#93c5fd;font-size:13px;}
+.nr{display:flex;align-items:center;gap:11px;}
+.admin-pill{background:var(--accent);color:#fff;font-size:10px;font-weight:800;
+  padding:4px 10px;border-radius:20px;display:none;}
+.user-chip{display:flex;align-items:center;gap:8px;}
+.u-av{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);
+  color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.u-name{font-size:12px;color:#fff;font-weight:700;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.u-role{font-size:10px;color:#93c5fd;}
+.logout-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;
+  font-size:11px;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;transition:.15s;flex-shrink:0;}
+.logout-btn:hover{background:rgba(255,255,255,.22);}
+
+/* ═══════════════════════════════
+   MAIN
+═══════════════════════════════ */
+.main{padding:calc(var(--nh) + 22px) 22px 30px;}
+.ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px;}
+.ph-left h2{font-size:20px;font-weight:900;}
+.ph-left p{font-size:12px;color:var(--muted);margin-top:3px;}
+
+/* ═══ BUTTONS ═══ */
+.btn{padding:8px 16px;border-radius:8px;border:none;font-size:12px;font-weight:700;
+  cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:.15s;}
+.btn-primary{background:var(--primary);color:#fff;}
+.btn-primary:hover{background:#1e40af;}
+.btn-accent{background:var(--accent);color:#fff;}
+.btn-accent:hover{background:#ea580c;}
+.btn-outline{background:#fff;color:var(--primary);border:1.5px solid var(--border);}
+.btn-outline:hover{background:#f8fafc;}
+
+/* ═══ STATS ═══ */
+.srow{display:grid;gap:14px;margin-bottom:16px;}
+.s4{grid-template-columns:repeat(4,1fr);}
+.sc{background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 1px 5px rgba(0,0,0,.06);
+  display:flex;align-items:center;gap:12px;}
+.sci{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;}
+.scn{font-size:22px;font-weight:900;line-height:1.1;}
+.scl{font-size:10px;color:var(--muted);margin-bottom:3px;}
+
+/* ═══ CHIPS ═══ */
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+.chip{display:flex;align-items:center;gap:5px;padding:6px 13px;border-radius:24px;
+  font-size:11px;font-weight:700;cursor:pointer;border:2px solid transparent;transition:.15s;user-select:none;}
+.chip:hover{transform:translateY(-1px);box-shadow:0 3px 8px rgba(0,0,0,.1);}
+.chip.on{border-color:currentColor;}
+.c1{background:#dbeafe;color:#1d4ed8;}.c2{background:#dcfce7;color:#15803d;}
+.c3{background:#fef9c3;color:#854d0e;}.c4{background:#fce7f3;color:#be185d;}
+.c5{background:#ede9fe;color:#6d28d9;}.c6{background:#ffedd5;color:#c2410c;}
+.c7{background:#d1fae5;color:#065f46;}.c9{background:#e0f2fe;color:#0369a1;}
+.call{background:#f8fafc;color:#475569;border:1.5px solid var(--border);}
+
+/* ═══ TOOLBAR ═══ */
+.toolbar{background:#fff;border-radius:12px;padding:12px 14px;display:flex;
+  align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:16px;}
+.toolbar input,.toolbar select{border:1px solid var(--border);border-radius:7px;
+  padding:7px 10px;font-size:12px;color:var(--text);outline:none;background:#f8fafc;}
+.toolbar input:focus,.toolbar select:focus{border-color:#3b82f6;}
+.ts{flex:1;min-width:160px;position:relative;}
+.ts input{width:100%;padding-left:30px;}
+.ts .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px;}
+
+/* ═══ PLACE CARDS ═══ */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.pcard{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.08);
+  transition:.2s;cursor:pointer;position:relative;}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,0,0,.13);}
+.pimg{height:150px;background:center/cover no-repeat;position:relative;}
+.pov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.68),transparent);}
+.pbadge{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:20px;
+  font-size:10px;font-weight:800;background:rgba(255,255,255,.93);color:var(--primary);}
+.prating{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.55);
+  color:#fbbf24;font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px;
+  display:flex;align-items:center;gap:3px;}
+.pinfo{padding:12px 13px 8px;}
+.pname{font-size:13px;font-weight:800;line-height:1.35;margin-bottom:5px;}
+.ploc2{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px;margin-bottom:6px;}
+.pcat2{font-size:10px;color:var(--muted);display:flex;gap:12px;flex-wrap:wrap;}
+.pfoot{display:flex;align-items:center;justify-content:space-between;
+  padding:8px 13px 10px;border-top:1px solid #f1f5f9;}
+.view-link{font-size:11px;font-weight:800;color:var(--accent);display:flex;align-items:center;gap:4px;}
+.ad-acts{display:flex;gap:5px;}
+.abt{height:26px;padding:0 10px;border-radius:6px;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;transition:.15s;}
+.abt:hover{transform:scale(1.05);}
+.abt-e{background:#d1fae5;color:#065f46;}
+.abt-d{background:#fee2e2;color:#b91c1c;}
+
+/* ═══ BADGES ═══ */
+.bv{background:#dcfce7;color:#15803d;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bp{background:#fef9c3;color:#854d0e;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.ba{background:#dbeafe;color:#1d4ed8;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bg2{background:#d1fae5;color:#065f46;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+.bpk{background:#fce7f3;color:#be185d;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;}
+
+/* ═══ EMPTY STATE ═══ */
+.empty{text-align:center;padding:64px 20px;color:var(--muted);}
+.empty .ei{font-size:54px;margin-bottom:14px;}
+.empty h3{font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px;}
+.empty p{font-size:13px;}
+
+/* ═══ DETAIL MODAL ═══ */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.62);z-index:1000;display:none;
+  align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto;}
+.modal-ov.open{display:flex;}
+.detail-box{background:#fff;border-radius:22px;width:640px;max-width:96vw;overflow:hidden;
+  box-shadow:0 28px 70px rgba(0,0,0,.35);animation:mIn .22s ease;margin:auto;}
+@keyframes mIn{from{opacity:0;transform:scale(.95);}to{opacity:1;transform:scale(1);}}
+.detail-img{height:230px;background:center/cover no-repeat;position:relative;flex-shrink:0;}
+.detail-img-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,.1) 60%,transparent 100%);}
+.detail-img-info{position:absolute;bottom:18px;left:20px;right:56px;}
+.detail-title{font-size:21px;font-weight:900;color:#fff;line-height:1.3;text-shadow:0 1px 6px rgba(0,0,0,.5);}
+.detail-loc{font-size:12px;color:rgba(255,255,255,.88);margin-top:5px;display:flex;align-items:center;gap:5px;}
+.detail-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.9);border:none;cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.2);
+  transition:.15s;z-index:2;}
+.detail-close:hover{background:#fff;transform:scale(1.1);}
+.detail-body{padding:22px 24px 26px;}
+.detail-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.dm-item{background:#f8fafc;border-radius:10px;padding:11px 13px;}
+.dm-label{font-size:9px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px;}
+.dm-val{font-size:13px;font-weight:800;color:var(--text);}
+.detail-section-title{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;}
+.detail-desc{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:18px;}
+.detail-tags{display:flex;gap:7px;flex-wrap:wrap;}
+.dtag{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;}
+
+/* ═══ ADD MODAL (ADMIN) ═══ */
+.add-box{background:#fff;border-radius:18px;padding:26px;width:680px;max-width:95vw;
+  box-shadow:0 24px 60px rgba(0,0,0,.28);animation:mIn .2s ease;margin:auto;}
+.add-head{display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:18px;padding-bottom:14px;border-bottom:2px solid var(--light);}
+.add-title{font-size:16px;font-weight:800;}
+.add-close{width:32px;height:32px;border-radius:8px;border:none;background:#f1f5f9;
+  cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;}
+.add-close:hover{background:#fee2e2;color:var(--red);}
+.add-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;
+  padding-top:14px;border-top:1px solid var(--border);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fgrp label{font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;}
+.fgrp input,.fgrp select,.fgrp textarea{width:100%;border:1px solid var(--border);border-radius:7px;
+  padding:8px 10px;font-size:12px;color:var(--text);outline:none;background:#f8fafc;resize:vertical;transition:.15s;}
+.fgrp input:focus,.fgrp select:focus,.fgrp textarea:focus{border-color:#3b82f6;background:#fff;}
+
+/* ═══ CONFIRM ═══ */
+.cfm-ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100;
+  display:none;align-items:center;justify-content:center;}
+.cfm-ov.open{display:flex;}
+.cfm-box{background:#fff;border-radius:16px;padding:32px;width:340px;
+  text-align:center;box-shadow:0 12px 44px rgba(0,0,0,.18);}
+.cfm-icon{font-size:44px;margin-bottom:12px;}
+.cfm-box h3{font-size:17px;font-weight:900;margin-bottom:8px;}
+.cfm-box p{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.6;}
+.cfm-btns{display:flex;gap:10px;justify-content:center;}
+
+/* ═══ TOAST ═══ */
+.toast{position:fixed;bottom:24px;right:24px;background:#1e3a5f;color:#fff;
+  padding:13px 22px;border-radius:12px;font-size:13px;font-weight:600;z-index:9999;
+  opacity:0;transform:translateY(10px);transition:.3s;pointer-events:none;
+  display:flex;align-items:center;gap:8px;box-shadow:0 6px 24px rgba(0,0,0,.22);}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:860px){.auth-hero{display:none;}.auth-wrap{width:440px;}}
+@media(max-width:900px){.g3{grid-template-columns:1fr 1fr;}.s4{grid-template-columns:1fr 1fr;}.detail-meta{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){
+  .g3{grid-template-columns:1fr;}
+  .nav-search{display:none;}
+  .main{padding:calc(var(--nh)+14px) 14px 20px;}
+  .form-grid{grid-template-columns:1fr;}
+  .detail-meta{grid-template-columns:1fr 1fr;}
+  .auth-wrap{border-radius:16px;}
+  .auth-card{padding:24px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     SCREEN 1 · AUTH (Login / Sign Up)
+═══════════════════════════════════════ -->
+<div class="screen active" id="screen-auth">
+  <div class="auth-bg">
+    <div class="auth-wrap">
+
+      <!-- Hero panel -->
+      <div class="auth-hero">
+        <div class="ah-icon">🏛️</div>
+        <div class="ah-title">Mana Telugu Pune</div>
+        <div class="ah-sub">Discover the best devotional, historical & nature destinations handpicked by your Telugu community.</div>
+        <div class="ah-perks">
+          <div class="perk"><span class="perk-icon">🛕</span><div><strong>Devotional Spots</strong>Famous temples &amp; pilgrimage sites</div></div>
+          <div class="perk"><span class="perk-icon">⛰️</span><div><strong>Treks & Hill Stations</strong>Weekend getaways near Pune</div></div>
+          <div class="perk"><span class="perk-icon">🏖️</span><div><strong>Beaches & Camps</strong>Coastal &amp; wilderness escapes</div></div>
+          <div class="perk"><span class="perk-icon">🏰</span><div><strong>Historical Forts</strong>Rich Maratha heritage</div></div>
+        </div>
+        <div class="price-pill">🎉 Full Access — Just ₹39 / year</div>
+      </div>
+
+      <!-- Auth card -->
+      <div class="auth-card">
+        <div class="auth-logo-sm"><span>🏛️</span><h2>Mana Telugu Pune</h2></div>
+
+        <div class="auth-tabs">
+          <div class="auth-tab on" id="tab-login" onclick="switchAuthTab('login')">🔑 Login</div>
+          <div class="auth-tab"    id="tab-signup" onclick="switchAuthTab('signup')">✨ Sign Up</div>
+        </div>
+
+        <!-- LOGIN -->
+        <div class="auth-form on" id="form-login">
+          <div class="af-group">
+            <label>Email Address</label>
+            <input type="email" id="login-email" placeholder="you@email.com" onkeydown="if(event.key==='Enter')doLogin()"/>
+          </div>
+          <div class="af-group">
+            <label>Password</label>
+            <input type="password" id="login-pass" placeholder="Enter your password" onkeydown="if(event.key==='Enter')doLogin()"/>
+          </div>
+          <button class="auth-btn auth-btn-primary" onclick="doLogin()">🔑 Login to My Account</button>
+          <div class="auth-divider">New here?</div>
+          <button class="auth-btn auth-btn-accent" onclick="switchAuthTab('signup')">✨ Create Account — Only ₹39/year</button>
+        </div>
+
+        <!-- SIGN UP -->
+        <div class="auth-form" id="form-signup">
+          <div class="af-group">
+            <label>Full Name</label>
+            <input type="text" id="reg-name" placeholder="Your full name"/>
+          </div>
+          <div class="af-group">
+            <label>Email Address</label>
+            <input type="email" id="reg-email" placeholder="you@email.com"/>
+          </div>
+          <div class="af-group">
+            <label>Mobile Number</label>
+            <input type="tel" id="reg-mobile" placeholder="10-digit mobile number" maxlength="10"/>
+          </div>
+          <div class="af-group">
+            <label>Password</label>
+            <input type="password" id="reg-pass" placeholder="Minimum 6 characters"/>
+            <div class="af-hint">Must be at least 6 characters</div>
+          </div>
+          <button class="auth-btn auth-btn-accent" onclick="doSignup()">✨ Sign Up &amp; Proceed to Payment →</button>
+          <div class="auth-divider">Already a member?</div>
+          <button class="auth-btn auth-btn-primary" onclick="switchAuthTab('login')">🔑 Login</button>
+        </div>
+      </div><!-- /auth-card -->
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SCREEN 2 · PAYMENT (₹39/year)
+═══════════════════════════════════════ -->
+<div class="screen" id="screen-payment">
+  <div class="pay-bg">
+    <div class="pay-card">
+      <div class="pay-header">
+        <h2>🎉 Complete Your Membership</h2>
+        <p>One-time annual payment · No auto-renewal · No hidden charges</p>
+      </div>
+      <div class="pay-body">
+        <button class="pay-back-btn" onclick="showScreen('screen-auth')">← Back to Login</button>
+
+        <div class="plan-box">
+          <div class="plan-label">Mana Telugu Pune · Annual Membership</div>
+          <div class="plan-price-row">
+            <span class="plan-price">₹39</span>
+            <span class="plan-period">/ year</span>
+          </div>
+          <div class="plan-features">
+            <div class="pf-item">Browse all Places to Visit with full details</div>
+            <div class="pf-item">Devotional, Historical, Trekking, Beaches &amp; more</div>
+            <div class="pf-item">Search, filter &amp; explore by category</div>
+            <div class="pf-item">Access to community-curated recommendations</div>
+            <div class="pf-item">Valid for 12 months from date of payment</div>
+          </div>
+        </div>
+
+        <div class="pay-tabs">
+          <div class="pay-tab on" id="ptab-upi"  onclick="switchPayTab('upi')">📱 UPI</div>
+          <div class="pay-tab"    id="ptab-card" onclick="switchPayTab('card')">💳 Card / NetBanking</div>
+        </div>
+
+        <!-- UPI -->
+        <div class="pay-panel on" id="pay-panel-upi">
+          <div class="upi-qr-box">
+            <div class="upi-qr">📱</div>
+            <div class="upi-id-text">mtp.pune@upi</div>
+            <div class="upi-note">Scan QR code or pay using the UPI ID above</div>
+          </div>
+          <label style="font-size:11px;font-weight:700;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;">UTR / Transaction Reference No.</label>
+          <input class="pay-input" type="text" id="utr-ref" placeholder="e.g. 123456789012"/>
+          <button class="pay-btn" onclick="doPayment()">✅ Confirm Payment — ₹39</button>
+        </div>
+
+        <!-- Card -->
+        <div class="pay-panel" id="pay-panel-card">
+          <label style="font-size:11px;font-weight:700;color:var(--muted);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;">Card Number</label>
+          <input class="pay-input" type="text" id="card-num" placeholder="1234 5678 9012 3456" maxlength="19"
+            oninput="this.value=this.value.replace(/[^\d ]/g,'').replace(/(.{4})/g,'$1 ').trim().slice(0,19)"/>
+          <div class="pay-grid">
+            <div class="pay-group">
+              <label>Expiry</label>
+              <input class="pay-input" style="margin:0;" type="text" placeholder="MM / YY" maxlength="7"/>
+            </div>
+            <div class="pay-group">
+              <label>CVV</label>
+              <input class="pay-input" style="margin:0;" type="password" placeholder="•••" maxlength="4"/>
+            </div>
+          </div>
+          <div style="height:14px;"></div>
+          <button class="pay-btn" onclick="doPayment()">💳 Pay ₹39 Now</button>
+        </div>
+
+        <div class="pay-secure">🔒 Secured &amp; Encrypted · Powered by Razorpay (integration ready)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SCREEN 3 · APP (Places)
+═══════════════════════════════════════ -->
+<div class="screen" id="screen-app">
+
+  <!-- TOP NAV -->
+  <header class="topnav">
+    <div class="logo">
+      <span class="logo-icon">🏛️</span>
+      <div class="logo-text">
+        <h1>Mana Telugu Pune</h1>
+        <p>Connecting Telugu Hearts Across Pune</p>
+      </div>
+    </div>
+    <div class="nav-search">
+      <span class="nav-si">🔍</span>
+      <input type="text" placeholder="Search places…" oninput="renderPlaces(this.value)"/>
+    </div>
+    <div class="nr">
+      <span class="admin-pill" id="admin-pill">👑 Admin</span>
+      <div class="user-chip">
+        <div class="u-av" id="nav-av">U</div>
+        <div>
+          <div class="u-name" id="nav-uname">Member</div>
+          <div class="u-role" id="nav-urole">Community Member</div>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="doLogout()">⇠ Logout</button>
+    </div>
+  </header>
+
+  <!-- PLACES PAGE -->
+  <div class="main">
+    <div class="ph">
+      <div class="ph-left">
+        <h2>📍 Places to Visit</h2>
+        <p>Explore destinations curated by the Mana Telugu Pune community</p>
+      </div>
+      <div id="admin-add-wrap" style="display:none;">
+        <button class="btn btn-accent" onclick="openAddModal()">＋ Add Place</button>
+      </div>
+    </div>
+
+    <div id="stats-row"></div>
+
+    <div class="chips" id="chips-places">
+      <div class="chip call on" onclick="setChip('')">🔍 All</div>
+      <div class="chip c4"    onclick="setChip('Devotional')">🛕 Devotional</div>
+      <div class="chip c1"    onclick="setChip('Historical')">🏰 Historical</div>
+      <div class="chip c9"    onclick="setChip('Hill Station')">⛰️ Hill Station</div>
+      <div class="chip c2"    onclick="setChip('Trekking')">🌿 Trekking</div>
+      <div class="chip c3"    onclick="setChip('Beach')">🏖️ Beach</div>
+      <div class="chip c5"    onclick="setChip('Camping')">🏕️ Camping</div>
+      <div class="chip c6"    onclick="setChip('Wildlife')">🦁 Wildlife</div>
+      <div class="chip c7"    onclick="setChip('Adventure')">🪂 Adventure</div>
+    </div>
+
+    <div class="toolbar">
+      <div class="ts">
+        <span class="si">🔍</span>
+        <input type="text" id="pl-search" placeholder="Search by name or location…" oninput="renderPlaces()"/>
+      </div>
+      <select id="pl-district" onchange="renderPlaces()">
+        <option value="">District: All</option>
+        <option>Pune</option><option>Ratnagiri</option>
+        <option>Nashik</option><option>Satara</option>
+      </select>
+      <select id="pl-sort" onchange="renderPlaces()">
+        <option value="">Sort: Default</option>
+        <option value="rating">⭐ Top Rated</option>
+        <option value="reviews">📊 Most Reviewed</option>
+        <option value="name">🔤 Name A–Z</option>
+      </select>
+      <button class="btn btn-outline" onclick="resetFilters()">↺ Reset</button>
+    </div>
+
+    <div id="content-places"></div>
+  </div>
+</div>
+
+<!-- ═══ DETAIL MODAL (Read-Only for members) ═══ -->
+<div class="modal-ov" id="detail-modal" onclick="detailOverlayClick(event)">
+  <div class="detail-box">
+    <div class="detail-img" id="d-img">
+      <div class="detail-img-ov"></div>
+      <button class="detail-close" onclick="closeDetail()" aria-label="Close">✕</button>
+      <div class="detail-img-info">
+        <div class="detail-title" id="d-name"></div>
+        <div class="detail-loc"  id="d-loc"></div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="detail-meta"          id="d-meta"></div>
+      <div class="detail-section-title">About this Place</div>
+      <div class="detail-desc"          id="d-desc"></div>
+      <div class="detail-section-title">Tags</div>
+      <div class="detail-tags"          id="d-tags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ADD/EDIT MODAL (Admin only) ═══ -->
+<div class="modal-ov" id="add-modal" onclick="addOverlayClick(event)">
+  <div class="add-box">
+    <div class="add-head">
+      <h3 class="add-title" id="add-title">📍 Add New Place</h3>
+      <button class="add-close" onclick="closeAddModal()">✕</button>
+    </div>
+    <div id="add-body"></div>
+    <div class="add-footer">
+      <button class="btn btn-outline" onclick="closeAddModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="submitPlace()">💾 Save Place</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONFIRM DELETE (Admin) ═══ -->
+<div class="cfm-ov" id="cfm-ov">
+  <div class="cfm-box">
+    <div class="cfm-icon">🗑️</div>
+    <h3>Delete this Place?</h3>
+    <p>This will permanently remove the listing. This action cannot be undone.</p>
+    <div class="cfm-btns">
+      <button class="btn btn-outline" onclick="closeCfm()">Cancel</button>
+      <button class="btn" style="background:var(--red);color:#fff;" onclick="confirmDelete()">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ -->
+<script>
+'use strict';
+
+/* ─────────────────────────────────────────
+   CONSTANTS
+───────────────────────────────────────── */
+const ADMIN_EMAIL = 'admin@mtp.com';
+const ADMIN_PASS  = 'Admin@2024';
+
+const DEFAULT_PLACES = [  {id:'PLC-001',name:'Shreemant Dagdusheth Halwai Ganpati',category:'Devotional',subcat:'Temple',   location:'Budhwar Peth, Pune',district:'Pune',   desc:'One of the most revered Ganesh temples in India, adorned with a gold-plated idol and visited by millions during Ganesh Chaturthi. The trust also runs multiple charitable initiatives across Pune.',   rating:4.8,reviews:1200,distance:'City Center',bestTime:'Year Round',status:'Active',   img:'https://images.unsplash.com/photo-1621996659490-3275b4d0d951?w=700&q=80'},  {id:'PLC-002',name:'Shaniwar Wada',category:'Historical',subcat:'Fort',   location:'Shaniwar Peth, Pune',district:'Pune',   desc:'A magnificent 17th-century fortification that served as the seat of the Peshwa rulers of the Maratha Empire. Famous for its grand gates, fountains and the legendary ghost story of Narayanrao.',   rating:4.6,reviews:980,distance:'City Center',bestTime:'Oct – Mar',status:'Active',   img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=700&q=80'},  {id:'PLC-003',name:'Lonavala Hill Station',category:'Hill Station',subcat:'Hill Station',   location:'Lonavala',district:'Pune',   desc:'A beloved hill station just 65 km from Pune, famous for Bhushi Dam, Rajmachi Fort, Tiger Point, Imagica theme park and the iconic chikki sweet. A perfect monsoon escape.',   rating:4.5,reviews:860,distance:'65 km',bestTime:'Jun – Sep',status:'Active',   img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80'},  {id:'PLC-004',name:'Sinhagad Fort Trek',category:'Trekking',subcat:'Trek',   location:'Sinhagad, Pune',district:'Pune',   desc:'An iconic Maratha fort and popular trekking destination, famous for the heroic Battle of Sinhagad by Tanaji Malusare in 1670. Enjoy the sunrise trek and authentic local food at the top.',   rating:4.7,reviews:1500,distance:'30 km',bestTime:'Oct – Feb',status:'Active',   img:'https://images.unsplash.com/photo-1592496001020-d31bd830651f?w=700&q=80'},  {id:'PLC-005',name:'Ganpatipule Beach',category:'Beach',subcat:'Beach',   location:'Ganpatipule, Ratnagiri',district:'Ratnagiri',   desc:'One of Maharashtra\'s cleanest beaches with the famous Swayambhu Ganesh temple facing the Arabian Sea. Perfect blend of spirituality and natural beauty. Ideal for family trips.',   rating:4.6,reviews:720,distance:'330 km',bestTime:'Nov – Feb',status:'Active',   img:'https://images.unsplash.com/photo-1536768139911-e290a59011e4?w=700&q=80'},  {id:'PLC-006',name:'Pawna Lake Camping',category:'Camping',subcat:'Camping',   location:'Pawna, Pune',district:'Pune',   desc:'An unforgettable overnight tent camping experience by the stunning Pawna Lake, surrounded by the silhouettes of Lohagad, Tikona and Tung forts. Best campfire destination near Pune.',   rating:4.8,reviews:940,distance:'50 km',bestTime:'Oct – Mar',status:'Active',   img:'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=700&q=80'},  {id:'PLC-007',name:'Aga Khan Palace',category:'Historical',subcat:'Museum',   location:'Nagar Road, Pune',district:'Pune',   desc:'A stately palace-turned-memorial where Mahatma Gandhi, Kasturba Gandhi and Mahadev Desai were held during the Quit India Movement in 1942. Now a revered museum preserving their memories.',   rating:4.5,reviews:650,distance:'5 km',bestTime:'Year Round',status:'Active',   img:'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=700&q=80'},  {id:'PLC-008',name:'Mahabaleshwar',category:'Hill Station',subcat:'Hill Station',   location:'Mahabaleshwar',district:'Satara',   desc:'Maharashtra\'s most popular hill station known for its famous strawberries, Venna Lake boating, Arthur Seat viewpoint, Wilson Point and dense forests. A paradise for nature lovers.',   rating:4.7,reviews:1100,distance:'120 km',bestTime:'Mar – Jun',status:'Active',   img:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700&q=80'},  {id:'PLC-009',name:'Rajiv Gandhi Zoological Park',category:'Wildlife',subcat:'Zoo & Wildlife',   location:'Katraj, Pune',district:'Pune',   desc:'A well-maintained zoo in Katraj housing tigers, lions, leopards, crocodiles, anacondas and exotic birds. Also features a dedicated snake park and deer park. Great outing for families with children.',   rating:4.3,reviews:820,distance:'10 km',bestTime:'Year Round',status:'Active',   img:'https://images.unsplash.com/photo-1534567110243-8875d62b3b8d?w=700&q=80'}];
+
+/* ─────────────────────────────────────────
+   STATE
+───────────────────────────────────────── */
+let places     = loadPlaces();
+let chipFilter = '';
+let isAdmin    = false;
+let dIdx       = null;
+let editIdx    = null;
+
+/* ─────────────────────────────────────────
+   LOCALSTORAGE HELPERS
+───────────────────────────────────────── */
+function loadPlaces(){
+  try{
+    const s = localStorage.getItem('mtp_places');
+    return s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_PLACES));
+  }catch(e){ return JSON.parse(JSON.stringify(DEFAULT_PLACES)); }
+}
+function savePlaces(){ localStorage.setItem('mtp_places', JSON.stringify(places)); }
+
+function getUsers(){
+  try{ return JSON.parse(localStorage.getItem('mtp_users') || '[]'); }catch(e){ return []; }
+}
+function saveUsers(u){ localStorage.setItem('mtp_users', JSON.stringify(u)); }
+
+function getPaidSet(){
+  try{ return new Set(JSON.parse(localStorage.getItem('mtp_paid') || '[]')); }catch(e){ return new Set(); }
+}
+function markPaid(email){
+  const s = getPaidSet(); s.add(email.toLowerCase());
+  localStorage.setItem('mtp_paid', JSON.stringify([...s]));
+}
+function isPaidUser(email){
+  return email && getPaidSet().has(email.toLowerCase());
+}
+
+function getSession(){
+  try{ return JSON.parse(localStorage.getItem('mtp_sess') || 'null'); }catch(e){ return null; }
+}
+function saveSession(obj){ localStorage.setItem('mtp_sess', JSON.stringify(obj)); }
+function clearSession(){ localStorage.removeItem('mtp_sess'); }
+
+/* ─────────────────────────────────────────
+   SCREEN MANAGER
+───────────────────────────────────────── */
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+/* ─────────────────────────────────────────
+   AUTH TABS
+───────────────────────────────────────── */
+function switchAuthTab(tab){
+  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('on'));
+  document.getElementById('tab-' + tab).classList.add('on');
+  document.getElementById('form-' + tab).classList.add('on');
+}
+
+/* ─────────────────────────────────────────
+   SIGN UP
+───────────────────────────────────────── */
+function doSignup(){
+  const name   = document.getElementById('reg-name').value.trim();
+  const email  = document.getElementById('reg-email').value.trim().toLowerCase();
+  const mobile = document.getElementById('reg-mobile').value.trim();
+  const pass   = document.getElementById('reg-pass').value;
+
+  if(!name)                            { showToast('⚠️ Full name is required'); return; }
+  if(!email || !email.includes('@'))   { showToast('⚠️ Enter a valid email address'); return; }
+  if(!/^\d{10}$/.test(mobile))         { showToast('⚠️ Enter a valid 10-digit mobile number'); return; }
+  if(pass.length < 6)                  { showToast('⚠️ Password must be at least 6 characters'); return; }
+
+  const users = getUsers();
+  if(users.find(u => u.email === email)){ showToast('⚠️ Email already registered — please login'); return; }
+
+  const user = { name, email, mobile, pass, joinedAt: new Date().toISOString() };
+  users.push(user);
+  saveUsers(users);
+  saveSession({ email, name, isAdmin: false });
+  showScreen('screen-payment');
+}
+
+/* ─────────────────────────────────────────
+   LOGIN
+───────────────────────────────────────── */
+function doLogin(){
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const pass  = document.getElementById('login-pass').value;
+
+  if(!email){ showToast('⚠️ Please enter your email'); return; }
+  if(!pass) { showToast('⚠️ Please enter your password'); return; }
+
+  // Admin
+  if(email === ADMIN_EMAIL && pass === ADMIN_PASS){
+    saveSession({ email: ADMIN_EMAIL, name: 'Admin', isAdmin: true });
+    launchApp({ email: ADMIN_EMAIL, name: 'Admin', isAdmin: true });
+    return;
+  }
+
+  const user = getUsers().find(u => u.email === email && u.pass === pass);
+  if(!user){ showToast('⚠️ Incorrect email or password'); return; }
+
+  saveSession({ email, name: user.name, isAdmin: false });
+  if(isPaidUser(email)){
+    launchApp({ email, name: user.name, isAdmin: false });
+  } else {
+    showScreen('screen-payment');
+  }
+}
+
+/* ─────────────────────────────────────────
+   PAYMENT
+───────────────────────────────────────── */
+function switchPayTab(tab){
+  document.querySelectorAll('.pay-tab').forEach(t   => t.classList.remove('on'));
+  document.querySelectorAll('.pay-panel').forEach(p => p.classList.remove('on'));
+  document.getElementById('ptab-' + tab).classList.add('on');
+  document.getElementById('pay-panel-' + tab).classList.add('on');
+}
+
+function doPayment(){
+  const session = getSession();
+  if(!session){ showToast('⚠️ Session expired — please login again'); showScreen('screen-auth'); return; }
+  markPaid(session.email);
+  showToast('🎉 Payment confirmed! Welcome to Mana Telugu Pune!');
+  setTimeout(() => launchApp(session), 1300);
+}
+
+/* ─────────────────────────────────────────
+   LAUNCH APP
+───────────────────────────────────────── */
+function launchApp(session){
+  isAdmin = !!session.isAdmin;
+  const initials = session.name.split(' ').map(w => w[0]||'').join('').slice(0,2).toUpperCase();
+
+  document.getElementById('nav-av').textContent    = initials;
+  document.getElementById('nav-uname').textContent = session.name;
+  document.getElementById('nav-urole').textContent = isAdmin ? 'Administrator' : 'Community Member';
+  document.getElementById('admin-pill').style.display    = isAdmin ? 'inline-block' : 'none';
+  document.getElementById('admin-add-wrap').style.display = isAdmin ? 'block' : 'none';
+
+  showScreen('screen-app');
+  renderPlaces();
+}
+
+/* ─────────────────────────────────────────
+   LOGOUT
+───────────────────────────────────────── */
+function doLogout(){
+  clearSession();
+  isAdmin    = false;
+  chipFilter = '';
+  showScreen('screen-auth');
+  showToast('👋 Logged out successfully');
+}
+
+/* ─────────────────────────────────────────
+   CHIP FILTER
+───────────────────────────────────────── */
+function setChip(val){
+  chipFilter = val;
+  document.querySelectorAll('#chips-places .chip').forEach(c => {
+    const m = (c.getAttribute('onclick') || '').match(/setChip\('([^']*)'\)/);    if(m) c.classList.toggle('on', m[1] === val);
+  });
+  renderPlaces();
+}
+
+/* ─────────────────────────────────────────
+   RENDER PLACES
+───────────────────────────────────────── */
+function renderPlaces(navVal){
+  // Read filters
+  const s    = navVal !== undefined ? navVal : (document.getElementById('pl-search')||{}).value||'';
+  const dist = (document.getElementById('pl-district')||{}).value || '';
+  const sort = (document.getElementById('pl-sort')||{}).value || '';
+
+  // Sync toolbar search if nav triggered
+  if(navVal !== undefined){
+    const el = document.getElementById('pl-search');
+    if(el) el.value = navVal;
+  }
+
+  let filtered = places.filter(p =>
+    p.status === 'Active' &&
+    (!s    || (p.name + p.location + (p.subcat||'')).toLowerCase().includes(s.toLowerCase())) &&
+    (!dist || p.district === dist) &&
+    (!chipFilter || p.category === chipFilter)
+  );
+
+  if(sort === 'rating')  filtered.sort((a,b) => (+b.rating||0)  - (+a.rating||0));
+  if(sort === 'reviews') filtered.sort((a,b) => (+b.reviews||0) - (+a.reviews||0));
+  if(sort === 'name')    filtered.sort((a,b) => a.name.localeCompare(b.name));
+
+  // Stats
+  const active = places.filter(p => p.status === 'Active');
+  document.getElementById('stats-row').innerHTML = `<div class="srow s4">
+    <div class="sc"><div class="sci" style="background:#fef9c3;">📍</div>
+      <div><div class="scl">Total Places</div><div class="scn">${active.length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#fee2e2;">🛕</div>
+      <div><div class="scl">Devotional</div><div class="scn">${active.filter(p=>p.category==='Devotional').length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dcfce7;">🌿</div>
+      <div><div class="scl">Nature & Trek</div><div class="scn">${active.filter(p=>['Trekking','Camping','Wildlife','Adventure'].includes(p.category)).length}</div></div></div>
+    <div class="sc"><div class="sci" style="background:#dbeafe;">🏰</div>
+      <div><div class="scl">Historical</div><div class="scn">${active.filter(p=>p.category==='Historical').length}</div></div></div>
+  </div>`;
+
+  if(!filtered.length){
+    document.getElementById('content-places').innerHTML =
+      `<div class="empty"><div class="ei">📍</div><h3>No places found</h3><p>Try a different search term or clear the filters.</p></div>`;
+    return;
+  }
+
+  const cards = filtered.map(p => {
+    const i   = places.indexOf(p);
+    const img = p.img || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80';
+    const footer = isAdmin
+      ? `<div class="ad-acts">
+           <button class="abt abt-e" onclick="event.stopPropagation();editPlace(${i})">✏️ Edit</button>
+           <button class="abt abt-d" onclick="event.stopPropagation();deletePlace(${i})">🗑️</button>
+         </div>`
+      : `<span class="view-link">View Details →</span>`;
+
+    return `<div class="pcard" onclick="openDetail(${i})">
+      <div class="pimg" style="background-image:url('${img}')">
+        <div class="pov"></div>
+        <span class="pbadge">${p.category}</span>
+        <div class="prating">★ ${p.rating || '–'}</div>
+      </div>
+      <div class="pinfo">
+        <div class="pname">${p.name}</div>
+        <div class="ploc2">📍 ${p.location}</div>
+        <div class="pcat2">
+          <span>🗓️ ${p.bestTime || '–'}</span>
+          <span>📏 ${p.distance || '–'}</span>
+          <span>💬 ${p.reviews || 0} reviews</span>
+        </div>
+      </div>
+      <div class="pfoot">${footer}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('content-places').innerHTML = `<div class="g3">${cards}</div>`;
+}
+
+function resetFilters(){
+  const ps = document.getElementById('pl-search');
+  const pd = document.getElementById('pl-district');
+  const pt = document.getElementById('pl-sort');
+  if(ps) ps.value = '';
+  if(pd) pd.value = '';
+  if(pt) pt.value = '';
+  setChip('');
+}
+
+/* ─────────────────────────────────────────
+   DETAIL MODAL
+───────────────────────────────────────── */
+const CAT_TAG_CLASS = {
+  Devotional:'bpk', Historical:'ba', Trekking:'bg2', 'Hill Station':'c9 chip',
+  Beach:'c3 chip', Camping:'c5 chip', Wildlife:'c2 chip', Adventure:'c6 chip'
+};
+
+function openDetail(i){
+  const p = places[i];
+  if(!p) return;
+  const img = p.img || 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80';
+  document.getElementById('d-img').style.backgroundImage = `url('${img}')`;
+  document.getElementById('d-name').textContent = p.name;
+  document.getElementById('d-loc').innerHTML    = `📍 ${p.location}&nbsp;&nbsp;·&nbsp;&nbsp;${p.district}`;
+
+  document.getElementById('d-meta').innerHTML = `
+    <div class="dm-item">
+      <div class="dm-label">⭐ Rating</div>
+      <div class="dm-val" style="color:#f59e0b;">${p.rating} / 5
+        <span style="font-size:10px;color:var(--muted);font-weight:600;"> (${p.reviews||0} reviews)</span>
+      </div>
+    </div>
+    <div class="dm-item"><div class="dm-label">🗓️ Best Time</div><div class="dm-val">${p.bestTime||'–'}</div></div>
+    <div class="dm-item"><div class="dm-label">📏 Distance</div><div class="dm-val">${p.distance||'–'}</div></div>
+    <div class="dm-item"><div class="dm-label">🏷️ Category</div><div class="dm-val">${p.category||'–'}</div></div>
+    <div class="dm-item"><div class="dm-label">🏛️ Sub Type</div><div class="dm-val">${p.subcat||'–'}</div></div>
+    <div class="dm-item"><div class="dm-label">📍 District</div><div class="dm-val">${p.district||'–'}</div></div>
+  `;
+
+  document.getElementById('d-desc').textContent = p.desc || 'No description available.';
+
+  const tc = CAT_TAG_CLASS[p.category] || 'ba';
+  document.getElementById('d-tags').innerHTML = `
+    <span class="${tc} dtag">${p.category}</span>
+    ${p.subcat ? `<span class="ba dtag">${p.subcat}</span>` : ''}
+    ${p.district ? `<span class="bv dtag">📍 ${p.district}</span>` : ''}
+    <span class="bv dtag">✔ Active</span>
+  `;
+  document.getElementById('detail-modal').classList.add('open');
+}
+function closeDetail(){ document.getElementById('detail-modal').classList.remove('open'); }
+function detailOverlayClick(e){ if(e.target === document.getElementById('detail-modal')) closeDetail(); }
+
+/* ─────────────────────────────────────────
+   ADD / EDIT MODAL (Admin)
+───────────────────────────────────────── */
+const PLACE_FIELDS = [  {id:'name',     label:'Place Name',           type:'text',     req:true, full:true},  {id:'category', label:'Category',             type:'select',   options:['Devotional','Historical','Hill Station','Trekking','Waterfall','Beach','Camping','Adventure','Wildlife','Family Outing']},
+  {id:'subcat',   label:'Sub Category',         type:'text'},
+  {id:'location', label:'Location',             type:'text',     req:true},
+  {id:'district', label:'District',             type:'select',   options:['Pune','Ratnagiri','Nashik','Kolhapur','Satara','Aurangabad','Other']},
+  {id:'desc',     label:'Description',          type:'textarea', full:true, rows:3},
+  {id:'rating',   label:'Rating (1–5)',         type:'number'},
+  {id:'reviews',  label:'Reviews Count',        type:'number'},
+  {id:'distance', label:'Distance from Pune',   type:'text'},
+  {id:'bestTime', label:'Best Time to Visit',   type:'text'},
+  {id:'img',      label:'Image URL',            type:'text',     full:true},
+  {id:'status',   label:'Status',               type:'select',   options:['Active','Pending']}
+];
+
+function buildForm(data){
+  return `<div class="form-grid">${PLACE_FIELDS.map(f => {
+    const val = data[f.id] !== undefined ? data[f.id] : '';
+    let inp;
+    if(f.type === 'select'){
+      const opts = f.options.map(o => `<option value="${o}"${o==val?' selected':''}>${o}</option>`).join('');
+      inp = `<select id="af_${f.id}">${opts}</select>`;
+    } else if(f.type === 'textarea'){
+      inp = `<textarea id="af_${f.id}" rows="${f.rows||3}">${val}</textarea>`;
+    } else {
+      inp = `<input type="${f.type||'text'}" id="af_${f.id}" value="${val}"${f.req?' required':''}/>`;
+    }
+    return `<div class="fgrp"${f.full?' style="grid-column:1/-1;"':''}>
+      <label>${f.label}${f.req?' <span style="color:var(--red)">*</span>':''}</label>${inp}
+    </div>`;
+  }).join('')}</div>`;
+}
+
+function readForm(){
+  const data = {};
+  PLACE_FIELDS.forEach(f => { const el = document.getElementById('af_'+f.id); if(el) data[f.id] = el.value; });
+  return data;
+}
+
+function openAddModal(){
+  editIdx = null;
+  document.getElementById('add-title').textContent = '📍 Add New Place';
+  document.getElementById('add-body').innerHTML = buildForm({category:'Devotional',district:'Pune',status:'Active'});
+  document.getElementById('add-modal').classList.add('open');
+}
+function editPlace(i){
+  editIdx = i;
+  document.getElementById('add-title').textContent = '✏️ Edit Place';
+  document.getElementById('add-body').innerHTML = buildForm(places[i]);
+  document.getElementById('add-modal').classList.add('open');
+}
+function closeAddModal(){ document.getElementById('add-modal').classList.remove('open'); }
+function addOverlayClick(e){ if(e.target === document.getElementById('add-modal')) closeAddModal(); }
+
+function submitPlace(){
+  for(const f of PLACE_FIELDS){
+    if(f.req){
+      const el = document.getElementById('af_'+f.id);
+      if(!el || !el.value.trim()){ showToast('⚠️ ' + f.label + ' is required'); return; }
+    }
+  }
+  const data = readForm();
+  if(editIdx === null){
+    data.id = 'PLC-' + String(places.length + 1).padStart(3,'0');
+    places.push(data);
+    showToast('✅ Place added successfully!');
+  } else {
+    Object.assign(places[editIdx], data);
+    showToast('✅ Place updated successfully!');
+  }
+  savePlaces();
+  closeAddModal();
+  renderPlaces();
+}
+
+/* ─────────────────────────────────────────
+   DELETE (Admin)
+───────────────────────────────────────── */
+function deletePlace(i){ dIdx = i; document.getElementById('cfm-ov').classList.add('open'); }
+function closeCfm(){ document.getElementById('cfm-ov').classList.remove('open'); }
+function confirmDelete(){
+  places.splice(dIdx, 1);
+  savePlaces();
+  closeCfm();
+  showToast('🗑️ Place deleted');
+  renderPlaces();
+}
+
+/* ─────────────────────────────────────────
+   TOAST
+───────────────────────────────────────── */
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3400);
+}
+
+/* ─────────────────────────────────────────
+   INIT — Restore session on page load
+───────────────────────────────────────── */
+(function init(){
+  const s = getSession();
+  if(!s)                                        { showScreen('screen-auth'); return; }
+  if(s.isAdmin)                                 { launchApp(s); return; }
+  if(isPaidUser(s.email))                       { launchApp(s); return; }
+  showScreen('screen-payment');
+})();
+</script>
+</body>
+</html>
